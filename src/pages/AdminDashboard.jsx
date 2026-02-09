@@ -379,78 +379,80 @@ const AdminDashboard = () => {
           {registrations.length === 0 ? (
             <div className="alert alert-info">No registrations yet.</div>
           ) : (
-            <div className="abstracts-table-wrapper">
-              <table className="abstracts-table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Registration Type</th>
-                    <th>Short Course</th>
-                    <th>Safari Tour</th>
-                    <th>Total Amount</th>
-                    <th>Payment Status</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {registrations
-                    .slice((currentPage.registrations - 1) * itemsPerPage, currentPage.registrations * itemsPerPage)
-                    .map((registration) => (
-                    <tr key={registration._id}>
-                      <td>
-                        <strong>{registration.firstName} {registration.lastName}</strong>
-                      </td>
-                      <td className="email">
-                        <a href={`mailto:${registration.email}`}>{registration.email}</a>
-                      </td>
-                      <td>
-                        <span className="badge">{registration.registrationType.toUpperCase()}</span>
-                      </td>
-                      <td>
-                        <span>{registration.shortCourse ? '✓ Yes' : '✗ No'}</span>
-                      </td>
-                      <td>
-                        <span>{registration.safariTour ? '✓ Yes' : '✗ No'}</span>
-                      </td>
-                      <td>
-                        <strong>${registration.totalAmount || 0}</strong>
-                      </td>
-                      <td>
-                        <span className={`status-badge status-${registration.paymentStatus}`}>
-                          {registration.paymentStatus}
-                        </span>
-                      </td>
-                      <td className="date">
-                        {new Date(registration.createdAt).toLocaleDateString()}
-                      </td>
-                      <td className="actions">
-                        <button
-                          className="btn btn-sm btn-danger"
-                          onClick={() => handleDeleteRegistration(registration._id)}
-                          disabled={deleting === registration._id}
-                          title="Delete registration"
-                        >
-                          {deleting === registration._id ? '⏳ Deleting...' : '🗑️ Delete'}
-                        </button>
-                      </td>
+            <>
+              <div className="abstracts-table-wrapper">
+                <table className="abstracts-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Registration Type</th>
+                      <th>Short Course</th>
+                      <th>Safari Tour</th>
+                      <th>Total Amount</th>
+                      <th>Payment Status</th>
+                      <th>Date</th>
+                      <th>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="pagination">
-              {Array.from({ length: Math.ceil(registrations.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  className={`paginator-btn ${currentPage.registrations === page ? 'active' : ''}`}
-                  onClick={() => setCurrentPage({ ...currentPage, registrations: page })}
-                >
-                  {page}
-                </button>
-              ))}
-            </div>
+                  </thead>
+                  <tbody>
+                    {registrations
+                      .slice((currentPage.registrations - 1) * itemsPerPage, currentPage.registrations * itemsPerPage)
+                      .map((registration) => (
+                      <tr key={registration._id}>
+                        <td>
+                          <strong>{registration.firstName} {registration.lastName}</strong>
+                        </td>
+                        <td className="email">
+                          <a href={`mailto:${registration.email}`}>{registration.email}</a>
+                        </td>
+                        <td>
+                          <span className="badge">{registration.registrationType.toUpperCase()}</span>
+                        </td>
+                        <td>
+                          <span>{registration.shortCourse ? '✓ Yes' : '✗ No'}</span>
+                        </td>
+                        <td>
+                          <span>{registration.safariTour ? '✓ Yes' : '✗ No'}</span>
+                        </td>
+                        <td>
+                          <strong>${registration.totalAmount || 0}</strong>
+                        </td>
+                        <td>
+                          <span className={`status-badge status-${registration.paymentStatus}`}>
+                            {registration.paymentStatus}
+                          </span>
+                        </td>
+                        <td className="date">
+                          {new Date(registration.createdAt).toLocaleDateString()}
+                        </td>
+                        <td className="actions">
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={() => handleDeleteRegistration(registration._id)}
+                            disabled={deleting === registration._id}
+                            title="Delete registration"
+                          >
+                            {deleting === registration._id ? '⏳ Deleting...' : '🗑️ Delete'}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="pagination">
+                {Array.from({ length: Math.ceil(registrations.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    className={`paginator-btn ${currentPage.registrations === page ? 'active' : ''}`}
+                    onClick={() => setCurrentPage({ ...currentPage, registrations: page })}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            </>
           )}
             </>
           )}
@@ -467,72 +469,74 @@ const AdminDashboard = () => {
           {payments.length === 0 ? (
             <div className="alert alert-info">No payments yet.</div>
           ) : (
-            <div className="abstracts-table-wrapper">
-              <table className="abstracts-table">
-                <thead>
-                  <tr>
-                    <th>Registration ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Amount</th>
-                    <th>Payment Method</th>
-                    <th>Status</th>
-                    <th>Transaction ID</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {payments
-                    .slice((currentPage.payments - 1) * itemsPerPage, currentPage.payments * itemsPerPage)
-                    .map((payment) => (
-                    <tr key={payment._id}>
-                      <td>
-                        <strong>{payment.registrationId}</strong>
-                      </td>
-                      <td>
-                        {payment.firstName} {payment.lastName}
-                      </td>
-                      <td className="email">
-                        <a href={`mailto:${payment.email}`}>{payment.email}</a>
-                      </td>
-                      <td>
-                        <strong>${payment.totalAmount || 0}</strong>
-                      </td>
-                      <td>
-                        <span className="badge badge-info">
-                          {payment.paymentMethod === 'credit_card' ? '💳 Credit Card' :
-                           payment.paymentMethod === 'paypal_account' ? '🅿️ PayPal Account' :
-                           payment.paymentMethod === 'apple_pay' ? '🍎 Apple Pay' :
-                           '❓ Unknown'}
-                        </span>
-                      </td>
-                      <td>
-                        <span className={`status-badge status-${payment.paymentStatus}`}>
-                          {payment.paymentStatus.charAt(0).toUpperCase() + payment.paymentStatus.slice(1)}
-                        </span>
-                      </td>
-                      <td className="transaction-id">
-                        <code>{payment.paypalTransactionId ? payment.paypalTransactionId.substring(0, 15) + '...' : 'N/A'}</code>
-                      </td>
-                      <td className="date">
-                        {new Date(payment.createdAt).toLocaleDateString()}
-                      </td>
+            <>
+              <div className="abstracts-table-wrapper">
+                <table className="abstracts-table">
+                  <thead>
+                    <tr>
+                      <th>Registration ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Amount</th>
+                      <th>Payment Method</th>
+                      <th>Status</th>
+                      <th>Transaction ID</th>
+                      <th>Date</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="pagination">
-              {Array.from({ length: Math.ceil(payments.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  className={`paginator-btn ${currentPage.payments === page ? 'active' : ''}`}
-                  onClick={() => setCurrentPage({ ...currentPage, payments: page })}
-                >
-                  {page}
-                </button>
-              ))}
-            </div>
+                  </thead>
+                  <tbody>
+                    {payments
+                      .slice((currentPage.payments - 1) * itemsPerPage, currentPage.payments * itemsPerPage)
+                      .map((payment) => (
+                      <tr key={payment._id}>
+                        <td>
+                          <strong>{payment.registrationId}</strong>
+                        </td>
+                        <td>
+                          {payment.firstName} {payment.lastName}
+                        </td>
+                        <td className="email">
+                          <a href={`mailto:${payment.email}`}>{payment.email}</a>
+                        </td>
+                        <td>
+                          <strong>${payment.totalAmount || 0}</strong>
+                        </td>
+                        <td>
+                          <span className="badge badge-info">
+                            {payment.paymentMethod === 'credit_card' ? '💳 Credit Card' :
+                             payment.paymentMethod === 'paypal_account' ? '🅿️ PayPal Account' :
+                             payment.paymentMethod === 'apple_pay' ? '🍎 Apple Pay' :
+                             '❓ Unknown'}
+                          </span>
+                        </td>
+                        <td>
+                          <span className={`status-badge status-${payment.paymentStatus}`}>
+                            {payment.paymentStatus.charAt(0).toUpperCase() + payment.paymentStatus.slice(1)}
+                          </span>
+                        </td>
+                        <td className="transaction-id">
+                          <code>{payment.paypalTransactionId ? payment.paypalTransactionId.substring(0, 15) + '...' : 'N/A'}</code>
+                        </td>
+                        <td className="date">
+                          {new Date(payment.createdAt).toLocaleDateString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="pagination">
+                {Array.from({ length: Math.ceil(payments.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    className={`paginator-btn ${currentPage.payments === page ? 'active' : ''}`}
+                    onClick={() => setCurrentPage({ ...currentPage, payments: page })}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            </>
           )}
             </>
           )}
