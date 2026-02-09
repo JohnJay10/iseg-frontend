@@ -124,18 +124,7 @@ const SafariTour = () => {
   return (
     <main>
       {/* Hero Section with Image */}
-      <section className="safari-hero" style={{ backgroundImage: `url(${tours[0].heroImg})` }}>
-        <div className="safari-hero-overlay" />
-        <div className="safari-hero-content">
-          <h1 className="safari-hero-title">Safari Tour Experiences</h1>
-          <p className="safari-hero-subtitle">Explore Nairobi Where City Life Meets Wild Adventure</p>
-          <p className="safari-hero-description">
-            Whether you're a wildlife lover, culture enthusiast, or history buff, Nairobi offers an unforgettable
-            blend of natural beauty and rich heritage all in one vibrant city.
-          </p>
-          <p className="safari-cta-text">Start your memorable adventure today</p>
-        </div>
-      </section>
+    
 
       {/* Discover Nairobi - Individual Sections */}
       <section className="discover-nairobi">
