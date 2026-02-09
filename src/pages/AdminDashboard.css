@@ -631,9 +631,14 @@
 
 /* Desktop Media Query (1200px and above) */
 @media (min-width: 1201px) {
-  .admin-container {
+  .admin-dashboard {
+    padding: 60px 0;
+  }
+
+  .admin-dashboard .container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 30px;
   }
 
   .dashboard-tabs {
