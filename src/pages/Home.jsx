@@ -421,10 +421,11 @@ const Home = () => {
               <h3>Potential Clients</h3>
               <p>Networking with people from all walks of life give you business continental access.</p>
             </div>
-            <div className="benefit-card-enhanced">
+            <div className="benefit-card-enhanced safari-tour-card">
               <div className="benefit-icon">🦁</div>
               <h3>Kenya Safari Tour</h3>
               <p>Explore the beautiful nature of the Kenya Safari with other people from all walks of life.</p>
+              <p className="safari-tour-description">Whether you're a wildlife lover, culture enthusiast, or history buff, Nairobi offers an unforgettable blend of natural beauty and rich heritage all in one vibrant city.</p>
             </div>
           </div>
         </div>
