@@ -16,6 +16,8 @@ const AdminDashboard = () => {
   const [exporting, setExporting] = useState({ excel: false, pdf: false })
   const [deleting, setDeleting] = useState(null)
   const [activeTab, setActiveTab] = useState('abstracts')
+  const [currentPage, setCurrentPage] = useState({ abstracts: 1, registrations: 1, payments: 1 })
+  const itemsPerPage = 5
 
   useEffect(() => {
     // Check if user is logged in
@@ -283,6 +285,7 @@ const AdminDashboard = () => {
           ) : abstracts.length === 0 ? (
             <div className="alert alert-info">No abstracts submitted yet.</div>
           ) : (
+            <>
             <div className="abstracts-table-wrapper">
               <table className="abstracts-table">
                 <thead>
@@ -297,7 +300,9 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {abstracts.map((abstract) => (
+                  {abstracts
+                    .slice((currentPage.abstracts - 1) * itemsPerPage, currentPage.abstracts * itemsPerPage)
+                    .map((abstract) => (
                     <tr key={abstract._id}>
                       <td className="submission-id">
                         <strong>{abstract.submissionId}</strong>
@@ -346,6 +351,18 @@ const AdminDashboard = () => {
                 </tbody>
               </table>
             </div>
+            <div className="pagination">
+              {Array.from({ length: Math.ceil(abstracts.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`paginator-btn ${currentPage.abstracts === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage({ ...currentPage, abstracts: page })}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            </>
           )}
             </>
           )}
@@ -378,7 +395,9 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {registrations.map((registration) => (
+                  {registrations
+                    .slice((currentPage.registrations - 1) * itemsPerPage, currentPage.registrations * itemsPerPage)
+                    .map((registration) => (
                     <tr key={registration._id}>
                       <td>
                         <strong>{registration.firstName} {registration.lastName}</strong>
@@ -421,6 +440,17 @@ const AdminDashboard = () => {
                 </tbody>
               </table>
             </div>
+            <div className="pagination">
+              {Array.from({ length: Math.ceil(registrations.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`paginator-btn ${currentPage.registrations === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage({ ...currentPage, registrations: page })}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
           )}
             </>
           )}
@@ -452,7 +482,9 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {payments.map((payment) => (
+                  {payments
+                    .slice((currentPage.payments - 1) * itemsPerPage, currentPage.payments * itemsPerPage)
+                    .map((payment) => (
                     <tr key={payment._id}>
                       <td>
                         <strong>{payment.registrationId}</strong>
@@ -489,6 +521,17 @@ const AdminDashboard = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="pagination">
+              {Array.from({ length: Math.ceil(payments.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`paginator-btn ${currentPage.payments === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage({ ...currentPage, payments: page })}
+                >
+                  {page}
+                </button>
+              ))}
             </div>
           )}
             </>

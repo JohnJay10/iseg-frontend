@@ -594,4 +594,210 @@
   }
 }
 
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.paginator-btn {
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 40px;
+}
+
+.paginator-btn:hover {
+  border-color: #E67E22;
+  color: #E67E22;
+  background-color: #fff5f0;
+}
+
+.paginator-btn.active {
+  background-color: #E67E22;
+  color: white;
+  border-color: #E67E22;
+}
+
+/* Desktop Media Query (1200px and above) */
+@media (min-width: 1201px) {
+  .admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .dashboard-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+  }
+
+  .dashboard-tabs button {
+    padding: 12px 24px;
+    font-size: 16px;
+    flex: 0 1 auto;
+  }
+
+  .abstracts-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  .abstracts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .abstracts-table thead {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #E67E22;
+  }
+
+  .abstracts-table th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+
+  .abstracts-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+  }
+
+  .abstracts-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .abstracts-table td {
+    padding: 12px 12px;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .abstracts-table .badge {
+    display: inline-block;
+    padding: 6px 10px;
+    background-color: #E67E22;
+    color: white;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .abstracts-table .status-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .abstracts-table .status-badge.status-completed {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .abstracts-table .status-badge.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+
+  .abstracts-table .status-badge.status-pending {
+    background-color: #ffeaa7;
+    color: #d63031;
+  }
+
+  .abstracts-table .email {
+    color: #E67E22;
+    text-decoration: none;
+  }
+
+  .abstracts-table .email a {
+    color: #E67E22;
+    text-decoration: none;
+  }
+
+  .abstracts-table .email a:hover {
+    text-decoration: underline;
+  }
+
+  .abstracts-table .date {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .abstracts-table .actions {
+    white-space: nowrap;
+  }
+
+  .abstracts-table .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin: 0 4px;
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #E67E22;
+  }
+
+  .dashboard-header h2 {
+    font-size: 28px;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .dashboard-header p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0 0;
+  }
+
+  .pagination {
+    margin-top: 25px;
+    margin-bottom: 30px;
+  }
+
+  .paginator-btn {
+    padding: 10px 14px;
+    font-size: 15px;
+    min-width: 45px;
+  }
+
+  .alert {
+    padding: 16px;
+    font-size: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+  }
+
+  .alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+  }
+}
+
 
