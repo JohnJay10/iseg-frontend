@@ -385,13 +385,9 @@
     flex-direction: column;
   }
 }
-    gap: 0.3rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-  }
 
-  .time {
-    font-size: 0.8rem;
+.time {
+  font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
