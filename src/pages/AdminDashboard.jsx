@@ -5,7 +5,7 @@ import { adminDashboardService } from '../services/api'
 import authService from '../services/authService'
 import './AdminDashboard.css'
 
-const AdminDashboard = () => {
+const AdminDashboard = () => {  
   const navigate = useNavigate()
   const [abstracts, setAbstracts] = useState([])
   const [registrations, setRegistrations] = useState([])
