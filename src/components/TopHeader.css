@@ -1,0 +1,291 @@
+.top-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  padding: 0 20px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(230, 126, 34, 0.2);
+}
+
+.top-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-info {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.contact-item a {
+  color: #FFE4B5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #E67E22;
+}
+
+.contact-item:hover {
+  color: white;
+}
+
+.contact-item .icon {
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #FFE4B5;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.social-link:hover {
+  color: #E67E22;
+  transform: translateY(-3px);
+}
+
+.social-link:hover::before {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: rgba(230, 126, 34, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .top-header-container {
+    padding: 12px 25px;
+  }
+
+  .contact-info {
+    gap: 25px;
+  }
+
+  .contact-item {
+    font-size: 0.82rem;
+  }
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 0 15px;
+    font-size: 0.75rem;
+  }
+
+  .top-header-container {
+    padding: 10px 15px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+  }
+
+  .header-right {
+    justify-content: center;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .contact-item {
+    font-size: 0.7rem;
+  }
+
+  .contact-item .icon {
+    font-size: 0.9rem;
+  }
+
+  .social-media {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  .social-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Mobile (600px and below) */
+@media (max-width: 600px) {
+  .top-header {
+    padding: 0 10px;
+    font-size: 0.65rem;
+  }
+
+  .top-header-container {
+    padding: 8px 10px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-info {
+    gap: 6px;
+  }
+
+  .contact-item {
+    font-size: 0.65rem;
+    gap: 4px;
+  }
+
+  .contact-item .icon {
+    font-size: 0.8rem;
+  }
+
+  .social-media {
+    gap: 8px;
+  }
+
+  .social-link {
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-link svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .top-header-container {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .contact-info {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .contact-item {
+    font-size: 0.6rem;
+    gap: 2px;
+  }
+
+  .contact-item a {
+    font-size: 0.6rem;
+  }
+}  .social-media {
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Mobile Responsive (600px and below) */
+@media (max-width: 600px) {
+  .top-header {
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+
+  .top-header-container {
+    padding: 10px 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .contact-item {
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+
+  .contact-item .icon {
+    font-size: 0.9rem;
+  }
+
+  .social-media {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  .social-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}

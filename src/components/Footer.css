@@ -1,0 +1,251 @@
+.footer {
+  background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.92)), url('https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/36.8219,-1.2921,8,1200x400?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycW1veHRqcHZ4MmYifQ.rJcFIG214AriISLbB6B5aw') center/cover;
+  color: white;
+  padding: 70px 0 35px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 45px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.footer-section h3 {
+  font-size: 1.05rem;
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.footer-section p strong {
+  color: white;
+}
+
+.footer-section a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-section a:hover {
+  color: #E67E22;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.social-links {
+  display: flex;
+  gap: 14px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(230, 126, 34, 0.2);
+  border: 1px solid #E67E22;
+  border-radius: 50%;
+  font-weight: bold;
+  color: #E67E22;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.social-icon:hover {
+  background-color: #E67E22;
+  color: white;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+
+  .footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer-section h3 {
+    font-size: 0.95rem;
+  }
+
+  .footer-section p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+  }
+
+  .footer {
+    padding: 45px 0 20px;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-section p {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-section a {
+    font-size: 0.8rem;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+
+  .footer-bottom {
+    padding-top: 15px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .footer {
+    padding: 40px 0 15px;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-section p {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+  }
+
+  .footer-section a {
+    font-size: 0.75rem;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 6px;
+  }
+
+  .social-links {
+    gap: 8px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.65rem;
+  }
+
+  .footer-bottom {
+    padding-top: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.7rem;
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .footer {
+    padding: 30px 0 10px;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-section p {
+    font-size: 0.7rem;
+  }
+
+  .social-links {
+    gap: 6px;
+  }
+
+  .social-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.6rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.65rem;
+  }
+}

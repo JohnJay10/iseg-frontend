@@ -1,0 +1,730 @@
+.registration-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.registration-form-section {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.registration-form h3 {
+  color: var(--primary);
+  margin: 1.5rem 0 1rem 0;
+  padding-top: 1rem;
+}
+
+.registration-form h3:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.registration-form hr {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(31, 90, 46, 0.1);
+}
+
+.error {
+  display: block;
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Registration Type Grid */
+.registration-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.reg-type-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.reg-type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.card-content {
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  background-color: var(--white);
+}
+
+.reg-type-card input[type="radio"]:checked + .card-content {
+  border-color: var(--primary);
+  background-color: rgba(31, 90, 46, 0.05);
+}
+
+.reg-type-card:hover .card-content {
+  border-color: var(--primary);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card-header h4 {
+  color: var(--primary);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-header .price {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.description {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Checkboxes */
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.checkbox input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.checkbox span {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.checkbox a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.short-courses {
+  margin-bottom: 1.5rem;
+}
+
+.terms-check {
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* Registration Summary */
+.registration-summary {
+  background-color: var(--bg-light);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.registration-summary h3 {
+  color: var(--primary);
+  margin-top: 0;
+}
+
+.summary-section {
+  margin-bottom: 1.5rem;
+}
+
+.summary-section h4 {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  color: var(--text-light);
+}
+
+.summary-item .price {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.summary-total {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+.summary-total .summary-item.total {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+.summary-total .total .price {
+  color: var(--secondary);
+  font-size: 1.3rem;
+}
+
+.accepted-payment {
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+}
+
+.accepted-payment h4 {
+  color: var(--primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.accepted-payment ul {
+  list-style: none;
+}
+
+.accepted-payment li {
+  padding: 0.35rem 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.success-message {
+  background-color: #F9F9F9;
+  border: 2px solid var(--success);
+  border-radius: 0.5rem;
+  padding: 3rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: var(--success);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-message h2 {
+  color: var(--primary);
+}
+
+.registration-details {
+  background-color: var(--bg-light);
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin: 1.5rem 0;
+}
+
+.success-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.success-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .registration-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .registration-summary {
+    position: static;
+  }
+
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .registration-type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 2rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .registration-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .registration-form-section {
+    padding: 1.5rem;
+  }
+
+  .registration-form h3 {
+    font-size: 1.15rem;
+    margin: 1.2rem 0 0.8rem 0;
+  }
+
+  .registration-type-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .card-header h4 {
+    font-size: 1rem;
+  }
+
+  .card-header .price {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px;
+    padding: 0.75rem;
+  }
+
+  .checkbox {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.6rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  .registration-summary {
+    padding: 1.5rem;
+    position: static;
+  }
+
+  .registration-summary h3 {
+    font-size: 1.1rem;
+  }
+
+  .summary-section {
+    margin-bottom: 1.2rem;
+  }
+
+  .summary-section h4 {
+    font-size: 0.95rem;
+  }
+
+  .summary-item {
+    font-size: 0.9rem;
+  }
+
+  .paypal-payment-section {
+    padding: 1.5rem;
+  }
+
+  .paypal-button-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  .registration-wrapper {
+    gap: 1rem;
+  }
+
+  .registration-form-section {
+    padding: 1.2rem;
+  }
+
+  .registration-form h3 {
+    font-size: 1rem;
+    margin: 1rem 0 0.7rem 0;
+  }
+
+  .registration-form hr {
+    margin: 1rem 0;
+  }
+
+  .registration-type-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin: 0.8rem 0;
+  }
+
+  .card-content {
+    padding: 0.8rem;
+    border-radius: 4px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+    gap: 0.4rem;
+  }
+
+  .card-header h4 {
+    font-size: 0.9rem;
+  }
+
+  .card-header .price {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.8rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.6rem;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+  .error {
+    font-size: 0.7rem;
+  }
+
+  .checkbox {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.4rem;
+  }
+
+  .checkbox span {
+    font-size: 0.8rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .registration-summary {
+    padding: 1rem;
+  }
+
+  .registration-summary h3 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .summary-section {
+    margin-bottom: 1rem;
+  }
+
+  .summary-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-item {
+    font-size: 0.8rem;
+  }
+
+  .summary-item .price {
+    font-size: 0.85rem;
+  }
+
+  .summary-total {
+    padding: 0.8rem 0;
+    margin: 1rem 0;
+  }
+
+  .summary-total .summary-item.total {
+    font-size: 1rem;
+  }
+
+  .summary-total .total .price {
+    font-size: 1.1rem;
+  }
+
+  .accepted-payment {
+    padding: 0.8rem;
+  }
+
+  .accepted-payment h4 {
+    font-size: 0.85rem;
+  }
+
+  .accepted-payment li {
+    font-size: 0.75rem;
+  }
+
+  .success-message {
+    padding: 1.2rem;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .success-message h2 {
+    font-size: 1.3rem;
+  }
+
+  .registration-details {
+    padding: 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .success-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .success-actions .btn {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    min-height: 44px;
+  }
+
+  .paypal-payment-section {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .paypal-payment-section h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .page-header p {
+    font-size: 0.8rem;
+  }
+
+  .registration-form-section {
+    padding: 1rem;
+  }
+
+  .registration-form h3 {
+    font-size: 0.95rem;
+    margin: 0.8rem 0 0.6rem 0;
+  }
+
+  .registration-type-grid {
+    gap: 0.6rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .registration-summary {
+    padding: 0.8rem;
+  }
+
+  .registration-summary h3 {
+    font-size: 0.9rem;
+  }
+
+  .paypal-button-wrapper {
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* PayPal Payment Section */
+.paypal-payment-section {
+  background: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.paypal-payment-section h4 {
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.paypal-button-wrapper {
+  margin-bottom: 1rem;
+}
+
+.paypal-button-wrapper button {
+  width: 100% !important;
+  padding: 12px 20px !important;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 12px 20px !important;
+}
