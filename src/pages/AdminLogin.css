@@ -1,3 +1,20 @@
+.page-header {
+  background-color: #8B7355;
+  color: var(--white);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.page-header h1 {
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
 .login-section {
   min-height: calc(100vh - 300px);
   display: flex;

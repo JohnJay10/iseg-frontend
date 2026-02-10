@@ -1,3 +1,22 @@
+.page-header {
+  background: linear-gradient(135deg, #E67E22 0%, #D96E10 100%);
+  color: var(--white);
+  padding: 2rem 0;
+  border-bottom: 3px solid #D96E10;
+}
+
+.page-header h1 {
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  font-size: 1.8rem;
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
 .admin-dashboard {
   background: #f8f9fa;
   min-height: calc(100vh - 200px);
