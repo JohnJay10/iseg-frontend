@@ -332,18 +332,18 @@ const AdminDashboard = () => {
                         <a
                           href={`http://localhost:5000${abstract.fileUrl}`}
                           download
-                          className="btn btn-sm btn-primary"
+                          className="btn-icon btn-icon-download"
                           title="Download PDF"
                         >
-                          ⬇️ Download
+                          ⬇️
                         </a>
                         <button
-                          className="btn btn-sm btn-danger"
+                          className="btn-icon btn-icon-delete"
                           onClick={() => handleDelete(abstract._id)}
                           disabled={deleting === abstract._id}
                           title="Delete abstract"
                         >
-                          {deleting === abstract._id ? '⏳ Deleting...' : '🗑️ Delete'}
+                          {deleting === abstract._id ? '⏳' : '🗑️'}
                         </button>
                       </td>
                     </tr>
@@ -428,12 +428,12 @@ const AdminDashboard = () => {
                         </td>
                         <td className="actions">
                           <button
-                            className="btn btn-sm btn-danger"
+                            className="btn-icon btn-icon-delete"
                             onClick={() => handleDeleteRegistration(registration._id)}
                             disabled={deleting === registration._id}
                             title="Delete registration"
                           >
-                            {deleting === registration._id ? '⏳ Deleting...' : '🗑️ Delete'}
+                            {deleting === registration._id ? '⏳' : '🗑️'}
                           </button>
                         </td>
                       </tr>
