@@ -227,18 +227,5 @@
   .contact-item a {
     font-size: 0.6rem;
   }
-}  .social-media {
-    gap: 12px;
-  }
-
-  .social-link {
-    width: 30px;
-    height: 30px;
-  }
-
-  .social-link svg {
-    width: 16px;
-    height: 16px;
-  }
 }
 
