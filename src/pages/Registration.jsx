@@ -97,7 +97,7 @@ const Registration = () => {
     <main>
       <section className="page-header">
         <div className="container">
-          <h1>Register for ISEG/GGSD 2026</h1>
+          <h1>Register for ISEG/GGSD-2026</h1>
           <p>Secure your spot at the Mega Symposium</p>
         </div>
       </section>
@@ -305,7 +305,7 @@ const Registration = () => {
                     <button type="submit" className="btn btn-primary btn-lg" disabled={formik.isSubmitting || isProcessing}>
                       {isProcessing ? 'Redirecting to Payment...' : 'Proceed to Payment'}
                     </button>
-                    <a href="/" className="btn btn-outline">Cancel</a>
+                    <a href="/" className="btn btn-primary btn-lg">Cancel</a>
                   </div>
                 </form>
               </div>

@@ -64,7 +64,7 @@ const Schedule = () => {
       <section className="page-header">
         <div className="container">
           <h1>Symposium Schedule</h1>
-          <p>14th ISEG/GGSD Mega Symposium 2026</p>
+          <p>14th ISEG/GGSD-2026 Mega Symposium</p>
         </div>
       </section>
 
@@ -162,7 +162,7 @@ const Schedule = () => {
             </div>
             <div className="timeline-item highlight">
               <span className="date">Aug 9-15, 2026</span>
-              <p>ISEG/GGSD Mega Symposium</p>
+              <p>ISEG/GGSD-2026 Mega Symposium</p>
             </div>
           </div>
         </div>

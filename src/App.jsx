@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import TopHeader from './components/TopHeader'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import ScrollToTopButton from './components/ScrollToTopButton'
 import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import AbstractSubmission from './pages/AbstractSubmission'
@@ -16,6 +18,7 @@ import './App.css'
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <TopHeader />
         <Navigation />
@@ -37,6 +40,7 @@ function App() {
           />
         </Routes>
         <Footer />
+        <ScrollToTopButton />
       </div>
     </Router>
   )

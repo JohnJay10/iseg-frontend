@@ -1,9 +1,9 @@
 .page-header {
-  background: linear-gradient(135deg, #0A4D68 0%, #088395 50%, #05A3B8 100%);
+  background: linear-gradient(135deg, #8B7355 0%, #6B5344 50%, #5A4538 100%);
   color: var(--white);
   padding: 4rem 2rem;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(10, 77, 104, 0.2);
+  box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
   position: relative;
   overflow: hidden;
 }

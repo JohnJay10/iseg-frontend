@@ -63,7 +63,7 @@ const Home = () => {
         
         <div className="container hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">14TH ISEG/GGSD <span className="title-highlight">MEGA SYMPOSIUM</span> 2026</h1>
+            <h1 className="hero-title">14TH ISEG/GGSD-2026 <span className="title-highlight">MEGA SYMPOSIUM</span></h1>
             <p className="hero-subtitle">
               14th International Symposium on Environmental Geotechnology and Global Sustainable Development
               <br />
@@ -125,13 +125,13 @@ const Home = () => {
             {/* Left Column - Image */}
             <div className="welcome-image">
               <div className="image-placeholder">
-                <img src={welcomeImage} alt="ISEG/GGSD 2026 Symposium" />
+                <img src={welcomeImage} alt="ISEG/GGSD-2026 Symposium" />
               </div>
             </div>
             
             {/* Right Column - Content */}
             <div className="welcome-content">
-              <h2>Welcome To The 14th ISEG/GGSD 2026 Symposium!</h2>
+              <h2>Welcome To The 14th ISEG/GGSD-2026 Symposium!</h2>
               <p className="lead">
                 This expanded two-part ISEG/GGSD-2026 Mega Symposium is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development.
               </p>
@@ -302,7 +302,7 @@ const Home = () => {
               </div>
               <div className="schedule-content">
                 <h4>Arrival of Participants</h4>
-                <p>Begin your journey to the 14th ISEG/GGSD Mega Symposium with the arrival of participants from around the world.</p>
+                <p>Begin your journey to the 14th ISEG/GGSD-2026 Mega Symposium with the arrival of participants from around the world.</p>
               </div>
             </div>
 
@@ -339,7 +339,7 @@ const Home = () => {
       <section className="section fees-section">
         <div className="container">
           <div className="section-header">
-            <h2>REGISTRATION FEES FOR ISEG/GGSD 2026 MEGA SYMPOSIUM</h2>
+            <h2>REGISTRATION FEES FOR ISEG/GGSD-2026 MEGA SYMPOSIUM</h2>
             <p>Choose the package that works best for you</p>
           </div>
           
@@ -611,8 +611,8 @@ const Home = () => {
       {/* Reviews */}
       <section className="section light">
         <div className="container">
-          <h2>ISEG / GGSD Reviews</h2>
-          <p className="lead">Reviews from ISEG /GGSD Past attendees.</p>
+          <h2>ISEG/GGSD-2026 Reviews</h2>
+          <p className="lead">Reviews from ISEG/GGSD-2026 Past attendees.</p>
           
           <div className="testimonials grid grid-2">
             <div className="testimonial-card">

@@ -81,7 +81,7 @@ const RegistrationSuccess = () => {
           <div className="success-message">
             <div className="success-icon">✓</div>
             <h2>Thank You for Registering!</h2>
-            <p>Your registration for ISEG/GGSD 2026 Mega Symposium has been confirmed.</p>
+            <p>Your registration for ISEG/GGSD-2026 Mega Symposium has been confirmed.</p>
             <p className="registration-details">
               <strong>Registration ID: {registrationId}</strong><br/>
               Your payment has been processed successfully. A confirmation email has been sent to your registered email address with your registration details and further information about the symposium.

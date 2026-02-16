@@ -1,0 +1,111 @@
+.scroll-to-top-button {
+  position: fixed;
+  bottom: -60px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+  padding: 0;
+}
+
+.scroll-to-top-button svg {
+  width: 24px;
+  height: 24px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.scroll-to-top-button:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  transform: translateY(-2px);
+}
+
+.scroll-to-top-button:active {
+  transform: translateY(0);
+}
+
+.scroll-to-top-button.visible {
+  animation: slideUp 0.3s ease forwards;
+}
+
+.scroll-to-top-button:not(.visible) {
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -60px;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: -60px;
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .scroll-to-top-button {
+    width: 45px;
+    height: 45px;
+    bottom: -55px;
+    right: 20px;
+  }
+
+  .scroll-to-top-button svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .scroll-to-top-button.visible {
+    bottom: 20px;
+  }
+
+  .scroll-to-top-button:not(.visible) {
+    bottom: -55px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top-button {
+    width: 40px;
+    height: 40px;
+    bottom: -50px;
+    right: 15px;
+  }
+
+  .scroll-to-top-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .scroll-to-top-button.visible {
+    bottom: 15px;
+  }
+
+  .scroll-to-top-button:not(.visible) {
+    bottom: -50px;
+  }
+}

@@ -74,7 +74,7 @@ const AbstractSubmission = () => {
             <div className="success-message">
               <div className="success-icon">✓</div>
               <h2>Thank You!</h2>
-              <p>Your abstract has been submitted successfully to the ISEG/GGSD 2026 Mega Symposium.</p>
+              <p>Your abstract has been submitted successfully to the ISEG/GGSD-2026 Mega Symposium.</p>
               <p className="submission-details">
                 <strong>Submission ID:</strong> {submissionId}
               </p>
@@ -97,7 +97,7 @@ const AbstractSubmission = () => {
       <section className="page-header">
         <div className="container">
           <h1>Submit Your Abstract</h1>
-          <p>Submit a 4-page abstract for the ISEG/GGSD 2026 Mega Symposium</p>
+          <p>Submit a 4-page abstract for the ISEG/GGSD-2026 Mega Symposium</p>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ const AbstractSubmission = () => {
               <ul>
                 <li><strong>Format:</strong> 4 pages maximum (PDF format)</li>
                 <li><strong>Content:</strong> Include title, authors, keywords, and abstract text</li>
-                <li><strong>Template:</strong> Follow the provided ISEG/GGSD template</li>
+                <li><strong>Template:</strong> Follow the provided ISEG/GGSD-2026 template</li>
                 <li><strong>Submission Deadline:</strong> March 30, 2026</li>
                 <li><strong>Notification Date:</strong> May 30, 2026</li>
                 <li><strong>Track Selection:</strong> Choose appropriate Part A or Part B track</li>

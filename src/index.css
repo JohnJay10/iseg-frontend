@@ -219,7 +219,8 @@ textarea {
   }
   
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.2rem;
+    max-width: 100%;
   }
   
   .grid-2, .grid-3, .grid-4 {
@@ -229,10 +230,13 @@ textarea {
   .btn {
     padding: 0.7rem 1.3rem;
     font-size: 0.9rem;
+    min-height: 44px;
   }
   
   input, textarea, select {
     font-size: 16px;
+    padding: 0.7rem;
+    min-height: 44px;
   }
 }
 
@@ -255,15 +259,17 @@ textarea {
   }
   
   .section {
-    padding: 2rem 0;
+    padding: 1.8rem 0;
   }
   
   .container {
-    padding: 0 1rem;
+    padding: 0 0.8rem;
+    max-width: 100%;
   }
   
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
   
   .btn {
@@ -271,11 +277,14 @@ textarea {
     font-size: 0.85rem;
     width: 100%;
     text-align: center;
+    min-height: 44px;
   }
   
   input, textarea, select {
     font-size: 16px;
-    padding: 0.85rem;
+    padding: 0.8rem;
+    min-height: 44px;
+    width: 100%;
   }
   
   textarea {
@@ -310,7 +319,8 @@ textarea {
   }
   
   .container {
-    padding: 0 0.75rem;
+    padding: 0 0.6rem;
+    max-width: 100%;
   }
   
   .btn {
@@ -318,10 +328,21 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  input, textarea, select {
+    font-size: 16px;
+    padding: 0.75rem;
+    min-height: 44px;
+    width: 100%;
   }
   
   .grid-2, .grid-3, .grid-4 {
     gap: 1rem;
+    grid-template-columns: 1fr;
   }
 }
 
