@@ -49,7 +49,6 @@ const Registration = () => {
         let total = 0
         if (values.registrationType === 'part-a' || values.registrationType === 'part-b') total = 35000
         if (values.registrationType === 'both') total = 60000
-        if (values.registrationType === 'all') total = 140000
         if (values.shortCourse) total += 50000
         if (values.safariTour) total += 40000
 
@@ -77,7 +76,6 @@ const Registration = () => {
     let total = 0
     if (formik.values.registrationType === 'part-a' || formik.values.registrationType === 'part-b') total = 350
     if (formik.values.registrationType === 'both') total = 600
-    if (formik.values.registrationType === 'all') total = 1400
     if (formik.values.shortCourse) total += 500
     if (formik.values.safariTour) total += 400
     return total
@@ -211,7 +209,6 @@ const Registration = () => {
                       { id: 'part-a', label: 'Part A Only', price: '$350', description: 'Aug 9-11: Environmental Geotechnology' },
                       { id: 'part-b', label: 'Part B Only', price: '$350', description: 'Aug 13-15: Sustainable Development' },
                       { id: 'both', label: 'Both Parts', price: '$600', description: 'Complete Symposium Experience' },
-                      { id: 'all', label: 'All-Inclusive', price: '$1,400', description: 'With Safari & Short Courses' },
                     ].map(pkg => (
                       <label key={pkg.id} className="reg-type-card">
                         <input

@@ -9,14 +9,13 @@ const AdminDashboard = () => {
   const navigate = useNavigate()
   const [abstracts, setAbstracts] = useState([])
   const [registrations, setRegistrations] = useState([])
-  const [payments, setPayments] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [admin, setAdmin] = useState(null)
   const [exporting, setExporting] = useState({ excel: false, pdf: false })
   const [deleting, setDeleting] = useState(null)
   const [activeTab, setActiveTab] = useState('abstracts')
-  const [currentPage, setCurrentPage] = useState({ abstracts: 1, registrations: 1, payments: 1 })
+  const [currentPage, setCurrentPage] = useState({ abstracts: 1, registrations: 1 })
   const itemsPerPage = 5
 
   useEffect(() => {
@@ -32,7 +31,6 @@ const AdminDashboard = () => {
     setAdmin(user)
     fetchAbstracts()
     fetchRegistrations()
-    fetchPayments()
   }, [navigate])
 
   const fetchAbstracts = async () => {
@@ -62,19 +60,6 @@ const AdminDashboard = () => {
       setRegistrations(response.data.registrations || [])
     } catch (err) {
       console.error('Error fetching registrations:', err)
-      if (err.response?.status === 401) {
-        authService.logoutAdmin()
-        navigate('/admin/login', { replace: true })
-      }
-    }
-  }
-
-  const fetchPayments = async () => {
-    try {
-      const response = await adminDashboardService.getAllPayments()
-      setPayments(response.data.payments || [])
-    } catch (err) {
-      console.error('Error fetching payments:', err)
       if (err.response?.status === 401) {
         authService.logoutAdmin()
         navigate('/admin/login', { replace: true })
@@ -243,12 +228,6 @@ const AdminDashboard = () => {
             >
               👥 Registrations ({registrations.length})
             </button>
-            <button
-              className={`tab-button ${activeTab === 'payments' ? 'active' : ''}`}
-              onClick={() => setActiveTab('payments')}
-            >
-              💳 Payments ({payments.length})
-            </button>
           </div>
 
           {activeTab === 'abstracts' && (
@@ -301,6 +280,7 @@ const AdminDashboard = () => {
                 </thead>
                 <tbody>
                   {abstracts
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                     .slice((currentPage.abstracts - 1) * itemsPerPage, currentPage.abstracts * itemsPerPage)
                     .map((abstract) => (
                     <tr key={abstract._id}>
@@ -386,17 +366,19 @@ const AdminDashboard = () => {
                     <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Registration Type</th>
+                      <th>Part A</th>
+                      <th>Part B</th>
+                      <th>Both Parts</th>
                       <th>Short Course</th>
                       <th>Safari Tour</th>
                       <th>Total Amount</th>
-                      <th>Payment Status</th>
                       <th>Date</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {registrations
+                      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                       .slice((currentPage.registrations - 1) * itemsPerPage, currentPage.registrations * itemsPerPage)
                       .map((registration) => (
                       <tr key={registration._id}>
@@ -407,7 +389,13 @@ const AdminDashboard = () => {
                           <a href={`mailto:${registration.email}`}>{registration.email}</a>
                         </td>
                         <td>
-                          <span className="badge">{registration.registrationType.toUpperCase()}</span>
+                          <span>{registration.registrationType === 'part-a' ? '✓ Yes' : '✗ No'}</span>
+                        </td>
+                        <td>
+                          <span>{registration.registrationType === 'part-b' ? '✓ Yes' : '✗ No'}</span>
+                        </td>
+                        <td>
+                          <span>{registration.registrationType === 'both' ? '✓ Yes' : '✗ No'}</span>
                         </td>
                         <td>
                           <span>{registration.shortCourse ? '✓ Yes' : '✗ No'}</span>
@@ -417,11 +405,6 @@ const AdminDashboard = () => {
                         </td>
                         <td>
                           <strong>${registration.totalAmount || 0}</strong>
-                        </td>
-                        <td>
-                          <span className={`status-badge status-${registration.paymentStatus}`}>
-                            {registration.paymentStatus}
-                          </span>
                         </td>
                         <td className="date">
                           {new Date(registration.createdAt).toLocaleDateString()}
@@ -447,90 +430,6 @@ const AdminDashboard = () => {
                     key={page}
                     className={`paginator-btn ${currentPage.registrations === page ? 'active' : ''}`}
                     onClick={() => setCurrentPage({ ...currentPage, registrations: page })}
-                  >
-                    {page}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-            </>
-          )}
-
-          {activeTab === 'payments' && (
-            <>
-          <div className="dashboard-header">
-            <div>
-              <h2>Payments Received</h2>
-              <p>Total Payments: <strong>{payments.length}</strong></p>
-            </div>
-          </div>
-
-          {payments.length === 0 ? (
-            <div className="alert alert-info">No payments yet.</div>
-          ) : (
-            <>
-              <div className="abstracts-table-wrapper">
-                <table className="abstracts-table">
-                  <thead>
-                    <tr>
-                      <th>Registration ID</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Amount</th>
-                      <th>Payment Method</th>
-                      <th>Status</th>
-                      <th>Transaction ID</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {payments
-                      .slice((currentPage.payments - 1) * itemsPerPage, currentPage.payments * itemsPerPage)
-                      .map((payment) => (
-                      <tr key={payment._id}>
-                        <td>
-                          <strong>{payment.registrationId}</strong>
-                        </td>
-                        <td>
-                          {payment.firstName} {payment.lastName}
-                        </td>
-                        <td className="email">
-                          <a href={`mailto:${payment.email}`}>{payment.email}</a>
-                        </td>
-                        <td>
-                          <strong>${payment.totalAmount || 0}</strong>
-                        </td>
-                        <td>
-                          <span className="badge badge-info">
-                            {payment.paymentMethod === 'credit_card' ? '💳 Credit Card' :
-                             payment.paymentMethod === 'paypal_account' ? '🅿️ PayPal Account' :
-                             payment.paymentMethod === 'apple_pay' ? '🍎 Apple Pay' :
-                             '❓ Unknown'}
-                          </span>
-                        </td>
-                        <td>
-                          <span className={`status-badge status-${payment.paymentStatus}`}>
-                            {payment.paymentStatus.charAt(0).toUpperCase() + payment.paymentStatus.slice(1)}
-                          </span>
-                        </td>
-                        <td className="transaction-id">
-                          <code>{payment.paypalTransactionId ? payment.paypalTransactionId.substring(0, 15) + '...' : 'N/A'}</code>
-                        </td>
-                        <td className="date">
-                          {new Date(payment.createdAt).toLocaleDateString()}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="pagination">
-                {Array.from({ length: Math.ceil(payments.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    className={`paginator-btn ${currentPage.payments === page ? 'active' : ''}`}
-                    onClick={() => setCurrentPage({ ...currentPage, payments: page })}
                   >
                     {page}
                   </button>

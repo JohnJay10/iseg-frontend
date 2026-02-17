@@ -13,9 +13,11 @@ import Schedule from './pages/Schedule'
 import SafariTour from './pages/SafariTour'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+import useKeepAlive from './hooks/useKeepAlive'
 import './App.css'
 
 function App() {
+  useKeepAlive()
   return (
     <Router>
       <ScrollToTop />
