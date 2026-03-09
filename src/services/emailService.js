@@ -56,7 +56,7 @@ export const sendAbstractConfirmationEmail = async (email, submissionId, title) 
           </ul>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6; margin-top: 30px;">
-            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>iseg@gisdaad.org</strong>.
+            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>iseg-ggsd.com.ng</strong>.
           </p>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6;">

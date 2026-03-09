@@ -59,7 +59,8 @@ const SafariTour = () => {
       subtitle: 'Safari in the City',
       visitingHours: '6 AM - 10 AM',
       description:
-        'Experience the wild just 7 km from downtown Nairobi! Nairobi National Park offers an unforgettable safari with lions, rhinos, giraffes, and over 400 bird species all set against the stunning city skyline. It\'s the only place in the world where you can see big game with skyscrapers in the background.',
+        'Experience the wild just 7 km from downtown Nairobi! Nairobi National Park is uniquely situated with a stunning backdrop of the city skyline—the only place in the world where you can see big game with skyscrapers behind them. Our guided game drive will take you through diverse ecosystems home to lions, leopards, rhinoceros, giraffes, zebras, and over 400 bird species. Early morning is the best time for wildlife viewing when animals are most active.',
+      fullDescription: 'Kenya\'s oldest national park, established in 1946, protects over 44,000 acres. The park offers accessible safari experience without the long drive to other reserves. Perfect for photographers and wildlife enthusiasts.',
       images: [nairobiPark1, nairobiPark2, nairobiPark3, nairobiPark4, nairobiPark5, nairobiPark6, nairobiPark7, nairobiPark8],
       highlights: ['Lions', 'Rhinos', 'Giraffes', '400+ Bird Species', 'City Skyline Views'],
       heroImg: nairobiPark1,
@@ -70,9 +71,10 @@ const SafariTour = () => {
       subtitle: 'Up Close with Baby Elephants',
       visitingHours: '11 AM - 12 PM (Strictly)',
       description:
-        'Meet rescued baby elephants at this heartwarming sanctuary inside Nairobi National Park. Watch them enjoy their daily mud baths and learn about their incredible journey from orphaned to rehabilitated.',
+        'Welcome to one of the world\'s most important wildlife rescue centers. Here, orphaned baby elephants rescued from the wild receive expert rehabilitation and care. Watch them during their scheduled feeding time, where you\'ll see their playful personalities and enjoy heartwarming interactions. The mud bath time is particularly special—it\'s both a cooling ritual and therapeutic for the young elephants.',
+      fullDescription: 'Founded in 1977, the David Sheldrick Wildlife Trust has rescued over 300 elephants. Located inside Nairobi National Park, this sanctuary demonstrates successful elephant rehabilitation. Visiting hours are strictly enforced to minimize stress on the animals.',
       images: [davidSheldrick9, davidSheldrick10, davidSheldrick11, davidSheldrick12, davidSheldrick13],
-      highlights: ['Baby Elephants', 'Mud Baths', 'Rescue Stories', 'Education Programs'],
+      highlights: ['Baby Elephants', 'Mud Baths', 'Rescue Stories', 'Conservation Education', 'Genuine Impact'],
       heroImg: davidSheldrick9,
     },
     {
@@ -81,9 +83,10 @@ const SafariTour = () => {
       subtitle: 'Feed and Greet Friendly Giants',
       visitingHours: '2 PM - 3 PM',
       description:
-        'Get face to face with endangered Rothschild giraffes in Lang\'ata. Hand feed them from a platform, enjoy a nature walk, and even score a giraffe kiss. A perfect mix of fun and education for all ages.',
+        'The Giraffe Centre in Lang\'ata, established to protect the endangered Rothschild giraffe subspecies, offers a unique interactive experience. Stand on an elevated platform and hand-feed these magnificent creatures pellets from your hand inches from their faces. Take a guided nature walk through the sanctuary\'s lush grounds and learn about giraffe behavior and conservation efforts. You might even get a giraffe kiss!',
+      fullDescription: 'This center is dedicated to conservation of the Rothschild giraffe, one of the rarest sub-species with fewer than 400 remaining in the wild. A portion of entrance fees goes directly to wildlife protection programs.',
       images: [giraffe14, giraffe15, giraffe16, giraffe17, giraffe18],
-      highlights: ['Hand Feeding', 'Rothschild Giraffes', 'Nature Walks', 'Photography'],
+      highlights: ['Hand Feeding', 'Rothschild Giraffes', 'Conservation Focus', 'Nature Walks', 'Photography'],
       heroImg: giraffe14,
     },
     {
@@ -92,9 +95,10 @@ const SafariTour = () => {
       subtitle: 'Explore Kenya\'s Story',
       visitingHours: '3 PM - 5 PM',
       description:
-        'Step into Kenya\'s past with fascinating exhibits on fossils, wildlife, art, and culture. Don\'t miss the neighboring Snake Park for a close look at reptiles. Ideal for curious minds and history lovers.',
+        'Step into Kenya\'s rich and diverse history through exceptional exhibits spanning millions of years. View authentic fossils including the famous "1470 skull" that revolutionized our understanding of human evolution. Explore wildlife dioramas, traditional art galleries, and cultural exhibitions showcasing Kenya\'s 42 distinct ethnic groups. The adjoining Snake Park gives you a close look at over 100 reptile species.',
+      fullDescription: 'Established in 1910, the museum is one of East Africa\'s leading cultural institutions. Its paleontological collections are world-renowned and include specimens that have shaped our understanding of human origins.',
       images: [museum19, museum20, museum21, museum22, museum23],
-      highlights: ['Fossils', 'Wildlife Exhibits', 'Art & Culture', 'Snake Park'],
+      highlights: ['Human Evolution', 'Fossils & Paleontology', 'Cultural Heritage', 'Snake Park', 'Art & Crafts'],
       heroImg: museum20,
     },
     {
@@ -103,9 +107,10 @@ const SafariTour = () => {
       subtitle: 'Dance Through Culture',
       visitingHours: '2:30 PM - 4 PM',
       description:
-        'Celebrate Kenya\'s vibrant heritage with thrilling traditional dance shows, music, and crafts. Tour life sized tribal homesteads and discover the lifestyles of Kenya\'s diverse ethnic communities all just minutes from the city center.',
+        'Celebrate the vibrant diversity of Kenya\'s ethnic heritage at Bomas (the word means "traditional fortified livestock enclosure"). Watch renowned traditional dance troupes perform captivating shows featuring authentic music, choreography, and costumes from Kenya\'s different communities. Tour reconstructed tribal homesteads and explore traditional crafts, clothing, and artifacts. The performances showcase warrior dances, wedding ceremonies, and cultural celebrations.',
+      fullDescription: 'Bomas is a living museum dedicated to preserving Kenya\'s cultural heritage. The professional performances and authentic village displays provide insight into the lifestyles, traditions, and artistry of Kenya\'s diverse peoples.',
       images: [bomas24, bomas25, bomas26, bomas27, bomas28, bomas29],
-      highlights: ['Dance Shows', 'Traditional Music', 'Tribal Homesteads', 'Cultural Crafts'],
+      highlights: ['Dance Shows', 'Traditional Music', 'Tribal Homesteads', 'Cultural Crafts', 'Authentic Heritage'],
       heroImg: bomas24,
     },
     {
@@ -114,9 +119,10 @@ const SafariTour = () => {
       subtitle: 'A Taste of Colonial Charm',
       visitingHours: '10 AM - 4 PM',
       description:
-        'Visit the beautifully preserved former home of the "Out of Africa" author. Located in the serene suburb of Karen, this museum offers a glimpse into colonial life and the history of coffee farming in early 20th century Kenya.',
+        'Visit the beautifully preserved colonial-era home of Karen Blixen, author of "Out of Africa" (1937). Located in the peaceful suburb of Karen, this museum offers a fascinating glimpse into early 20th-century colonial life in Kenya. Tour the elegantly furnished rooms, view original furnishings and memorabilia, and walk through the coffee plantation grounds. The museum provides insight into both the author\'s life and the complex history of Kenya during the colonial period.',
+      fullDescription: 'Built in 1912, the house reflects the lifestyle of European settlers in colonial Kenya. Karen Blixen lived here from 1914-1931 while running a coffee farm. Her acclaimed memoir brought international attention to Kenya\'s landscape and people.',
       images: [karen30, karen31, karen32, karen33, karen34, karen35, karen36, karen37, karen38],
-      highlights: ['Colonial History', 'Out of Africa', 'Coffee Farming', 'Historic Architecture'],
+      highlights: ['Colonial History', 'Out of Africa Author', 'Coffee Farming Heritage', 'Historical Architecture', 'Literary Connection'],
       heroImg: karen30,
     },
   ]
@@ -151,6 +157,12 @@ const SafariTour = () => {
                 </div>
 
                 <p className="attraction-description">{tour.description}</p>
+
+                {tour.fullDescription && (
+                  <p className="attraction-full-description" style={{ marginTop: '1rem', fontStyle: 'italic', color: '#666' }}>
+                    {tour.fullDescription}
+                  </p>
+                )}
 
                 <div className="attraction-highlights">
                   {tour.highlights.map((highlight, idx) => (

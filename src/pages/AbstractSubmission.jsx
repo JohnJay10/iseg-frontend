@@ -106,25 +106,54 @@ const AbstractSubmission = () => {
           <div className="form-container">
             <div className="form-info">
               <h3>Abstract Submission Guidelines</h3>
-              <ul>
-                <li><strong>Format:</strong> 4 pages maximum (PDF format)</li>
-                <li><strong>Content:</strong> Include title, authors, keywords, and abstract text</li>
-                <li><strong>Template:</strong> Follow the provided ISEG/GGSD-2026 template</li>
-                <li><strong>Submission Deadline:</strong> March 30, 2026</li>
-                <li><strong>Notification Date:</strong> May 30, 2026</li>
-                <li><strong>Track Selection:</strong> Choose appropriate Part A or Part B track</li>
-                <li><strong>Author Details:</strong> Include full contact information for lead author</li>
-                <li><strong>Professional Writing:</strong> Ensure abstracts are well-written and peer-review ready</li>
-                <li><strong>Novelty:</strong> Abstracts should present original research or significant contributions</li>
-              </ul>
+              
+              <div className="guidelines-section">
+                <h4>📋 Format Requirements</h4>
+                <ul>
+                  <li><strong>Page Limit:</strong> 4 pages maximum</li>
+                  <li><strong>Paper Size:</strong> A4 (210 × 297 mm)</li>
+                  <li><strong>Top & Bottom Margins:</strong> 2.5 cm</li>
+                  <li><strong>Left & Right Margins:</strong> 2 cm</li>
+                  <li><strong>Font:</strong> 12-point Times New Roman or Calibri</li>
+                  <li><strong>Line Spacing:</strong> Single or 1.5</li>
+                  <li><strong>File Format:</strong> PDF only (maximum 10 MB)</li>
+                </ul>
+              </div>
+
+              <div className="guidelines-section">
+                <h4>📝 Abstract Structure</h4>
+                <ul>
+                  <li><strong>Title:</strong> Clear, concise, and descriptive of your research</li>
+                  <li><strong>Authors:</strong> List all authors with affiliations</li>
+                  <li><strong>Keywords:</strong> 4-6 relevant keywords separated by commas</li>
+                  <li><strong>Introduction:</strong> Brief background and research motivation</li>
+                  <li><strong>Methods/Approach:</strong> Describe your methodology or approach</li>
+                  <li><strong>Results/Findings:</strong> Present key results or conclusions</li>
+                  <li><strong>Implications:</strong> Discuss significance and implications</li>
+                  <li><strong>References:</strong> Cite relevant literature (optional but recommended)</li>
+                </ul>
+              </div>
+
+              <div className="guidelines-section">
+                <h4>✅ Submission Requirements</h4>
+                <ul>
+                  <li><strong>Originality:</strong> Abstracts must present original research or significant contributions</li>
+                  <li><strong>Quality:</strong> Well-written and suitable for peer-review</li>
+                  <li><strong>Track Selection:</strong> Choose the most appropriate Part A or Part B track</li>
+                  <li><strong>Lead Author Contact:</strong> Full contact information required</li>
+                  <li><strong>Language:</strong> English only</li>
+                  <li><strong>No Plagiarism:</strong> All submissions must be original work</li>
+                </ul>
+              </div>
               
               <div className="guidelines-note" style={{ marginTop: '1.5rem' }}>
-                <h4>📋 Important Dates</h4>
+                <h4>📅 Important Dates & Timeline</h4>
                 <p><strong>Call for Abstracts Released:</strong> October 10, 2025</p>
-                <p><strong>Abstract Submission Deadline:</strong> March 30, 2026</p>
+                <p><strong>Abstract Submission Deadline:</strong> April 30, 2026</p>
                 <p><strong>Program Published:</strong> May 30, 2026</p>
                 <p><strong>Regular Registration Closes:</strong> June 30, 2026</p>
                 <p><strong>Symposium Dates:</strong> August 9-15, 2026</p>
+                <p><strong>Notification of Acceptance:</strong> Within 4-6 weeks of submission</p>
               </div>
             </div>
 

@@ -3495,3 +3495,706 @@
     font-weight: 600;
   }
 }
+
+
+/* Leadership Section Styles */
+.leadership-section {
+  margin-bottom: 3rem;
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.section-subtitle:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #1976d2;
+}
+
+/* Leadership Grid */
+.leadership-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Leader Cards */
+.leader-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #1976d2;
+}
+
+.leader-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.leader-card h4 {
+  color: #1e293b;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.leader-card .leader-role {
+  color: #1976d2;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.leader-card .leader-affiliation {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Committee Leadership */
+.committee-leadership {
+  margin-bottom: 2rem;
+}
+
+.committee-chair {
+  margin-bottom: 1.5rem;
+}
+
+.committee-chair h4,
+.committee-co-chairs h4,
+.members-table-section h4 {
+  color: #1e293b;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.chair-card {
+  background: #e8f0fe;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  border-left: 4px solid #1976d2;
+}
+
+.chair-card p {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.chair-card strong {
+  color: #1976d2;
+}
+
+/* Co-Chairs Grid */
+.co-chairs-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.co-chair-card {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.co-chair-card:hover {
+  background: #f1f5f9;
+  border-color: #1976d2;
+}
+
+.co-chair-card p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.co-chair-card strong {
+  color: #1e293b;
+}
+
+/* Members Table */
+.members-table-section {
+  margin-top: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.members-table th {
+  background: #1976d2;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+
+.members-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.members-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.members-table tr:hover {
+  background-color: #e8f0fe;
+}
+
+.members-table td:first-child {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.members-table td:last-child {
+  color: #64748b;
+}
+
+/* Table container with max height for scrolling */
+.members-table-section .table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+/* Custom scrollbar for table */
+.members-table-section .table-responsive::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.members-table-section .table-responsive::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.members-table-section .table-responsive::-webkit-scrollbar-thumb {
+  background: #1976d2;
+  border-radius: 4px;
+}
+
+.members-table-section .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #1565c0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .members-table {
+    font-size: 0.85rem;
+  }
+  
+  .members-table th,
+  .members-table td {
+    padding: 0.5rem;
+  }
+  
+  .leader-card {
+    padding: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .members-table-section .table-responsive {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .members-table tr {
+    break-inside: avoid;
+  }
+}
+
+
+/* Composite Planning Committee Styles */
+
+.section.light {
+  background-color: #f8fafc;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section.light h2 {
+  font-size: 2.5rem;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-subhead {
+  text-align: center;
+  color: #1976d2;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Committee Leadership Card */
+.committee-leadership-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.leadership-row {
+  margin-bottom: 1.5rem;
+}
+
+.leadership-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.leadership-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #1976d2;
+}
+
+.leadership-title {
+  min-width: 140px;
+  font-weight: 600;
+  color: #1976d2;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leadership-details {
+  flex: 1;
+}
+
+.leadership-details strong {
+  display: block;
+  color: #1e293b;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.affiliation {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Committee Members Section */
+.committee-members-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.committee-members-section h3 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.committee-members-section h3:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #1976d2;
+}
+
+/* Members Grid Layout */
+.members-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.member-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.member-row:last-child {
+  border-bottom: none;
+}
+
+.member-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: #f8fafc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.member-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.member-country {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.member-role {
+  color: #1976d2;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  background: #e8f0fe;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Compact Table View */
+.members-table-compact {
+  margin-top: 2rem;
+  border-top: 2px solid #e2e8f0;
+  padding-top: 2rem;
+}
+
+.members-table-compact h4 {
+  color: #1e293b;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.members-compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.members-compact-table th {
+  background: #1976d2;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+
+.members-compact-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.members-compact-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.members-compact-table tr:hover {
+  background-color: #e8f0fe;
+}
+
+.members-compact-table td:first-child {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.members-compact-table td:nth-child(2) {
+  color: #1976d2;
+  font-weight: 500;
+}
+
+.members-compact-table td:last-child {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .leadership-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .member-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section.light {
+    padding: 3rem 0;
+  }
+  
+  .section.light h2 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .committee-leadership-card,
+  .committee-members-section {
+    padding: 1.5rem;
+  }
+  
+  .leadership-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .leadership-title {
+    min-width: auto;
+  }
+  
+  .member-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .member-item {
+    width: 100%;
+  }
+  
+  /* Hide grid on mobile, show table */
+  .members-grid-container {
+    display: none;
+  }
+  
+  .members-table-compact {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Hide table on desktop, show grid */
+  .members-table-compact {
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .committee-leadership-card,
+  .committee-members-section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .member-row {
+    break-inside: avoid;
+  }
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.committee-leadership-card,
+.committee-members-section {
+  animation: slideIn 0.5s ease-out;
+}
+
+
+
+/* Chief Host Card Styles */
+.chief-host-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.chief-host-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, #1976d2, #64b5f6);
+  border-radius: 8px 0 0 8px;
+}
+
+.chief-host-card::after {
+  content: '🏆';
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 4rem;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.chief-host-title {
+  color: #1976d2;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1976d2;
+}
+
+.chief-host-content {
+  position: relative;
+  z-index: 2;
+}
+
+.chief-host-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.chief-host-credentials {
+  font-size: 1.1rem;
+  color: #334155;
+  line-height: 1.7;
+  max-width: 900px;
+  padding: 0.5rem 0;
+  border-left: 3px solid #1976d2;
+  padding-left: 1.5rem;
+  background: rgba(25, 118, 210, 0.02);
+  border-radius: 0 8px 8px 0;
+}
+
+@media (max-width: 768px) {
+  .chief-host-card {
+    padding: 1.5rem;
+  }
+  
+  .chief-host-name {
+    font-size: 1.6rem;
+  }
+  
+  .chief-host-credentials {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+  
+  .chief-host-card::after {
+    font-size: 3rem;
+  }
+}
+
+/* Sponsor Image Styles */
+.sponsor-image-container {
+  width: 50%;
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.sponsor-main-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
