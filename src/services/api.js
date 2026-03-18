@@ -68,8 +68,10 @@ export const adminDashboardService = {
 
 // Payment services
 export const paymentService = {
-  createCheckoutSession: (amount, registrationData) => 
-    api.post('/payments/create-checkout', { amount, registrationData }),
+  createOrder: (amount, registrationData) => 
+    api.post('/payments/create-order', { amount, registrationData }),
+  captureOrder: (orderId, registrationData) =>
+    api.post('/payments/capture-order', { orderId, registrationData }),
 }
 
 export default api
