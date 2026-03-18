@@ -6,6 +6,11 @@ import banner1 from '../images/banner/banner_1.jpeg'
 import banner2 from '../images/banner/banner_2.jpeg'
 import banner3 from '../images/banner/banner_3.jpeg'
 
+import gisdadLogo from '../images/gisdad.png'
+import usaLogo from '../images/usa.avif'
+import kenyaLogo from '../images/nairobi.png'
+import futureAfricaLogo from '../images/future africa.jpg'
+import futureEarthLogo from '../images/future earth.png'
 import sponsorsImage from '../images/sponsors.jpeg';
 import './Home.css'
 
@@ -1093,13 +1098,26 @@ const Home = () => {
     <h2>Event Partners & Sponsors</h2>
     <p className="lead">Our Sponsors are our backbone and they stand to enjoy lots of global benefits.</p>
     
-    {/* Single Sponsor Image */}
-    <div className="sponsor-image-container">
-     <img 
-      src={sponsorsImage} 
-      alt="ISEG/GGSD-2026 Sponsors" 
-      className="sponsor-main-image" 
-    />
+    {/* Sponsor Images Grid */}
+    <div className="sponsors-grid">
+      <div className="sponsor-card">
+        <img src={gisdadLogo} alt="GISDAD" className="sponsor-image" />
+      </div>
+      <div className="sponsor-card">
+        <img src={usaLogo} alt="USA" className="sponsor-image" />
+      </div>
+      <div className="sponsor-card">
+        <img src={kenyaLogo} alt="Kenya" className="sponsor-image" />
+      </div>
+      <div className="sponsor-card">
+        <img src={futureAfricaLogo} alt="Future Africa" className="sponsor-image" />
+      </div>
+      <div className="sponsor-card">
+        <img src={futureEarthLogo} alt="Future Earth" className="sponsor-image" />
+      </div>
+      <div className="sponsor-card">
+        <img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" className="sponsor-image" />
+      </div>
     </div>
     
     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
