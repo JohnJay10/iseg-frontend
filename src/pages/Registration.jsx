@@ -321,7 +321,6 @@ const Registration = () => {
                     </div>
                   )}
                 </div>
-                )}
 
                 {!formik.values.testPackage && (
                 <>

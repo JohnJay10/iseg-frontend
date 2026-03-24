@@ -14,7 +14,7 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
     const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID
 
     if (!clientId) {
-      console.error('❌ PayPal Client ID not configured')
+      console.error('PayPal Client ID not configured')
       setError('PayPal configuration missing')
       onPaymentError(new Error('Missing VITE_PAYPAL_CLIENT_ID'))
       setLoading(false)
@@ -23,7 +23,7 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
 
     // Check if script already exists
     if (window.paypal) {
-      console.log('✅ PayPal SDK already loaded globally')
+      console.log('PayPal SDK already loaded')
       setSdkLoaded(true)
       return
     }
@@ -33,12 +33,12 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
     script.async = true
 
     script.onload = () => {
-      console.log('✅ PayPal SDK script loaded successfully')
+      console.log('PayPal SDK script loaded')
       setSdkLoaded(true)
     }
 
     script.onerror = () => {
-      console.error('❌ Failed to load PayPal SDK script')
+      console.error('Failed to load PayPal SDK')
       setError('Failed to load PayPal. Please refresh and try again.')
       onPaymentError(new Error('Failed to load PayPal SDK'))
       setLoading(false)
@@ -54,12 +54,12 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
   // Second effect: Initialize buttons once SDK is loaded
   useEffect(() => {
     if (!sdkLoaded) {
-      console.log('⏳ Waiting for PayPal SDK to load...')
+      console.log('Waiting for PayPal SDK to load')
       return
     }
 
     if (!window.paypal) {
-      console.error('❌ PayPal SDK loaded but window.paypal is undefined')
+      console.error('PayPal SDK loaded but window.paypal is undefined')
       setError('PayPal SDK initialization failed')
       onPaymentError(new Error('window.paypal undefined'))
       setLoading(false)
@@ -69,14 +69,14 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
     // Verify container is in DOM
     const container = containerRef.current || document.getElementById('paypal-button-container')
     if (!container) {
-      console.error('❌ Container not found in DOM')
+      console.error('Container not found in DOM')
       setError('Payment interface failed to load. Please refresh.')
       onPaymentError(new Error('Container not in DOM'))
       setLoading(false)
       return
     }
 
-    console.log('✅ SDK loaded and container found, initializing PayPal buttons...')
+    console.log('SDK loaded and container found, initializing PayPal buttons')
 
     try {
       const buttonsComponent = window.paypal.Buttons({
@@ -84,22 +84,22 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
           layout: 'vertical',
           color: 'blue',
           shape: 'rect',
-          label: 'paypal',
-          height: 45,
+          label: 'checkout',  // Shows multiple payment methods
+          height: 50,
         },
 
         createOrder: async (data) => {
-          console.log('🔄 Creating PayPal order...')
+          console.log('Creating PayPal order')
           setProcessing(true)
           setError('')
 
           try {
             const response = await paymentService.createOrder(amount, registrationData)
-            console.log('✅ Order created:', response.data.id)
+            console.log('Order created successfully:', response.data.id)
             return response.data.id
           } catch (err) {
-            console.error('❌ Error creating order:', err)
-            const msg = err.response?.data?.message || 'Failed to create order'
+            console.error('Order creation error:', err.message)
+            const msg = err.response?.data?.message || 'Failed to create order. Please try again.'
             setError(msg)
             setProcessing(false)
             throw err
@@ -107,21 +107,22 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
         },
 
         onApprove: async (data) => {
-          console.log('✅ Order approved by PayPal:', data.orderID)
+          console.log('Payment approved by PayPal')
           
           try {
             setProcessing(true)
-            const response = await paymentService.captureOrder(data.orderID, registrationData)
+            // Pass amount for server-side verification
+            const response = await paymentService.captureOrder(data.orderID, registrationData, amount)
 
             if (response.data.success) {
-              console.log('✅ Payment captured! Registration ID:', response.data.registrationId)
+              console.log('Payment captured successfully:', response.data.registrationId)
               onPaymentSuccess(response.data.registrationId)
             } else {
               throw new Error(response.data.message || 'Capture failed')
             }
           } catch (err) {
-            console.error('❌ Error capturing order:', err)
-            const msg = err.response?.data?.message || err.message || 'Payment failed'
+            console.error('Payment capture error:', err.message)
+            const msg = err.response?.data?.message || err.message || 'Payment capture failed. Please contact support if amount was charged.'
             setError(msg)
             onPaymentError(err)
             setProcessing(false)
@@ -129,7 +130,7 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
         },
 
         onError: (err) => {
-          console.error('❌ PayPal error:', err)
+          console.error('PayPal error:', err.message)
           const msg = err?.message || 'Payment processing failed'
           setError(msg)
           onPaymentError(err)
@@ -137,8 +138,8 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
         },
 
         onCancel: (data) => {
-          console.log('⚠️ Payment cancelled by user')
-          setError('Payment was cancelled')
+          console.log('Payment cancelled by user')
+          setError('Payment was cancelled. Please try again if you wish to proceed.')
           setProcessing(false)
         },
       })
@@ -146,17 +147,17 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
       // Render buttons into container
       buttonsComponent.render('#paypal-button-container')
         .then(() => {
-          console.log('✅ PayPal Smart Buttons rendered successfully')
+          console.log('PayPal Smart Buttons rendered successfully')
           setLoading(false)
         })
         .catch((err) => {
-          console.error('❌ Error rendering PayPal buttons:', err)
+          console.error('Error rendering PayPal buttons:', err.message)
           setError('Failed to render payment button. Please refresh.')
           onPaymentError(err)
           setLoading(false)
         })
     } catch (err) {
-      console.error('❌ Error initializing PayPal buttons:', err)
+      console.error('Error initializing PayPal buttons:', err.message)
       setError('Failed to initialize payment button')
       onPaymentError(err)
       setLoading(false)
@@ -193,12 +194,12 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
 
       <div className="payment-header">
         <h3>Complete Your Payment</h3>
-        <p className="text-muted">Pay with PayPal or Credit Card (Guest Checkout Available)</p>
+        <p className="text-muted">Choose your preferred payment method</p>
       </div>
 
       {error && (
         <div className="alert alert-danger" style={{ marginBottom: '20px' }}>
-          {error}
+          <strong>Payment Error:</strong> {error}
         </div>
       )}
 
@@ -207,7 +208,7 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
         <div className="summary-item">
           <span style={{ fontWeight: '500' }}>Amount to Pay:</span>
           <span style={{ fontSize: '1.3em', fontWeight: 'bold', color: '#007bff' }}>
-            ${amount.toFixed(2)}
+            ${amount.toFixed(2)} USD
           </span>
         </div>
         <div className="summary-item" style={{ marginTop: '10px', fontSize: '0.9em', color: '#666' }}>
@@ -215,14 +216,15 @@ const PayPalSmartButtons = ({ amount, registrationData, onPaymentSuccess, onPaym
         </div>
       </div>
 
-      <div className="payment-info">
-        <p style={{ fontSize: '0.85em', color: '#666', marginBottom: '10px' }}>
-          <strong>Payment Options:</strong>
+      <div className="payment-methods-section">
+        <h4 style={{ marginTop: '25px', marginBottom: '15px' }}>Available Payment Methods:</h4>
+        <p style={{ fontSize: '0.9em', color: '#555', marginBottom: '15px' }}>
+          Select PayPal or pay as a guest using your credit or debit card:
         </p>
-        <ul style={{ fontSize: '0.85em', color: '#666', marginLeft: '20px' }}>
-          <li>✓ PayPal Account Login</li>
-          <li>✓ Guest Checkout (Card)</li>
-          <li>✓ Credit/Debit Card (Visa, Mastercard, Amex)</li>
+        <ul style={{ fontSize: '0.9em', color: '#666', marginLeft: '20px', marginBottom: '20px' }}>
+          <li><strong style={{ color: '#007bff' }}>PayPal Account</strong> - Login with your PayPal account</li>
+          <li><strong style={{ color: '#007bff' }}>Guest Checkout</strong> - Pay with credit or debit card without a PayPal account</li>
+          <li style={{ fontSize: '0.85em', color: '#999', marginTop: '8px' }}>Supported cards: Visa, Mastercard, American Express, Discover</li>
         </ul>
       </div>
 

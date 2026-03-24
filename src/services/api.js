@@ -69,9 +69,9 @@ export const adminDashboardService = {
 // Payment services
 export const paymentService = {
   createOrder: (amount, registrationData) => 
-    api.post('/payments/create-order', { amount, registrationData }),
-  captureOrder: (orderId, registrationData) =>
-    api.post('/payments/capture-order', { orderId, registrationData }),
+    api.post('/payments/create-order', { amount, registrationData }, { timeout: 15000 }),
+  captureOrder: (orderId, registrationData, amount) =>
+    api.post('/payments/capture-order', { orderId, registrationData, amount }, { timeout: 30000 }),
 }
 
 export default api
