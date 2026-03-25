@@ -11,12 +11,7 @@ const validationSchema = Yup.object({
   phone: Yup.string().required('Phone number is required'),
   affiliation: Yup.string().required('Affiliation is required'),
   country: Yup.string().required('Country is required'),
-  registrationType: Yup.string().when('testPackage', {
-    is: false,
-    then: (schema) => schema.required('Please select a registration type'),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-  testPackage: Yup.boolean(),
+  registrationType: Yup.string().required('Please select a registration type'),
   shortCourse: Yup.boolean(),
   shortCourseId: Yup.string().when('shortCourse', {
     is: true,
@@ -44,7 +39,6 @@ const Registration = () => {
       shortCourse: false,
       shortCourseId: '',
       safariTour: false,
-      testPackage: false,
       agreeTerms: false,
     },
     validationSchema,
@@ -53,14 +47,10 @@ const Registration = () => {
 
       // Calculate total amount
       let total = 0
-      if (values.testPackage) {
-        total = 1 // Test package only
-      } else {
-        if (values.registrationType === 'part-a' || values.registrationType === 'part-b') total = 350
-        if (values.registrationType === 'both') total = 600
-        if (values.shortCourse) total += 500
-        if (values.safariTour) total += 400
-      }
+      if (values.registrationType === 'part-a' || values.registrationType === 'part-b') total = 350
+      if (values.registrationType === 'both') total = 600
+      if (values.shortCourse) total += 500
+      if (values.safariTour) total += 400
 
       // Store registration data and show payment form
       setRegistrationData(values)
@@ -72,14 +62,10 @@ const Registration = () => {
   // Calculate total amount for display
   const calculateTotal = () => {
     let total = 0
-    if (formik.values.testPackage) {
-      total = 1 // Test package only
-    } else {
-      if (formik.values.registrationType === 'part-a' || formik.values.registrationType === 'part-b') total = 350
-      if (formik.values.registrationType === 'both') total = 600
-      if (formik.values.shortCourse) total += 500
-      if (formik.values.safariTour) total += 400
-    }
+    if (formik.values.registrationType === 'part-a' || formik.values.registrationType === 'part-b') total = 350
+    if (formik.values.registrationType === 'both') total = 600
+    if (formik.values.shortCourse) total += 500
+    if (formik.values.safariTour) total += 400
     return total
   }
 
@@ -239,26 +225,6 @@ const Registration = () => {
 
                 <h3>Registration Package</h3>
 
-                <div className="test-package-section">
-                  <label className="checkbox test-package">
-                    <input
-                      type="checkbox"
-                      name="testPackage"
-                      checked={formik.values.testPackage}
-                      onChange={(e) => {
-                        formik.setFieldValue('testPackage', e.target.checked)
-                        if (e.target.checked) {
-                          formik.setFieldValue('registrationType', '')
-                          formik.setFieldValue('shortCourse', false)
-                          formik.setFieldValue('safariTour', false)
-                        }
-                      }}
-                    />
-                    <span className="test-label">🧪 Test Package - $1 (Transaction Testing Only)</span>
-                  </label>
-                </div>
-
-                {!formik.values.testPackage && (
                 <div>
                   {[
                     { id: 'part-a', label: 'Part A Only', price: '$350', description: 'Aug 9-11: Environmental Geotechnology' },
@@ -286,9 +252,7 @@ const Registration = () => {
                   <span className="error">{formik.errors.registrationType}</span>
                 )}
                 </div>
-                )}
                 <div className="form-group short-courses">
-                  {!formik.values.testPackage && (
                   <label className="checkbox">
                     <input
                       type="checkbox"
@@ -298,7 +262,6 @@ const Registration = () => {
                     />
                     <span>I want to register for a short course (Optional - $500)</span>
                   </label>
-                  )}
 
                   {formik.values.shortCourse && (
                     <div className="form-group">
@@ -322,8 +285,6 @@ const Registration = () => {
                   )}
                 </div>
 
-                {!formik.values.testPackage && (
-                <>
                 <hr />
 
                 <h3>Safari Tour (Optional)</h3>
@@ -336,8 +297,6 @@ const Registration = () => {
                   />
                   <span>Add Kenya Safari Tour - $400 (Nairobi National Park, Museum Visit, Lunch)</span>
                 </label>
-                </>
-                )}
 
                 <hr />
 
@@ -369,16 +328,6 @@ const Registration = () => {
 
             <div className="registration-summary">
               <h3>Order Summary</h3>
-              
-              {formik.values.testPackage && (
-                <div className="summary-section">
-                  <h4>Test Package</h4>
-                  <div className="summary-item">
-                    <span>🧪 Test Package (Transaction Testing)</span>
-                    <span className="price">$1.00</span>
-                  </div>
-                </div>
-              )}
               
               {formik.values.registrationType && (
                 <div className="summary-section">
