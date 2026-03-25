@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { paymentService } from '../services/api'
+import gisdadLogo from '../images/gisdad.png'
 import './FlutterWavePayment.css'
 
 const FlutterWavePayment = ({ amount, registrationData, onPaymentSuccess, onPaymentError, onBack }) => {
@@ -182,6 +183,10 @@ const FlutterWavePayment = ({ amount, registrationData, onPaymentSuccess, onPaym
   return (
     <div className="flutter-wave-payment-container">
       <div className="payment-card">
+        <div className="payment-logo">
+          <img src={gisdadLogo} alt="GISDAD Logo" />
+        </div>
+
         <div className="payment-header">
           <h3>Complete Your Payment</h3>
           <p className="payment-method">Powered by Flutterwave</p>

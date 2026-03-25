@@ -13,6 +13,19 @@
   animation: slideIn 0.3s ease-in-out;
 }
 
+.payment-logo {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.payment-logo img {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
