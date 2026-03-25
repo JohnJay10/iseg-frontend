@@ -68,6 +68,13 @@ export const adminDashboardService = {
 
 // Payment services
 export const paymentService = {
+  // Flutterwave payment endpoints
+  initializePayment: (amount, registrationData, paymentMethod = 'flutterwave') =>
+    api.post('/payments/initialize', { amount, registrationData, paymentMethod }, { timeout: 15000 }),
+  verifyPayment: (txRef, registrationData, amount) =>
+    api.post('/payments/verify', { txRef, registrationData, amount }, { timeout: 30000 }),
+  
+  // PayPal legacy endpoints (kept for backward compatibility)
   createOrder: (amount, registrationData) => 
     api.post('/payments/create-order', { amount, registrationData }, { timeout: 15000 }),
   captureOrder: (orderId, registrationData, amount) =>

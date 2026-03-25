@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import FlutterWavePayment from '../components/FlutterWavePayment'
 import PayPalSmartButtons from '../components/PayPalSmartButtons'
 import './Registration.css'
 
@@ -85,6 +86,27 @@ const Registration = () => {
     setError('')
   }
 
+  const handleTestDollarPayment = () => {
+    // Test data for $1 payment
+    const testData = {
+      firstName: 'Test',
+      lastName: 'User',
+      email: 'test@example.com',
+      phone: '+1234567890',
+      affiliation: 'Test Institution',
+      country: 'United States',
+      registrationType: 'part-a',
+      shortCourse: false,
+      shortCourseId: '',
+      safariTour: false,
+      agreeTerms: true,
+    }
+    
+    setRegistrationData(testData)
+    setTotalAmount(1) // $1 for testing
+    setShowPayment(true)
+  }
+
   const displayTotal = calculateTotal()
 
   if (showPayment && registrationData) {
@@ -99,7 +121,7 @@ const Registration = () => {
 
         <section className="section">
           <div className="container">
-            <PayPalSmartButtons
+            <FlutterWavePayment
               amount={totalAmount}
               registrationData={registrationData}
               onPaymentSuccess={handlePaymentSuccess}
@@ -320,6 +342,14 @@ const Registration = () => {
                 <div className="form-actions">
                   <button type="submit" className="btn btn-primary btn-lg" disabled={formik.isSubmitting}>
                     {formik.isSubmitting ? 'Processing...' : 'Proceed to Payment'}
+                  </button>
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary btn-lg" 
+                    onClick={() => handleTestDollarPayment()}
+                    title="Test payment with $1 - useful for verifying the payment flow"
+                  >
+                    Test with $1
                   </button>
                   <a href="/" className="btn btn-primary btn-lg">Cancel</a>
                 </div>
