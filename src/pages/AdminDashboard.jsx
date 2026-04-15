@@ -81,7 +81,7 @@ const AdminDashboard = () => {
       const response = await fetch(downloadUrl)
       
       if (!response.ok) {
-        throw new Error(`Download failed with status ${response.status}`)
+        throw new Error('unable_to_download')
       }
 
       const blob = await response.blob()
@@ -96,8 +96,8 @@ const AdminDashboard = () => {
     } catch (err) {
       console.error('Error downloading abstract:', err)
       Swal.fire(
-        'Download Failed!',
-        err.message || 'Failed to download the abstract PDF. Please try again.',
+        'Unable to Download',
+        'We couldn\'t find this abstract file. It may have been deleted or was not uploaded.',
         'error'
       )
     } finally {
