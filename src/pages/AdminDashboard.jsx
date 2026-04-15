@@ -14,6 +14,7 @@ const AdminDashboard = () => {
   const [admin, setAdmin] = useState(null)
   const [exporting, setExporting] = useState({ excel: false, pdf: false })
   const [deleting, setDeleting] = useState(null)
+  const [downloading, setDownloading] = useState(null)
   const [activeTab, setActiveTab] = useState('abstracts')
   const [currentPage, setCurrentPage] = useState({ abstracts: 1, registrations: 1 })
   const itemsPerPage = 5
@@ -70,6 +71,38 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     authService.logoutAdmin()
     navigate('/admin/login', { replace: true })
+  }
+
+  const handleDownloadAbstract = async (abstractId, fileName) => {
+    try {
+      setDownloading(abstractId)
+      const downloadUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/admin/dashboard/abstracts/${abstractId}/download`
+      
+      const response = await fetch(downloadUrl)
+      
+      if (!response.ok) {
+        throw new Error(`Download failed with status ${response.status}`)
+      }
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', fileName || 'abstract.pdf')
+      document.body.appendChild(link)
+      link.click()
+      link.parentNode.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error('Error downloading abstract:', err)
+      Swal.fire(
+        'Download Failed!',
+        err.message || 'Failed to download the abstract PDF. Please try again.',
+        'error'
+      )
+    } finally {
+      setDownloading(null)
+    }
   }
 
   const handleExportExcel = async () => {
@@ -309,14 +342,14 @@ const AdminDashboard = () => {
                         {new Date(abstract.createdAt).toLocaleDateString()}
                       </td>
                       <td className="actions">
-                        <a
-                          href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/admin/dashboard/abstracts/${abstract._id}/download`} 
-                          download
+                        <button
                           className="btn-icon btn-icon-download"
+                          onClick={() => handleDownloadAbstract(abstract._id, abstract.fileName)}
+                          disabled={downloading === abstract._id}
                           title="Download PDF"
                         >
-                          ⬇️
-                        </a>
+                          {downloading === abstract._id ? '⏳' : '⬇️'}
+                        </button>
                         <button
                           className="btn-icon btn-icon-delete"
                           onClick={() => handleDelete(abstract._id)}
