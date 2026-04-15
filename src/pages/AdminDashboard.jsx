@@ -310,7 +310,7 @@ const AdminDashboard = () => {
                       </td>
                       <td className="actions">
                         <a
-                          href={`${import.meta.env.VITE_FILE_SERVER_URL}${abstract.fileUrl}`} 
+                          href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/admin/dashboard/abstracts/${abstract._id}/download`} 
                           download
                           className="btn-icon btn-icon-download"
                           title="Download PDF"
