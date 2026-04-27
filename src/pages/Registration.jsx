@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   phone: Yup.string().required('Phone number is required'),
   affiliation: Yup.string().required('Affiliation is required'),
   country: Yup.string().required('Country is required'),
-  registrationType: Yup.string().notRequired(),
+  registrationType: Yup.string().required('Please select a registration type'),
   shortCourse: Yup.boolean(),
   shortCourseId: Yup.string().when('shortCourse', {
     is: true,
@@ -27,21 +27,6 @@ const Registration = () => {
   const [showPayment, setShowPayment] = useState(false)
   const [registrationData, setRegistrationData] = useState(null)
   const [totalAmount, setTotalAmount] = useState(0)
-  const [testPaymentMode, setTestPaymentMode] = useState(false)
-
-  // Custom validation function
-  const validate = (values) => {
-    const errors = {}
-    
-    // Skip registrationType validation in test mode
-    if (!testPaymentMode) {
-      if (!values.registrationType) {
-        errors.registrationType = 'Please select a registration type'
-      }
-    }
-    
-    return errors
-  }
 
   const formik = useFormik({
     initialValues: {
@@ -58,32 +43,18 @@ const Registration = () => {
       agreeTerms: false,
     },
     validationSchema,
-    validate,
     onSubmit: async (values) => {
       setError('')
 
       // Calculate total amount
       let total = 0
-      
-      if (testPaymentMode) {
-        // Test payment mode - $1
-        total = 1
-      } else {
-        // Normal pricing
-        if (values.registrationType === 'part-a' || values.registrationType === 'part-b') total = 350
-        if (values.registrationType === 'both') total = 600
-        if (values.shortCourse) total += 500
-        if (values.safariTour) total += 400
-      }
-
-      // Prepare registration data with test payment flag
-      const paymentData = {
-        ...values,
-        isTestPayment: testPaymentMode,
-      }
+      if (values.registrationType === 'part-a' || values.registrationType === 'part-b') total = 350
+      if (values.registrationType === 'both') total = 600
+      if (values.shortCourse) total += 500
+      if (values.safariTour) total += 400
 
       // Store registration data and show payment form
-      setRegistrationData(paymentData)
+      setRegistrationData(values)
       setTotalAmount(total)
       setShowPayment(true)
     },
@@ -91,10 +62,6 @@ const Registration = () => {
 
   // Calculate total amount for display
   const calculateTotal = () => {
-    if (testPaymentMode) {
-      return 1
-    }
-    
     let total = 0
     if (formik.values.registrationType === 'part-a' || formik.values.registrationType === 'part-b') total = 350
     if (formik.values.registrationType === 'both') total = 600
@@ -259,32 +226,6 @@ const Registration = () => {
 
                 <h3>Registration Package</h3>
 
-                <div className="form-group test-payment-mode">
-                  <label className="checkbox">
-                    <input
-                      type="checkbox"
-                      name="testPayment"
-                      checked={testPaymentMode}
-                      onChange={(e) => {
-                        setTestPaymentMode(e.target.checked)
-                        if (e.target.checked) {
-                          // Clear registration type when enabling test mode
-                          formik.setFieldValue('registrationType', '')
-                        }
-                      }}
-                    />
-                    <span>
-                      <strong>Test Payment Mode - $1</strong> (For testing payment gateway)
-                    </span>
-                  </label>
-                  {testPaymentMode && (
-                    <div className="test-payment-warning">
-                      <p>⚠️ You are in test payment mode. This will process a $1 test transaction to verify your payment method.</p>
-                    </div>
-                  )}
-                </div>
-
-                {!testPaymentMode && (
                 <div>
                   {[
                     { id: 'part-a', label: 'Part A Only', price: '$350', description: 'Aug 9-11: Environmental Geotechnology' },
@@ -312,8 +253,6 @@ const Registration = () => {
                   <span className="error">{formik.errors.registrationType}</span>
                 )}
                 </div>
-                )}
-                {!testPaymentMode && (
                 <>
                 <div className="form-group short-courses">
                   <label className="checkbox">
@@ -361,7 +300,6 @@ const Registration = () => {
                   <span>Add Kenya Safari Tour - $400 (Nairobi National Park, Museum Visit, Lunch)</span>
                 </label>
                 </>
-                )}
 
                 <hr />
 
@@ -394,17 +332,7 @@ const Registration = () => {
             <div className="registration-summary">
               <h3>Order Summary</h3>
 
-              {testPaymentMode && (
-                <div className="summary-section test-payment-summary">
-                  <h4>Test Payment</h4>
-                  <div className="summary-item">
-                    <span>⚠️ Test Mode - Payment Gateway Test</span>
-                    <span className="price">$1</span>
-                  </div>
-                </div>
-              )}
-              
-              {!testPaymentMode && formik.values.registrationType && (
+              {formik.values.registrationType && (
                 <div className="summary-section">
                   <h4>Registration Package</h4>
                   <div className="summary-item">
