@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   phone: Yup.string().required('Phone number is required'),
   affiliation: Yup.string().required('Affiliation is required'),
   country: Yup.string().required('Country is required'),
-  registrationType: Yup.string().required('Please select a registration type'),
+  registrationType: Yup.string().notRequired(),
   shortCourse: Yup.boolean(),
   shortCourseId: Yup.string().when('shortCourse', {
     is: true,
@@ -34,8 +34,10 @@ const Registration = () => {
     const errors = {}
     
     // Skip registrationType validation in test mode
-    if (!testPaymentMode && !values.registrationType) {
-      errors.registrationType = 'Please select a registration type'
+    if (!testPaymentMode) {
+      if (!values.registrationType) {
+        errors.registrationType = 'Please select a registration type'
+      }
     }
     
     return errors
