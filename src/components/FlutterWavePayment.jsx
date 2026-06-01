@@ -31,6 +31,11 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
 
     try {
       // Call backend — this generates a FRESH tx_ref every time
+
+      const paymentPurpose = registrationData.shortCourse
+        ? 'course'
+        : 'registration'
+
       const response = await paymentService.initializePayment(
         amount,
         { ...registrationData, paymentAccount }, // Include payment account
@@ -56,7 +61,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
     } catch (err) {
       console.error('Payment initialization error:', err.message)
       let msg = err.response?.data?.message || err.message || 'Payment initialization failed'
-      
+
       // Handle specific error cases
       if (msg.includes('exceeds Flutterwave transaction limit')) {
         msg = 'Amount exceeds payment limit (USD 5,000 max). For large sponsorships, please contact sponsors@iseg.ac.ke'
@@ -67,7 +72,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
       } else if (msg.includes('ECONNREFUSED') || msg.includes('ENOTFOUND')) {
         msg = 'Unable to reach payment service. Please check your connection and try again.'
       }
-      
+
       setError(msg)
       setProcessing(false)
       isInitializingRef.current = false
