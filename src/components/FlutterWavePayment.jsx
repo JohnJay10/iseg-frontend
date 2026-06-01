@@ -21,6 +21,11 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
 
     try {
       // Call backend — this generates a FRESH tx_ref every time
+
+      const paymentPurpose = registrationData.shortCourse
+        ? 'course'
+        : 'registration'
+
       const response = await paymentService.initializePayment(
         amount,
         { ...registrationData, paymentAccount }, // Include payment account
@@ -46,7 +51,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
     } catch (err) {
       console.error('Payment initialization error:', err.message)
       let msg = err.response?.data?.message || err.message || 'Payment initialization failed'
-      
+
       // Handle specific error cases
       if (msg.includes('502') || msg.includes('Bad gateway')) {
         msg = 'Payment service is temporarily unavailable. Please wait a moment and try again.'
@@ -55,7 +60,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
       } else if (msg.includes('ECONNREFUSED') || msg.includes('ENOTFOUND')) {
         msg = 'Unable to reach payment service. Please check your connection and try again.'
       }
-      
+
       setError(msg)
       setProcessing(false)
       isInitializingRef.current = false
