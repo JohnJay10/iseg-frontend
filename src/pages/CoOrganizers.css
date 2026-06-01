@@ -1,0 +1,193 @@
+/* Co-Organizers Page Styles */
+
+.organizers-intro {
+  background: linear-gradient(135deg, #e67e22 0%, #d97706 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+}
+
+.organizers-intro h2 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.organizers-intro p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Organizers Grid */
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.organizer-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #e67e22;
+  display: flex;
+  flex-direction: column;
+}
+
+.organizer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.organizer-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.organizer-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.organizer-header .role {
+  margin: 0;
+  color: #e67e22;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.organizer-details {
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.organizer-details .detail {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.organizer-details strong {
+  color: #333;
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+.organizer-contact {
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.85rem;
+}
+
+.organizer-contact p {
+  margin: 0 0 0.8rem 0;
+  color: #666;
+}
+
+.organizer-contact p:last-child {
+  margin-bottom: 0;
+}
+
+.organizer-contact strong {
+  color: #333;
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.organizer-contact a {
+  color: #e67e22;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.organizer-contact a:hover {
+  text-decoration: underline;
+}
+
+.contact-pending {
+  color: #999;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* Organizers Note */
+.organizers-note {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border: 2px solid #d1d5db;
+  border-left: 4px solid #e67e22;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.organizers-note h3 {
+  color: #e67e22;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.organizers-note p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.organizers-note p:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.organizers-note strong {
+  color: #333;
+}
+
+.organizers-note ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.organizers-note li {
+  margin-bottom: 0.5rem;
+}
+
+.organizers-note strong {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .organizers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .organizers-intro {
+    padding: 1.5rem;
+  }
+
+  .organizers-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .organizers-note {
+    padding: 1.5rem;
+  }
+}

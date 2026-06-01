@@ -1,0 +1,315 @@
+/* Sponsorship Page Styles */
+
+.sponsorship-intro {
+  background: linear-gradient(135deg, #e67e22 0%, #d97706 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.sponsorship-intro h2 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.sponsorship-intro p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sponsorship Levels */
+.sponsorship-levels h3,
+.partnership-opportunities h3,
+.sponsorship-benefits h2,
+.sponsorship-contact h3 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.sponsorship-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-top: 4px solid #e67e22;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sponsorship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.level-header {
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.level-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.level-contribution {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.level-benefits {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.level-benefits ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.level-benefits li {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+.level-benefits li:last-child {
+  margin-bottom: 0;
+}
+
+.benefit-icon {
+  color: #e67e22;
+  font-weight: bold;
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+.level-action {
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.btn-sm {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #e67e22;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-sm:hover {
+  background: #d97706;
+}
+
+/* Partnership Opportunities */
+.partnership-opportunities {
+  margin-bottom: 3rem;
+}
+
+.partnership-opportunities > p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.opportunity-card {
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.opportunity-card:hover {
+  border-color: #e67e22;
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.15);
+}
+
+.opportunity-card h4 {
+  color: #e67e22;
+  font-size: 1.1rem;
+  margin: 0 0 0.8rem 0;
+}
+
+.opportunity-card .description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+.opportunity-card .availability {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.opportunity-card strong {
+  color: #333;
+}
+
+/* Sponsorship Benefits */
+.sponsorship-benefits {
+  margin-bottom: 3rem;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.sponsorship-benefits h2 {
+  margin-top: 0;
+}
+
+.benefits-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border-left: 4px solid #e67e22;
+}
+
+.benefit-item h4 {
+  color: #e67e22;
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1rem;
+}
+
+.benefit-item p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Sponsorship Contact */
+.sponsorship-contact {
+  margin-bottom: 3rem;
+}
+
+.sponsorship-contact > p {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #e67e22 0%, #d97706 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-card h4 {
+  color: white;
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1rem;
+}
+
+.contact-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-card a {
+  color: #ffeb3b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Tax Info */
+.tax-info {
+  background: #fffbf0;
+  border-left: 4px solid #e67e22;
+  padding: 1.5rem;
+  border-radius: 6px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.tax-info strong {
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .levels-grid,
+  .opportunities-grid,
+  .benefits-list,
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsorship-benefits {
+    padding: 1.5rem;
+  }
+
+  .sponsorship-levels h3,
+  .partnership-opportunities h3,
+  .sponsorship-benefits h2,
+  .sponsorship-contact h3 {
+    font-size: 1.5rem;
+  }
+
+  .level-name {
+    font-size: 1.3rem;
+  }
+}

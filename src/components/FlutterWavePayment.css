@@ -1,0 +1,271 @@
+.flutter-wave-payment-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.payment-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.payment-logo {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.payment-logo img {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.payment-header h3 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+}
+
+.payment-method {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.payment-details {
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.error-message {
+  background: #fee;
+  border: 1px solid #fcc;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c00;
+  font-size: 14px;
+}
+
+.error-icon {
+  font-size: 18px;
+}
+
+.payment-methods-info {
+  background: #f0f7ff;
+  border-left: 4px solid #0066cc;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.payment-methods-info h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #0066cc;
+  font-weight: 600;
+}
+
+.methods-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.methods-list li {
+  font-size: 13px;
+  color: #333;
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.methods-list li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-pay,
+.btn-back {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-pay {
+  background: #0066cc;
+  color: white;
+}
+
+.btn-pay:hover:not(:disabled) {
+  background: #0052a3;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.btn-pay:disabled {
+  background: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-back {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-back:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.btn-back:disabled {
+  opacity: 0.6;
+}
+
+.spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.security-info {
+  background: #f0fff0;
+  border: 1px solid #90ee90;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+}
+
+.security-info p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.payment-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 102, 204, 0.1);
+  border-top: 4px solid #0066cc;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .flutter-wave-payment-container {
+    padding: 10px;
+  }
+
+  .payment-card {
+    padding: 20px;
+  }
+
+  .payment-header h3 {
+    font-size: 20px;
+  }
+
+  .payment-methods-info {
+    font-size: 12px;
+  }
+
+  .payment-actions {
+    flex-direction: column;
+  }
+
+  .btn-pay,
+  .btn-back {
+    width: 100%;
+  }
+}
