@@ -86,7 +86,7 @@ const Hotels = () => {
         <div className="container">
           <div className="hotels-intro">
             <h2>Hotel Booking Information</h2>
-            <p>
+            <p>  
               Intending participants are urged to select their hotels of interest and book their rooms at special 
               negotiated rates before <strong>August 5, 2026</strong>. All hotels are conveniently located within walking 
               distance or short drive of the main conference venue (Maanzoni 680 Hotel).

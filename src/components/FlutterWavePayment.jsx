@@ -17,16 +17,6 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
     setProcessing(true)
     setError('')
 
-    // Check if amount exceeds Flutterwave limit
-    if (amount > 5000) {
-      const msg = 'Amount exceeds payment limit. Large sponsorships (over $5,000) must be arranged directly. Please contact sponsors@iseg.ac.ke'
-      setError(msg)
-      setProcessing(false)
-      isInitializingRef.current = false
-      onPaymentError(new Error(msg))
-      return
-    }
-
     console.log('Initializing Flutterwave payment...')
 
     try {
@@ -58,9 +48,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
       let msg = err.response?.data?.message || err.message || 'Payment initialization failed'
       
       // Handle specific error cases
-      if (msg.includes('exceeds Flutterwave transaction limit')) {
-        msg = 'Amount exceeds payment limit (USD 5,000 max). For large sponsorships, please contact sponsors@iseg.ac.ke'
-      } else if (msg.includes('502') || msg.includes('Bad gateway')) {
+      if (msg.includes('502') || msg.includes('Bad gateway')) {
         msg = 'Payment service is temporarily unavailable. Please wait a moment and try again.'
       } else if (msg.includes('timeout')) {
         msg = 'Connection timeout. Please check your internet and try again.'
@@ -127,16 +115,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
         {error && (
           <div className="error-message">
             <span className="error-icon">⚠️</span>
-            <div style={{ flex: 1 }}>
-              <span>{error}</span>
-              {error.includes('exceeds payment limit') && (
-                <div style={{ marginTop: '0.5rem', fontSize: '14px', color: '#e67e22' }}>
-                  <p style={{ margin: '0.5rem 0 0 0' }}>
-                    📧 <a href="mailto:sponsors@iseg.ac.ke" style={{ color: '#e67e22', textDecoration: 'underline' }}>Contact our sponsorship team</a> to arrange payment for large sponsorships.
-                  </p>
-                </div>
-              )}
-            </div>
+            <span>{error}</span>
             <button
               type="button"
               className="btn-retry-link"

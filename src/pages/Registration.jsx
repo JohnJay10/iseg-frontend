@@ -911,13 +911,7 @@ const Registration = () => {
                         })
                       }
 
-                      return total > 5000 ? (
-                        <div style={{ marginTop: '0.75rem', padding: '0.75rem', backgroundColor: '#fff3cd', borderRadius: '6px', border: '1px solid #ffc107', color: '#856404' }}>
-                          <p style={{ margin: 0, fontSize: '14px' }}>
-                            <strong>⚠️ Payment Limit Notice:</strong> Amounts over USD 5,000 require direct arrangement. Please <a href="mailto:sponsors@iseg.ac.ke" style={{ color: '#856404', textDecoration: 'underline' }}>contact our sponsorship team</a> for large sponsorships.
-                          </p>
-                        </div>
-                      ) : null
+                      return null
                     })()}
                   </div>
                 </div>
