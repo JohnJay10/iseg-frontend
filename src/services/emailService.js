@@ -114,7 +114,7 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
       lastName,
       phone,
       registrationType,
-      totalAmount,
+      totalAmount = 0,
       shortCourse,
       safariTour,
       selectedForums = [],
@@ -125,6 +125,9 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
       independentFestival = false,
       ticketId,
     } = registrationData;
+
+    // Ensure totalAmount is a valid number
+    const displayAmount = parseFloat(totalAmount) || 0;
 
     // Format registration package
     const registrationPackage =
@@ -242,7 +245,7 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
               }
               <tr>
                 <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Total Amount:</td>
-                <td style="padding: 10px 0; color: #2ECC71; font-weight: bold; font-size: 16px;">$${totalAmount.toFixed(2)}</td>
+                <td style="padding: 10px 0; color: #2ECC71; font-weight: bold; font-size: 16px;">$${displayAmount.toFixed(2)}</td>
               </tr>
             </table>
           </div>
@@ -280,7 +283,7 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
       last_name: lastName,
       ticket_id: ticketId,
       registration_package: registrationPackage,
-      total_amount: totalAmount.toFixed(2),
+      total_amount: displayAmount.toFixed(2),
     };
 
     const response = await emailjs.send(
