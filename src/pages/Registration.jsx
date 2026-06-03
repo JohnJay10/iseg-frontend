@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import FlutterWavePayment from '../components/FlutterWavePayment'
@@ -15,6 +15,17 @@ const Registration = () => {
   const [paymentAccount, setPaymentAccount] = useState('kenya')
   const [registrationCategory, setRegistrationCategory] = useState('')
   const [includesFestivalFree, setIncludesFestivalFree] = useState(false)
+
+  // Reset form state when component mounts (for returning users)
+  useEffect(() => {
+    console.log('Registration page mounted, resetting state...')
+    setShowPayment(false)
+    setRegistrationData(null)
+    setTotalAmount(0)
+    setPaymentAccount('kenya')
+    setRegistrationCategory('')
+    setError('')
+  }, [])
 
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First name is required'),
@@ -45,6 +56,7 @@ const Registration = () => {
     },
     validationSchema,
     onSubmit: async (values) => {
+      console.log('=== FORM SUBMISSION STARTED ===')
       setError('')
 
       // Validate: At least one selection from any section
@@ -55,6 +67,8 @@ const Registration = () => {
       const hasSponsorship = values.selectedSponsorship.length > 0
       const hasSafari = values.independentSafari
       const hasFestival = values.independentFestival
+
+      console.log('Form selections:', { hasRegistrationType, hasForums, hasCourses, hasWorkshops, hasSponsorship, hasSafari, hasFestival })
 
       if (!hasRegistrationType && !hasForums && !hasCourses && !hasWorkshops && !hasSponsorship && !hasSafari && !hasFestival) {
         setError('Please select at least one option from any section (Registration Type, Forums, Courses, Workshops, Sponsorship, Safari, or Festival)')
@@ -190,6 +204,12 @@ const Registration = () => {
         selectedItems: selectedItems,
         registrationCategory: category,
       })
+      console.log('=== AMOUNT CALCULATION COMPLETE ===')
+      console.log(`Calculated total: ${total}`)
+      console.log(`Payment account: ${account}`)
+      console.log(`Registration category: ${category}`)
+      console.log(`Selected items:`, JSON.stringify(selectedItems, null, 2))
+      
       setTotalAmount(total)
       setPaymentAccount(account)
       setShowPayment(true)
@@ -911,13 +931,7 @@ const Registration = () => {
                         })
                       }
 
-                      return total > 5000 ? (
-                        <div style={{ marginTop: '0.75rem', padding: '0.75rem', backgroundColor: '#fff3cd', borderRadius: '6px', border: '1px solid #ffc107', color: '#856404' }}>
-                          <p style={{ margin: 0, fontSize: '14px' }}>
-                            <strong>⚠️ Payment Limit Notice:</strong> Amounts over USD 5,000 require direct arrangement. Please <a href="mailto:sponsors@iseg.ac.ke" style={{ color: '#856404', textDecoration: 'underline' }}>contact our sponsorship team</a> for large sponsorships.
-                          </p>
-                        </div>
-                      ) : null
+                      return null
                     })()}
                   </div>
                 </div>

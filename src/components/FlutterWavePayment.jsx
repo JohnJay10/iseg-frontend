@@ -8,6 +8,8 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
   const [error, setError] = useState('')
   const isInitializingRef = useRef(false)
 
+  console.log('FlutterWavePayment component rendered with amount:', amount, '(type:', typeof amount + ')')
+
   // Initialize payment and redirect to Flutterwave hosted page
   const handlePayment = async () => {
     // Prevent double clicks
@@ -17,33 +19,29 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
     setProcessing(true)
     setError('')
 
-    // Check if amount exceeds Flutterwave limit
-    if (amount > 5000) {
-      const msg = 'Amount exceeds payment limit. Large sponsorships (over $5,000) must be arranged directly. Please contact sponsors@iseg.ac.ke'
-      setError(msg)
-      setProcessing(false)
-      isInitializingRef.current = false
-      onPaymentError(new Error(msg))
-      return
-    }
-
-    console.log('Initializing Flutterwave payment...')
+    console.log('=== FLUTTERWAVE PAYMENT INITIALIZATION ===')
+    console.log(`Amount to send: ${amount} (type: ${typeof amount})`)
+    console.log('Registration data:', JSON.stringify(registrationData, null, 2))
 
     try {
-      // Call backend — this generates a FRESH tx_ref every time
+      // FIX 1: Derive paymentPurpose and pass it as the third argument
+      const paymentPurpose = registrationData.shortCourse ? 'course' : 'registration'
 
-      const paymentPurpose = registrationData.shortCourse
-        ? 'course'
-        : 'registration'
+      // FIX 2: Avoid double-wrapping paymentAccount — only spread it in if not
+      // already present in registrationData, to keep the data shape predictable
+      const enrichedData = {
+        ...registrationData,
+        paymentAccount, // explicit key wins over any existing spread value
+      }
 
       const response = await paymentService.initializePayment(
         amount,
-        { ...registrationData, paymentAccount }, // Include payment account
-        'flutterwave'
+        enrichedData,
+        paymentPurpose, // FIX 1: was computed but never forwarded before
       )
 
       if (response.data.success) {
-        const { paymentLink } = response.data
+        const { paymentLink, txRef } = response.data
 
         if (!paymentLink) {
           throw new Error('No payment link returned from server')
@@ -51,9 +49,19 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
 
         console.log('Payment initialized, redirecting to Flutterwave...')
 
-        // ✅ Redirect to Flutterwave hosted payment page
-        // This avoids the double-initialization conflict that caused
-        // "transaction reference already exists with a different amount or currency"
+        // Save registration data and amount to localStorage for verification after payment
+        console.log('=== SAVING TO LOCALSTORAGE ===')
+        console.log(`Amount to save: ${amount} (type: ${typeof amount})`)
+        const pendingData = {
+          registrationData: enrichedData,
+          amount,
+          txRef,
+        }
+        console.log('Pending registration object:', JSON.stringify(pendingData, null, 2))
+        localStorage.setItem('pendingRegistration', JSON.stringify(pendingData))
+        console.log('Saved to localStorage successfully')
+
+        // Redirect to Flutterwave hosted payment page
         window.location.href = paymentLink
       } else {
         throw new Error(response.data.message || 'Failed to initialize payment')
@@ -63,9 +71,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
       let msg = err.response?.data?.message || err.message || 'Payment initialization failed'
 
       // Handle specific error cases
-      if (msg.includes('exceeds Flutterwave transaction limit')) {
-        msg = 'Amount exceeds payment limit (USD 5,000 max). For large sponsorships, please contact sponsors@iseg.ac.ke'
-      } else if (msg.includes('502') || msg.includes('Bad gateway')) {
+      if (msg.includes('502') || msg.includes('Bad gateway')) {
         msg = 'Payment service is temporarily unavailable. Please wait a moment and try again.'
       } else if (msg.includes('timeout')) {
         msg = 'Connection timeout. Please check your internet and try again.'
@@ -132,16 +138,7 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
         {error && (
           <div className="error-message">
             <span className="error-icon">⚠️</span>
-            <div style={{ flex: 1 }}>
-              <span>{error}</span>
-              {error.includes('exceeds payment limit') && (
-                <div style={{ marginTop: '0.5rem', fontSize: '14px', color: '#e67e22' }}>
-                  <p style={{ margin: '0.5rem 0 0 0' }}>
-                    📧 <a href="mailto:sponsors@iseg.ac.ke" style={{ color: '#e67e22', textDecoration: 'underline' }}>Contact our sponsorship team</a> to arrange payment for large sponsorships.
-                  </p>
-                </div>
-              )}
-            </div>
+            <span>{error}</span>
             <button
               type="button"
               className="btn-retry-link"
