@@ -50,8 +50,14 @@ const AbstractSubmission = () => {
         setSubmitted(true)
         formik.resetForm()
       } catch (err) {
-        const errorMsg = err.response?.data?.message || err.message || 'Error submitting abstract'
-        setError(errorMsg)
+        const errorMsg = err.response?.data?.message || err.message || ''
+        if (errorMsg) {
+          setError(errorMsg)
+        } else if (err.isTimedOut) {
+          console.error('Request timed out - suppressed from UI')
+        } else {
+          setError('Error submitting abstract')
+        }
       }
     },
   })

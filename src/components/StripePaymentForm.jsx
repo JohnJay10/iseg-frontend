@@ -63,8 +63,14 @@ const StripePaymentForm = ({ totalAmount, registrationData, onPaymentSuccess, on
         setIsProcessing(false)
       }
     } catch (err) {
-      const errorMsg = err.response?.data?.message || err.message || 'Payment processing failed'
-      setError(errorMsg)
+      const errorMsg = err.response?.data?.message || err.message || ''
+      if (errorMsg && !err.isTimedOut) {
+        setError(errorMsg)
+      } else if (err.isTimedOut) {
+        console.error('Request timed out - suppressed from UI')
+      } else {
+        setError('Payment processing failed')
+      }
       console.error('Payment error:', err)
       setIsProcessing(false)
     }

@@ -34,7 +34,16 @@ const AdminLogin = () => {
       // Redirect to admin dashboard
       navigate('/admin/dashboard')
     } catch (err) {
-      setError(err.response?.data?.message || err.message || 'Login failed. Please check your credentials.')
+      // Only show error if there's a message (suppresses timeout errors)
+      const errorMsg = err.response?.data?.message || err.message || ''
+      if (errorMsg) {
+        setError(errorMsg)
+      } else if (err.isTimedOut) {
+        // Silently suppress timeout errors
+        console.error('Request timed out - suppressed from UI')
+      } else {
+        setError('Login failed. Please check your credentials.')
+      }
       console.error('Login error:', err)
     } finally {
       setLoading(false)

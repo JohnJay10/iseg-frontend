@@ -68,13 +68,22 @@ const FlutterWavePayment = ({ amount, registrationData, paymentAccount, onPaymen
       }
     } catch (err) {
       console.error('Payment initialization error:', err.message)
-      let msg = err.response?.data?.message || err.message || 'Payment initialization failed'
+      let msg = err.response?.data?.message || err.message || ''
+      
+      // Suppress timeout errors
+      if (err.isTimedOut || msg.includes('timeout')) {
+        console.error('Request timed out - suppressed from UI')
+        setProcessing(false)
+        isInitializingRef.current = false
+        onPaymentError(err)
+        return
+      }
 
       // Handle specific error cases
-      if (msg.includes('502') || msg.includes('Bad gateway')) {
+      if (!msg) {
+        msg = 'Payment initialization failed'
+      } else if (msg.includes('502') || msg.includes('Bad gateway')) {
         msg = 'Payment service is temporarily unavailable. Please wait a moment and try again.'
-      } else if (msg.includes('timeout')) {
-        msg = 'Connection timeout. Please check your internet and try again.'
       } else if (msg.includes('ECONNREFUSED') || msg.includes('ENOTFOUND')) {
         msg = 'Unable to reach payment service. Please check your connection and try again.'
       }
