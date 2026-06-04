@@ -42,8 +42,14 @@ const AdminDashboard = () => {
       setAbstracts(response.data.abstracts || [])
     } catch (err) {
       console.error('Error fetching abstracts:', err)
-      const errorMessage = err.response?.data?.message || err.message || 'Error fetching abstracts'
-      setError(errorMessage)
+      const errorMessage = err.response?.data?.message || err.message || ''
+      if (errorMessage) {
+        setError(errorMessage)
+      } else if (err.isTimedOut) {
+        console.error('Request timed out - suppressed from UI')
+      } else {
+        setError('Error fetching abstracts')
+      }
 
       // If unauthorized, redirect to login
       if (err.response?.status === 401) {

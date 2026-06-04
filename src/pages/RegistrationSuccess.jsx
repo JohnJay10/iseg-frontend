@@ -92,7 +92,12 @@ const RegistrationSuccess = () => {
         } catch (err) {
           console.error('Payment verification error:', err.message)
           console.error('Full error:', err)
-          setVerificationError(err.message || 'An error occurred while verifying your payment')
+          // Only show error if there's a message (suppresses timeout errors)
+          if (err.message && !err.isTimedOut) {
+            setVerificationError(err.message || 'An error occurred while verifying your payment')
+          } else if (err.isTimedOut) {
+            console.error('Request timed out - suppressed from UI')
+          }
           setVerifying(false)
         }
       }
