@@ -340,6 +340,23 @@
     margin-left: 0;
     margin-top: 0.3rem;
   }
+
+  /* Payment Selector Mobile Styles */
+  [style*="gridTemplateColumns: '1fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-header {
+    padding: 2rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header p {
+    font-size: 0.95rem;
+  }
 }
 
 .reg-type-card {
@@ -1301,4 +1318,350 @@
   height: 1px;
   background-color: #f0f0f0;
   margin: 0.25rem 0;
+}
+
+/* Payment Selector Mobile Optimizations */
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.payment-method-card {
+  background-color: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-method-card h3 {
+  margin: 0 0 0.8rem 0;
+  color: #1f2937;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.payment-method-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.payment-method-card svg {
+  width: 120px;
+  height: 50px;
+  margin-bottom: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Payment Summary - Mobile Responsive */
+.payment-summary-box {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.payment-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.payment-amount p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.payment-amount h2 {
+  margin: 0.5rem 0 0 0;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.payment-security-badge {
+  text-align: right;
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+}
+
+.payment-security-badge p {
+  margin: 0;
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .payment-methods-grid {
+    gap: 1.5rem;
+  }
+
+  .payment-method-card {
+    padding: 2rem 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .payment-methods-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    display: grid !important;
+  }
+
+  .payment-method-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .payment-method-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .payment-method-card p {
+    font-size: 0.9rem;
+    margin: 0 0 1.2rem 0;
+  }
+
+  .payment-method-card svg {
+    width: 110px;
+    height: 45px;
+    margin-bottom: 1.2rem;
+  }
+
+  .payment-summary-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+
+  .payment-amount h2 {
+    font-size: 1.6rem;
+  }
+
+  .payment-security-badge {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 1.5rem 1rem;
+  }
+
+  .payment-methods-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+    display: grid !important;
+  }
+
+  .payment-method-card {
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+  }
+
+  .payment-method-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.6rem 0;
+    font-weight: 600;
+  }
+
+  .payment-method-card p {
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .payment-method-card svg {
+    width: 100px;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+
+  /* Payment card features list */
+  .payment-method-card > div:nth-child(4) {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Payment card badges */
+  .payment-method-card > div:nth-child(5) {
+    font-size: 0.8rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Pay Now buttons */
+  .payment-method-card button {
+    padding: 0.75rem 1.2rem !important;
+    font-size: 0.95rem !important;
+    min-height: 44px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+  }
+
+  .payment-summary-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1rem !important;
+    gap: 0.8rem !important;
+  }
+
+  .payment-amount h2 {
+    font-size: 1.5rem;
+  }
+
+  .payment-security-badge {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.8rem;
+  }
+
+  .payment-security-badge p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem 0.8rem;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .payment-methods-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+    margin-bottom: 0.8rem !important;
+    display: grid !important;
+  }
+
+  .payment-method-card {
+    padding: 1.2rem 0.8rem;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+  }
+    border: 2px solid #e5e7eb;
+  }
+
+  .payment-method-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+  }
+
+  .payment-method-card p {
+    font-size: 0.85rem;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .payment-method-card svg {
+    width: 90px;
+    height: 35px;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Payment card features list */
+  .payment-method-card > div:nth-child(4) {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Payment card features items */
+  .payment-method-card > div:nth-child(4) > div {
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  /* Payment card badges */
+  .payment-method-card > div:nth-child(5) {
+    font-size: 0.75rem;
+    padding: 0.8rem 0;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Pay Now buttons - touch-friendly */
+  .payment-method-card button {
+    padding: 0.7rem 1rem !important;
+    font-size: 0.9rem !important;
+    min-height: 44px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+  }
+
+  .payment-summary-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 0.9rem !important;
+    gap: 0.6rem !important;
+    border-radius: 10px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .payment-amount h2 {
+    font-size: 1.3rem;
+    margin-top: 0.3rem;
+  }
+
+  .payment-amount p {
+    font-size: 0.85rem;
+  }
+
+  .payment-security-badge {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.7rem;
+    border-radius: 6px;
+  }
+
+  .payment-security-badge p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  /* Page header on small screens */
+  .page-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-header p {
+    font-size: 0.85rem;
+  }
 }

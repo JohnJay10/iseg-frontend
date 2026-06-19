@@ -238,7 +238,9 @@
   }
 
   .nav-links.active {
-    max-height: 300px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /* Hamburger Animation - Line 1 */
