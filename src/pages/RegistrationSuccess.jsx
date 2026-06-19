@@ -17,14 +17,89 @@ const RegistrationSuccess = () => {
   useEffect(() => {
     // Extract params at the start of effect to ensure they're consistent throughout
     const txRef = searchParams.get('tx_ref')
+    const sessionId = searchParams.get('session_id')
     const registrationId = searchParams.get('registrationId')
     const status = searchParams.get('status')
     
-    console.log('RegistrationSuccess effect triggered with:', { txRef, registrationId, status })
+    console.log('RegistrationSuccess effect triggered with:', { txRef, sessionId, registrationId, status })
 
     // Prevent duplicate verification calls
     if (verifyingRef.current) {
       console.log('Verification already in progress, skipping...')
+      return
+    }
+
+    // Case 0: Stripe Checkout Session (session_id present)
+    if (sessionId && !registrationId) {
+      // Check if this session was already verified in this session
+      const verifiedInSession = sessionStorage.getItem(`verified_stripe_${sessionId}`)
+      if (verifiedInSession) {
+        console.log('Stripe session already verified in this session:', sessionId)
+        setVerifying(false)
+        return
+      }
+      
+      verifyingRef.current = true
+      
+      const verifyStripeSession = async () => {
+        try {
+          setVerifying(true)
+          console.log('Starting Stripe session verification for session_id:', sessionId)
+          
+          // Mark as verified immediately to prevent any duplicate calls
+          sessionStorage.setItem(`verified_stripe_${sessionId}`, 'true')
+          
+          // Retrieve pending registration data from sessionStorage
+          const pendingData = sessionStorage.getItem('pendingStripeRegistration')
+          if (!pendingData) {
+            throw new Error('Registration data not found. Please try again.')
+          }
+
+          const { registrationData, amount } = JSON.parse(pendingData)
+          console.log('Retrieved Stripe registration data from sessionStorage')
+          console.log('Amount from sessionStorage:', amount)
+
+          // Verify session with backend
+          console.log('Calling Stripe verification API with session_id:', sessionId, 'amount:', amount)
+          
+          const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => {
+              reject(new Error('Payment verification timed out after 40 seconds. Please check your payment status and try again.'))
+            }, 40000)
+          )
+
+          const verifyResponse = await Promise.race([
+            paymentService.verifyCheckoutSession(sessionId, registrationData, amount),
+            timeoutPromise
+          ])
+
+          console.log('Stripe verification response received:', verifyResponse.data)
+
+          if (verifyResponse.data.success) {
+            console.log('Stripe payment verified successfully, registration saved')
+            
+            // Clear sessionStorage
+            sessionStorage.removeItem('pendingStripeRegistration')
+            setVerifying(false)
+            // Redirect to success page with registration ID
+            const newRegId = verifyResponse.data.registrationId
+            console.log('Redirecting to success page with registrationId:', newRegId)
+            window.location.href = `/registration-success?registrationId=${newRegId}&status=completed`
+            return
+          } else {
+            throw new Error(verifyResponse.data.message || 'Payment verification failed')
+          }
+        } catch (err) {
+          console.error('Stripe payment verification error:', err.message)
+          console.error('Full error:', err)
+          if (err.message && !err.isTimedOut) {
+            setVerificationError(err.message || 'An error occurred while verifying your payment')
+          }
+          setVerifying(false)
+        }
+      }
+
+      verifyStripeSession()
       return
     }
 

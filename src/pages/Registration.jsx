@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import FlutterWavePayment from '../components/FlutterWavePayment'
 import MultiSelectDropdown from './MultiSelectDropdown'
 import { forumsList, shortCoursesList, workshopsList, sponsorshipList } from './RegistrationSelectors'
+import { paymentService } from '../services/api'
 import './Registration.css'
 
 const Registration = () => {
@@ -15,6 +16,8 @@ const Registration = () => {
   const [paymentAccount, setPaymentAccount] = useState('kenya')
   const [registrationCategory, setRegistrationCategory] = useState('')
   const [includesFestivalFree, setIncludesFestivalFree] = useState(false)
+  const [paymentMethod, setPaymentMethod] = useState('flutterwave')
+  const [showPaymentSelector, setShowPaymentSelector] = useState(false)
 
   // Reset form state when component mounts (for returning users)
   useEffect(() => {
@@ -212,7 +215,7 @@ const Registration = () => {
       
       setTotalAmount(total)
       setPaymentAccount(account)
-      setShowPayment(true)
+      setShowPaymentSelector(true)
     },
   })
 
@@ -227,10 +230,310 @@ const Registration = () => {
 
   const handleBackToForm = () => {
     setShowPayment(false)
+    setShowPaymentSelector(false)
     setRegistrationData(null)
     setTotalAmount(0)
     setPaymentAccount('kenya')
+    setPaymentMethod('flutterwave')
     setError('')
+  }
+
+  const handlePaymentMethodSelect = async (method) => {
+    setPaymentMethod(method)
+    
+    if (method === 'stripe') {
+      // For Stripe, initiate hosted checkout immediately
+      try {
+        console.log('Initiating Stripe Checkout Session...')
+        setError('')
+        
+        // Save registration data to sessionStorage for use after redirect
+        sessionStorage.setItem('pendingStripeRegistration', JSON.stringify({
+          registrationData,
+          amount: totalAmount
+        }))
+        console.log('Saved registration data to sessionStorage')
+        
+        const response = await paymentService.createCheckoutSession(
+          totalAmount,
+          registrationData,
+          'registration'
+        )
+        
+        console.log('Checkout session created:', response.data)
+        
+        if (response.data.success && response.data.checkoutUrl) {
+          // Redirect to Stripe Checkout page
+          console.log('Redirecting to Stripe Checkout...')
+          window.location.href = response.data.checkoutUrl
+        } else {
+          setError('Failed to create checkout session. Please try again.')
+          setShowPaymentSelector(true)
+          sessionStorage.removeItem('pendingStripeRegistration')
+        }
+      } catch (error) {
+        console.error('Error creating checkout session:', error)
+        setError('Error initiating payment. Please try again.')
+        setShowPaymentSelector(true)
+        sessionStorage.removeItem('pendingStripeRegistration')
+      }
+    } else {
+      // For Flutterwave, show the payment form
+      setShowPaymentSelector(false)
+      setShowPayment(true)
+    }
+  }
+
+  if (showPaymentSelector && registrationData) {
+    return (
+      <main>
+        <section className="page-header">
+          <div className="container">
+            <h1>Complete Your Payment</h1>
+            <p>Choose a secure payment method</p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              {error && <div className="alert alert-danger">{error}</div>}
+              
+              {/* Payment Summary Card */}
+              <div style={{
+                backgroundColor: '#f8f9fa',
+                border: '1px solid #dee2e6',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                marginBottom: '2rem'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <p style={{ color: '#666', fontSize: '0.95rem', margin: 0 }}>Total Amount Due</p>
+                    <h2 style={{ margin: '0.5rem 0 0 0', color: '#333' }}>
+                      ${totalAmount.toFixed(2)} USD
+                    </h2>
+                  </div>
+                  <div style={{ 
+                    textAlign: 'right',
+                    padding: '1rem',
+                    backgroundColor: '#e8f5e9',
+                    borderRadius: '8px',
+                    border: '1px solid #4caf50'
+                  }}>
+                    <p style={{ margin: 0, color: '#4caf50', fontWeight: 'bold', fontSize: '0.9rem' }}>
+                      ✓ Secure Payment
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Methods Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '2rem',
+                marginBottom: '2rem'
+              }}>
+                {/* Stripe Card */}
+                <button
+                  onClick={() => handlePaymentMethodSelect('stripe')}
+                  style={{
+                    backgroundColor: '#fff',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '12px',
+                    padding: '2.5rem 1.5rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#6772e5'
+                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(103, 114, 229, 0.15)'
+                    e.currentTarget.style.transform = 'translateY(-4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#e5e7eb'
+                    e.currentTarget.style.boxShadow = 'none'
+                    e.currentTarget.style.transform = 'translateY(0)'
+                  }}
+                >
+                  {/* Stripe Logo */}
+                  <svg width="120" height="50" viewBox="0 0 60 25" style={{ marginBottom: '1.5rem' }}>
+                    <text x="30" y="18" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#6772e5" fontFamily="Arial">
+                      STRIPE
+                    </text>
+                  </svg>
+
+                  <h3 style={{ 
+                    margin: '0 0 0.8rem 0', 
+                    color: '#1f2937',
+                    fontSize: '1.3rem',
+                    fontWeight: '600'
+                  }}>
+                    Stripe
+                  </h3>
+
+                  <p style={{ 
+                    fontSize: '0.95rem', 
+                    color: '#666', 
+                    margin: '0 0 1.5rem 0',
+                    lineHeight: '1.5'
+                  }}>
+                    Fast & secure card payments
+                  </p>
+
+                  {/* Features */}
+                  <div style={{ textAlign: 'left', fontSize: '0.9rem', color: '#555' }}>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ Credit/Debit Cards</div>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ Instant Confirmation</div>
+                    <div>✓ 3D Secure Support</div>
+                  </div>
+
+                  {/* Badge */}
+                  <div style={{
+                    marginTop: '1.5rem',
+                    paddingTop: '1.5rem',
+                    borderTop: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    color: '#6772e5',
+                    fontSize: '0.85rem',
+                    fontWeight: '500'
+                  }}>
+                    🔒 PCI Compliant
+                  </div>
+                </button>
+
+                {/* Flutterwave Card */}
+                <button
+                  onClick={() => handlePaymentMethodSelect('flutterwave')}
+                  style={{
+                    backgroundColor: '#fff',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '12px',
+                    padding: '2.5rem 1.5rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#f78f1e'
+                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(247, 143, 30, 0.15)'
+                    e.currentTarget.style.transform = 'translateY(-4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#e5e7eb'
+                    e.currentTarget.style.boxShadow = 'none'
+                    e.currentTarget.style.transform = 'translateY(0)'
+                  }}
+                >
+                  {/* Flutterwave Logo */}
+                  <svg width="120" height="50" viewBox="0 0 60 25" style={{ marginBottom: '1.5rem' }}>
+                    <text x="30" y="18" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#f78f1e" fontFamily="Arial">
+                      FLUTTERWAVE
+                    </text>
+                  </svg>
+
+                  <h3 style={{ 
+                    margin: '0 0 0.8rem 0', 
+                    color: '#1f2937',
+                    fontSize: '1.3rem',
+                    fontWeight: '600'
+                  }}>
+                    Flutterwave
+                  </h3>
+
+                  <p style={{ 
+                    fontSize: '0.95rem', 
+                    color: '#666', 
+                    margin: '0 0 1.5rem 0',
+                    lineHeight: '1.5'
+                  }}>
+                    Multiple payment options available
+                  </p>
+
+                  {/* Features */}
+                  <div style={{ textAlign: 'left', fontSize: '0.9rem', color: '#555' }}>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ Cards & Mobile Money</div>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ Bank Transfers</div>
+                    <div>✓ USSD Payments</div>
+                  </div>
+
+                  {/* Badge */}
+                  <div style={{
+                    marginTop: '1.5rem',
+                    paddingTop: '1.5rem',
+                    borderTop: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    color: '#f78f1e',
+                    fontSize: '0.85rem',
+                    fontWeight: '500'
+                  }}>
+                    🌍 Multi-Region Support
+                  </div>
+                </button>
+              </div>
+
+              {/* Security Info */}
+              <div style={{
+                backgroundColor: '#f0f4ff',
+                border: '1px solid #c7d2fe',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem'
+              }}>
+                <span style={{ fontSize: '1.5rem' }}>🔐</span>
+                <div>
+                  <p style={{ margin: 0, color: '#1e3a8a', fontWeight: '600' }}>Your payment is secure</p>
+                  <p style={{ margin: '0.25rem 0 0 0', color: '#3730a3', fontSize: '0.9rem' }}>
+                    Both payment methods use industry-standard encryption and fraud protection
+                  </p>
+                </div>
+              </div>
+
+              {/* Back Button */}
+              <button
+                onClick={handleBackToForm}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  border: '1px solid #dee2e6',
+                  backgroundColor: '#fff',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  color: '#666',
+                  fontWeight: '500',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f8f9fa'
+                  e.currentTarget.style.borderColor = '#999'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#fff'
+                  e.currentTarget.style.borderColor = '#dee2e6'
+                }}
+              >
+                ← Back to Form
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    )
   }
 
   if (showPayment && registrationData) {
