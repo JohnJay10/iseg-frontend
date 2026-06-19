@@ -120,6 +120,44 @@ export const paymentService = {
       { timeout: 30000 },
     ),
 
+  // Stripe payment endpoints
+  createPaymentIntent: (
+    amount,
+    registrationData,
+    paymentPurpose = "registration",
+  ) =>
+    api.post(
+      "/payments/stripe/create-intent",
+      { amount, registrationData, paymentPurpose },
+      { timeout: 15000 },
+    ),
+
+  confirmStripePayment: (paymentIntentId, registrationData, amount) =>
+    api.post(
+      "/payments/stripe/confirm",
+      { paymentIntentId, registrationData, amount },
+      { timeout: 30000 },
+    ),
+
+  // Stripe Hosted Checkout endpoints (NEW)
+  createCheckoutSession: (
+    amount,
+    registrationData,
+    paymentPurpose = "registration",
+  ) =>
+    api.post(
+      "/payments/stripe/checkout/create",
+      { amount, registrationData, paymentPurpose },
+      { timeout: 15000 },
+    ),
+
+  verifyCheckoutSession: (sessionId, registrationData, amount) =>
+    api.post(
+      "/payments/stripe/checkout/verify",
+      { sessionId, registrationData, amount },
+      { timeout: 30000 },
+    ),
+
   // PayPal legacy endpoints
   createOrder: (amount, registrationData, paymentPurpose = "registration") =>
     api.post(
