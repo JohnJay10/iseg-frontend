@@ -18,6 +18,9 @@ import CoOrganizers from './pages/CoOrganizers'
 import Sponsorship from './pages/Sponsorship'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import RefundPolicy from './pages/RefundPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
 import useKeepAlive from './hooks/useKeepAlive'
 import './App.css'
 
@@ -41,6 +44,9 @@ function App() {
           <Route path="/forums" element={<Forums />} />
           <Route path="/co-organizers" element={<CoOrganizers />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route 
             path="/admin/dashboard" 
