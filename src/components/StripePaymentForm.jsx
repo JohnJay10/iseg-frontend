@@ -21,14 +21,20 @@ const StripePaymentForm = ({ totalAmount, registrationData, onPaymentSuccess, on
     setError('')
 
     try {
-      // Create Payment Intent
+      // Create Payment Intent on the backend
       const intentResponse = await paymentService.createPaymentIntent(
-        totalAmount / 100, // Convert cents to dollars
-        `ISEG/GGSD 2026 Registration - $${(totalAmount / 100).toFixed(2)}`,
-        registrationData
+        totalAmount,
+        registrationData,
+        'registration'
       )
 
-      const { clientSecret } = intentResponse.data
+      if (!intentResponse.data.success) {
+        setError(intentResponse.data.message || 'Failed to create payment intent')
+        setIsProcessing(false)
+        return
+      }
+
+      const { clientSecret, paymentIntentId } = intentResponse.data
 
       // Confirm payment with Stripe
       const { paymentIntent, error: stripeError } = await stripe.confirmCardPayment(clientSecret, {
@@ -49,22 +55,31 @@ const StripePaymentForm = ({ totalAmount, registrationData, onPaymentSuccess, on
 
       if (paymentIntent.status === 'succeeded') {
         // Confirm payment on backend and save registration
-        const confirmResponse = await paymentService.confirmPayment(
-          paymentIntent.id,
-          {
-            ...registrationData,
-            totalAmount: totalAmount / 100,
-          }
+        const confirmResponse = await paymentService.confirmStripePayment(
+          paymentIntentId,
+          registrationData,
+          totalAmount
         )
 
-        onPaymentSuccess(confirmResponse.data.registrationId)
+        if (confirmResponse.data.success) {
+          onPaymentSuccess(confirmResponse.data.registrationId)
+        } else {
+          setError(confirmResponse.data.message || 'Failed to confirm payment')
+          setIsProcessing(false)
+        }
       } else {
         setError(`Payment status: ${paymentIntent.status}`)
         setIsProcessing(false)
       }
     } catch (err) {
-      const errorMsg = err.response?.data?.message || err.message || 'Payment processing failed'
-      setError(errorMsg)
+      const errorMsg = err.response?.data?.message || err.message || ''
+      if (errorMsg && !err.isTimedOut) {
+        setError(errorMsg)
+      } else if (err.isTimedOut) {
+        console.error('Request timed out - suppressed from UI')
+      } else {
+        setError('Payment processing failed. Please try again.')
+      }
       console.error('Payment error:', err)
       setIsProcessing(false)
     }
@@ -97,21 +112,49 @@ const StripePaymentForm = ({ totalAmount, registrationData, onPaymentSuccess, on
         <div className="summary-item">
           <span>Total Amount:</span>
           <span className="price" style={{ fontSize: '1.3em', fontWeight: 'bold' }}>
-            ${(totalAmount / 100).toFixed(2)}
+            ${totalAmount.toFixed(2)}
           </span>
         </div>
+        {registrationData.selectedItems && registrationData.selectedItems.length > 0 && (
+          <div className="summary-details" style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
+            <p style={{ marginBottom: '0.5rem' }}><strong>Items:</strong></p>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {registrationData.selectedItems.map((item, idx) => (
+                <li key={idx} style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.3rem' }}>
+                  <span>{item.code || item.type}</span>
+                  <span>${item.price.toFixed(2)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <form onSubmit={handlePaymentSubmit} className="payment-form" style={{ marginTop: '2rem' }}>
         <div className="form-group">
           <label>Card Details *</label>
-          <div className="card-element-wrapper">
+          <div className="card-element-wrapper" style={{
+            border: '1px solid #ccc',
+            padding: '1rem',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
             <CardElement options={cardElementOptions} />
           </div>
         </div>
 
-        <div className="security-note">
-          <p>🔒 Your payment is securely processed by Stripe</p>
+        <div className="security-note" style={{
+          backgroundColor: '#e8f5e9',
+          padding: '1rem',
+          borderRadius: '4px',
+          marginBottom: '1rem',
+          color: '#2e7d32',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem'
+        }}>
+          <span>🔒</span>
+          <p>Your payment is securely processed by Stripe</p>
         </div>
 
         <div className="form-actions" style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
@@ -121,7 +164,7 @@ const StripePaymentForm = ({ totalAmount, registrationData, onPaymentSuccess, on
             disabled={!stripe || isProcessing}
             style={{ flex: 1 }}
           >
-            {isProcessing ? 'Processing Payment...' : 'Pay Now'}
+            {isProcessing ? 'Processing Payment...' : `Pay $${totalAmount.toFixed(2)}`}
           </button>
           <button
             type="button"

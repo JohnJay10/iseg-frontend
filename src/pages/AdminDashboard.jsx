@@ -42,8 +42,14 @@ const AdminDashboard = () => {
       setAbstracts(response.data.abstracts || [])
     } catch (err) {
       console.error('Error fetching abstracts:', err)
-      const errorMessage = err.response?.data?.message || err.message || 'Error fetching abstracts'
-      setError(errorMessage)
+      const errorMessage = err.response?.data?.message || err.message || ''
+      if (errorMessage) {
+        setError(errorMessage)
+      } else if (err.isTimedOut) {
+        console.error('Request timed out - suppressed from UI')
+      } else {
+        setError('Error fetching abstracts')
+      }
 
       // If unauthorized, redirect to login
       if (err.response?.status === 401) {
@@ -399,11 +405,14 @@ const AdminDashboard = () => {
                     <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Part A</th>
-                      <th>Part B</th>
-                      <th>Both Parts</th>
-                      <th>Short Course</th>
-                      <th>Safari Tour</th>
+                      <th>Registration Type</th>
+                      <th>Account</th>
+                      <th>Forums</th>
+                      <th>Courses</th>
+                      <th>Workshops</th>
+                      <th>Safari</th>
+                      <th>Festival</th>
+                      <th>Sponsorship</th>
                       <th>Total Amount</th>
                       <th>Date</th>
                       <th>Actions</th>
@@ -422,19 +431,52 @@ const AdminDashboard = () => {
                           <a href={`mailto:${registration.email}`}>{registration.email}</a>
                         </td>
                         <td>
-                          <span>{registration.registrationType === 'part-a' ? '✓ Yes' : '✗ No'}</span>
+                          <span>{registration.registrationType ? registration.registrationType.replace(/-/g, ' ').toUpperCase() : 'Independent'}</span>
                         </td>
                         <td>
-                          <span>{registration.registrationType === 'part-b' ? '✓ Yes' : '✗ No'}</span>
+                          <span style={{ 
+                            padding: '4px 8px', 
+                            borderRadius: '4px',
+                            backgroundColor: registration.paymentAccount === 'kenya' ? '#d4edda' : '#cfe2ff',
+                            color: registration.paymentAccount === 'kenya' ? '#155724' : '#004085',
+                            fontWeight: 'bold'
+                          }}>
+                            {registration.paymentAccount ? registration.paymentAccount.toUpperCase() : 'KENYA'}
+                          </span>
                         </td>
                         <td>
-                          <span>{registration.registrationType === 'both' ? '✓ Yes' : '✗ No'}</span>
+                          {registration.selectedForums && registration.selectedForums.length > 0 ? (
+                            <span title={registration.selectedForums.join(", ")}>✓ {registration.selectedForums.length}</span>
+                          ) : (
+                            <span>-</span>
+                          )}
                         </td>
                         <td>
-                          <span>{registration.shortCourse ? '✓ Yes' : '✗ No'}</span>
+                          {registration.selectedShortCourses && registration.selectedShortCourses.length > 0 ? (
+                            <span title={registration.selectedShortCourses.join(", ")}>✓ {registration.selectedShortCourses.length}</span>
+                          ) : (
+                            <span>-</span>
+                          )}
                         </td>
                         <td>
-                          <span>{registration.safariTour ? '✓ Yes' : '✗ No'}</span>
+                          {registration.selectedWorkshops && registration.selectedWorkshops.length > 0 ? (
+                            <span title={registration.selectedWorkshops.join(", ")}>✓ {registration.selectedWorkshops.length}</span>
+                          ) : (
+                            <span>-</span>
+                          )}
+                        </td>
+                        <td>
+                          <span>{(registration.independentSafari || registration.safariTour) ? '✓ Yes' : '-'}</span>
+                        </td>
+                        <td>
+                          <span>{registration.independentFestival ? '✓ Yes' : '-'}</span>
+                        </td>
+                        <td>
+                          {registration.selectedSponsorship && registration.selectedSponsorship.length > 0 ? (
+                            <span title={registration.selectedSponsorship.join(", ")}>✓ {registration.selectedSponsorship.length}</span>
+                          ) : (
+                            <span>-</span>
+                          )}
                         </td>
                         <td>
                           <strong>${registration.totalAmount || 0}</strong>

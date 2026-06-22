@@ -11,6 +11,11 @@ import Registration from './pages/Registration'
 import RegistrationSuccess from './pages/RegistrationSuccess'
 import Schedule from './pages/Schedule'
 import SafariTour from './pages/SafariTour'
+import Hotels from './pages/Hotels'
+import Workshops from './pages/Workshops'
+import Forums from './pages/Forums'
+import CoOrganizers from './pages/CoOrganizers'
+import Sponsorship from './pages/Sponsorship'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 import useKeepAlive from './hooks/useKeepAlive'
@@ -31,6 +36,11 @@ function App() {
           <Route path="/registration-success" element={<RegistrationSuccess />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/safari-tour" element={<SafariTour />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/workshops" element={<Workshops />} />
+          <Route path="/forums" element={<Forums />} />
+          <Route path="/co-organizers" element={<CoOrganizers />} />
+          <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route 
             path="/admin/dashboard" 

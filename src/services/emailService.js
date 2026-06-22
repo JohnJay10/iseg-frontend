@@ -1,16 +1,20 @@
-import emailjs from '@emailjs/browser'
+import emailjs from "@emailjs/browser";
 
 // Initialize EmailJS with public key
-const EMAILJS_PUBLIC_KEY = 'ri5vNqV8YgjCFUxO8'
-const EMAILJS_SERVICE_ID = 'service_1mkcs2c'
-const EMAILJS_TEMPLATE_ABSTRACT = 'template_abstract'
-const EMAILJS_TEMPLATE_REGISTRATION = 'template_registration'
+const EMAILJS_PUBLIC_KEY = "ri5vNqV8YgjCFUxO8";
+const EMAILJS_SERVICE_ID = "service_1mkcs2c";
+const EMAILJS_TEMPLATE_ABSTRACT = "template_abstract";
+const EMAILJS_TEMPLATE_REGISTRATION = "template_registration";
 
 // Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY)
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 // Send abstract submission confirmation email
-export const sendAbstractConfirmationEmail = async (email, submissionId, title) => {
+export const sendAbstractConfirmationEmail = async (
+  email,
+  submissionId,
+  title,
+) => {
   try {
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -26,7 +30,7 @@ export const sendAbstractConfirmationEmail = async (email, submissionId, title) 
           </p>
           
           <p style="color: #666; font-size: 16px; line-height: 1.6;">
-            We have successfully received your abstract submission. Your submission has been registered in our system and is now under review.
+            We have successfully received your abstract submission. Your submission has been registered in our system and it is approved.
           </p>
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #E67E22;">
@@ -38,6 +42,20 @@ export const sendAbstractConfirmationEmail = async (email, submissionId, title) 
             </p>
           </div>
           
+          <div style="background: linear-gradient(135deg, #27AE60 0%, #229954 100%); padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #1E8449; box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 32px; font-weight: bold; color: white;">✓</span>
+              <div>
+                <p style="margin: 0 0 5px 0; color: rgba(255, 255, 255, 0.9); font-size: 14px;">
+                  <strong>Status:</strong>
+                </p>
+                <p style="margin: 0; color: white; font-size: 18px; font-weight: bold;">
+                  APPROVED
+                </p>
+              </div>
+            </div>
+          </div>
+          
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #0098d4;">
             <p style="margin: 0 0 10px 0; color: #666; font-size: 14px;">
               <strong>Paper Title:</strong>
@@ -47,16 +65,8 @@ export const sendAbstractConfirmationEmail = async (email, submissionId, title) 
             </p>
           </div>
           
-          <h3 style="color: #333; margin-top: 30px;">Important Information:</h3>
-          <ul style="color: #666; font-size: 15px; line-height: 1.8;">
-            <li>Your submission ID is required for any inquiries about your abstract</li>
-            <li>You will receive an acceptance/rejection notification by <strong>May 30, 2026</strong></li>
-            <li>Registration closes on <strong>June 30, 2026</strong></li>
-            <li>The Symposium will be held from <strong>August 9-15, 2026</strong> at the University of Nairobi, Kenya</li>
-          </ul>
-          
           <p style="color: #666; font-size: 15px; line-height: 1.6; margin-top: 30px;">
-            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>iseg-ggsd.com.ng</strong>.
+            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>iseg@gisdaad.org</strong>.
           </p>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6;">
@@ -67,32 +77,33 @@ export const sendAbstractConfirmationEmail = async (email, submissionId, title) 
         
         <div style="background: #f9f9f9; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999;">
           <p style="margin: 0;">14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-          <p style="margin: 5px 0 0 0;">University of Nairobi, Kenya | August 9-15, 2026</p>
+          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | August 9-15, 2026</p>
         </div>
       </div>
-    `
+    `;
 
     const templateParams = {
       to_email: email,
-      subject: 'Abstract Submission Confirmation - ISEG/GGSD 2026 Mega Symposium',
+      subject:
+        "Abstract Submission Confirmation - ISEG/GGSD 2026 Mega Symposium",
       html_message: emailContent,
       submission_id: submissionId,
       paper_title: title,
-    }
+    };
 
     const response = await emailjs.send(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ABSTRACT,
-      templateParams
-    )
+      templateParams,
+    );
 
-    console.log('✅ Abstract confirmation email sent successfully')
-    return true
+    console.log("✅ Abstract confirmation email sent successfully");
+    return true;
   } catch (error) {
-    console.error('❌ Error sending abstract confirmation email:', error)
-    return false
+    console.error("❌ Error sending abstract confirmation email:", error);
+    return false;
   }
-}
+};
 
 // Send registration confirmation email
 export const sendRegistrationConfirmationEmail = async (registrationData) => {
@@ -103,23 +114,43 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
       lastName,
       phone,
       registrationType,
-      totalAmount,
+      totalAmount = 0,
       shortCourse,
       safariTour,
+      selectedForums = [],
+      selectedShortCourses = [],
+      selectedWorkshops = [],
+      selectedSponsorship = [],
+      independentSafari = false,
+      independentFestival = false,
       ticketId,
-    } = registrationData
+    } = registrationData;
+
+    // Ensure totalAmount is a valid number
+    const displayAmount = parseFloat(totalAmount) || 0;
 
     // Format registration package
-    const registrationPackage = {
-      'part-a': 'Part A Only (Aug 9-11: Environmental Geotechnology)',
-      'part-b': 'Part B Only (Aug 13-15: Sustainable Development)',
-      'both': 'Both Parts (Complete Symposium Experience)',
-      'all': 'All-Inclusive (With Safari & Short Courses)',
-    }[registrationType] || registrationType
+    const registrationPackage =
+      {
+        "part-a": "Part A Only (Aug 9-11: Environmental Geotechnology)",
+        "part-b": "Part B Only (Aug 13-15: Sustainable Development)",
+        both: "Both Parts (Complete Symposium Experience)",
+        all: "All-Inclusive (With Safari & Short Courses)",
+      }[registrationType] || registrationType;
 
-    let addedServices = []
-    if (shortCourse) addedServices.push('Short Course')
-    if (safariTour) addedServices.push('Kenya Safari Tour')
+    let addedServices = [];
+    if (shortCourse) addedServices.push("Short Course");
+    if (safariTour) addedServices.push("Kenya Safari Tour");
+    if (selectedForums.length > 0)
+      addedServices.push(`${selectedForums.length} Forum(s)`);
+    if (selectedShortCourses.length > 0)
+      addedServices.push(`${selectedShortCourses.length} Short Course(s)`);
+    if (selectedWorkshops.length > 0)
+      addedServices.push(`${selectedWorkshops.length} Workshop(s)`);
+    if (independentSafari) addedServices.push("Safari Tour");
+    if (independentFestival) addedServices.push("Festival");
+    if (selectedSponsorship.length > 0)
+      addedServices.push(`${selectedSponsorship.length} Sponsorship Level(s)`);
 
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -162,15 +193,59 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
                 <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Package:</td>
                 <td style="padding: 10px 0;">${registrationPackage}</td>
               </tr>
-              ${addedServices.length > 0 ? `
+              ${
+                addedServices.length > 0
+                  ? `
               <tr style="border-bottom: 1px solid #ddd;">
                 <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Additional Services:</td>
-                <td style="padding: 10px 0;">${addedServices.join(', ')}</td>
+                <td style="padding: 10px 0;">${addedServices.join(", ")}</td>
               </tr>
-              ` : ''}
+              `
+                  : ""
+              }
+              ${
+                selectedForums.length > 0
+                  ? `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Forums Selected:</td>
+                <td style="padding: 10px 0;">${selectedForums.join(", ")}</td>
+              </tr>
+              `
+                  : ""
+              }
+              ${
+                selectedShortCourses.length > 0
+                  ? `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Courses Selected:</td>
+                <td style="padding: 10px 0;">${selectedShortCourses.join(", ")}</td>
+              </tr>
+              `
+                  : ""
+              }
+              ${
+                selectedWorkshops.length > 0
+                  ? `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Workshops Selected:</td>
+                <td style="padding: 10px 0;">${selectedWorkshops.join(", ")}</td>
+              </tr>
+              `
+                  : ""
+              }
+              ${
+                selectedSponsorship.length > 0
+                  ? `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Sponsorship Levels:</td>
+                <td style="padding: 10px 0;">${selectedSponsorship.join(", ")}</td>
+              </tr>
+              `
+                  : ""
+              }
               <tr>
                 <td style="padding: 10px 0; padding-right: 15px; font-weight: bold;">Total Amount:</td>
-                <td style="padding: 10px 0; color: #2ECC71; font-weight: bold; font-size: 16px;">$${totalAmount.toFixed(2)}</td>
+                <td style="padding: 10px 0; color: #2ECC71; font-weight: bold; font-size: 16px;">$${displayAmount.toFixed(2)}</td>
               </tr>
             </table>
           </div>
@@ -178,7 +253,7 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
           <h3 style="color: #333;">Important Information:</h3>
           <ul style="color: #666; font-size: 15px; line-height: 1.8;">
             <li>📅 <strong>Dates:</strong> August 9-15, 2026</li>
-            <li>📍 <strong>Location:</strong> University of Nairobi, Kenya</li>
+            <li>📍 <strong>Location:</strong> Maanzoni 680 Hotel, Nairobi, Kenya</li>
             <li>🎫 <strong>Ticket:</strong> ${ticketId}</li>
             <li>✉️ <strong>Questions?</strong> Contact us at iseg@gisdaad.org</li>
           </ul>
@@ -195,37 +270,37 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
         
         <div style="background: #f9f9f9; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999;">
           <p style="margin: 0;">14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-          <p style="margin: 5px 0 0 0;">University of Nairobi, Kenya | August 9-15, 2026</p>
+          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | August 9-15, 2026</p>
         </div>
       </div>
-    `
+    `;
 
     const templateParams = {
       to_email: email,
-      subject: 'Registration Confirmed - Your Event Ticket | ISEG/GGSD 2026',
+      subject: "Registration Confirmed - Your Event Ticket | ISEG/GGSD 2026",
       html_message: emailContent,
       first_name: firstName,
       last_name: lastName,
       ticket_id: ticketId,
       registration_package: registrationPackage,
-      total_amount: totalAmount.toFixed(2),
-    }
+      total_amount: displayAmount.toFixed(2),
+    };
 
     const response = await emailjs.send(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_REGISTRATION,
-      templateParams
-    )
+      templateParams,
+    );
 
-    console.log('✅ Registration confirmation email sent successfully')
-    return true
+    console.log("✅ Registration confirmation email sent successfully");
+    return true;
   } catch (error) {
-    console.error('❌ Error sending registration confirmation email:', error)
-    return false
+    console.error("❌ Error sending registration confirmation email:", error);
+    return false;
   }
-}
+};
 
 export default {
   sendAbstractConfirmationEmail,
   sendRegistrationConfirmationEmail,
-}
+};

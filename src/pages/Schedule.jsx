@@ -58,10 +58,11 @@ const Schedule = () => {
       { title: 'Global Youth Sustainable Development Forum', type: 'special' }
     ],
     15: [
-      { title: 'BrownBard International Cultural and Literary Festival', type: 'special' }
+      { title: 'BrownBard International Cultural and Literary Festival', type: 'special' },
+      { title: 'Short Courses - TW.1: Oil & Gas Industry Workshop (8:30 AM - 4:30 PM)', type: 'course' }
     ],
     16: [
-      { title: 'Short Courses', type: 'course' }
+      { title: 'Short Courses - TW.2: Global South Mid-Career Workshop (8:30 AM - 4:30 PM)', type: 'course' }
     ]
   }
 
@@ -222,14 +223,19 @@ const Schedule = () => {
             <div style={{ marginBottom: '1.5rem' }}>
               <h4>Day 7, Saturday, August 15, 2026</h4>
               <ul style={{ marginLeft: '1rem' }}>
-                <li>BrownBard International Cultural and Literary Festival (BICLF)</li>
+                <li>Safari Tour - Nairobi National Park (6 AM - 12 Noon)</li>
+                <li>Organized Lunch in Nairobi (12 Noon)</li>
+                <li>Training Workshop TW.1: Oil and Gas Industry Training (8:30 AM - 4:30 PM)</li>
+                <li>National Museum Tour (3-5 PM)</li>
+                <li>BrownBard International Cultural and Literary Festival (BICLF) (2:00 PM - 11:00 PM)</li>
               </ul>
             </div>
             
             <div style={{ marginBottom: '1.5rem' }}>
               <h4>Day 8, Sunday, August 16, 2026</h4>
               <ul style={{ marginLeft: '1rem' }}>
-                <li>Short Courses</li>
+                <li>Training Workshop TW.2: Global South Mid-Career Training (8:30 AM - 4:30 PM)</li>
+                <li>Short Courses (All Day)</li>
               </ul>
             </div>
           </div>
@@ -245,28 +251,40 @@ const Schedule = () => {
               <p>Release of Bulletin 3: Call for Abstracts, Sponsored-Session Proposals and Exhibitions</p>
             </div>
             <div className="timeline-item">
-              <span className="date">Apr 30, 2026</span>
-              <p>Deadline for Online Submission of 4-Page Abstracts using Specified Format</p>
+              <span className="date">May 30, 2026</span>
+              <p>Deadline for Sponsored-Session Proposals and Shortcourse Plans Submission</p>
             </div>
             <div className="timeline-item">
-              <span className="date">Apr 30, 2026</span>
-              <p>Deadline for Submission of Sponsored-Session Proposals</p>
+              <span className="date">May 31, 2026</span>
+              <p>Expert Instructor Applications Deadline</p>
             </div>
             <div className="timeline-item">
-              <span className="date">Apr 30, 2026</span>
-              <p>Deadline for Submission of Exhibition Plans and Registration</p>
+              <span className="date">Jun 20, 2026</span>
+              <p>Deadline for 4-Page Abstract Submission</p>
             </div>
             <div className="timeline-item">
-              <span className="date">Jun 15, 2026</span>
-              <p>Production of Mega Symposium Program and Call for Registration – Bulletin 4</p>
+              <span className="date">Jun 25, 2026</span>
+              <p>Full Symposium Program Release - Bulletin 4.1</p>
+            </div>
+            <div className="timeline-item">
+              <span className="date">Jun 30, 2026</span>
+              <p>Early Registration Deadline (Suggested)</p>
+            </div>
+            <div className="timeline-item">
+              <span className="date">Jul 4, 2026</span>
+              <p>Shortcourse Registration Deadline</p>
             </div>
             <div className="timeline-item">
               <span className="date">Aug 1, 2026</span>
-              <p>Deadline for Regular Registration • Deadline for Registration for Shortcourses</p>
+              <p>Regular Registration Deadline</p>
+            </div>
+            <div className="timeline-item">
+              <span className="date">Aug 5, 2026</span>
+              <p>Hotel Booking Deadline for Special Rates</p>
             </div>
             <div className="timeline-item highlight">
               <span className="date">Aug 9-16, 2026</span>
-              <p>ISEG/GGSD-2026 Mega Symposium (8 Days)</p>
+              <p>ISEG/GGSD-2026 Mega Symposium (8 Days) - Maanzoni 680 Hotel, Nairobi, Kenya</p>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="footer-section">
             <h3>About ISEG/GGSD 2026</h3>
             <p>14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-            <p>August 9-15, 2026 @ University of Nairobi, Kenya</p>
+            <p>August 9-15, 2026 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
           </div>
           
           <div className="footer-section">

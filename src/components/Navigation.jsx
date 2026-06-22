@@ -34,7 +34,12 @@ const Navigation = () => {
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <li><Link to="/" onClick={closeMenu}>Home</Link></li>
           <li><Link to="/schedule" onClick={closeMenu}>Schedule</Link></li>
+          <li><Link to="/forums" onClick={closeMenu}>Forums</Link></li>
+          <li><Link to="/workshops" onClick={closeMenu}>Workshops</Link></li>
           <li><Link to="/safari-tour" onClick={closeMenu}>Safari Tour</Link></li>
+          <li><Link to="/hotels" onClick={closeMenu}>Hotels</Link></li>
+          <li><Link to="/co-organizers" onClick={closeMenu}>Co-Organizers</Link></li>
+          <li><Link to="/sponsorship" onClick={closeMenu}>Sponsor</Link></li>
           <li><Link to="/submit-abstract" onClick={closeMenu}>Call for Abstract</Link></li>
           <li><Link to="/register" onClick={closeMenu}>Register</Link></li>
         </ul>

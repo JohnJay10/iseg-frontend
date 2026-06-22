@@ -8,7 +8,7 @@ export default function TopHeader() {
           <div className="contact-info">
             <span className="contact-item">
               <i className="icon">📍</i>
-              <span>University of Nairobi, Kenya</span>
+              <span>Maanzoni 680 Hotel, Nairobi, Kenya</span>
             </span>
             <span className="contact-item">
               <i className="icon">📧</i>

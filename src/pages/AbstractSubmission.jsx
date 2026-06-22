@@ -50,8 +50,14 @@ const AbstractSubmission = () => {
         setSubmitted(true)
         formik.resetForm()
       } catch (err) {
-        const errorMsg = err.response?.data?.message || err.message || 'Error submitting abstract'
-        setError(errorMsg)
+        const errorMsg = err.response?.data?.message || err.message || ''
+        if (errorMsg) {
+          setError(errorMsg)
+        } else if (err.isTimedOut) {
+          console.error('Request timed out - suppressed from UI')
+        } else {
+          setError('Error submitting abstract')
+        }
       }
     },
   })
@@ -103,61 +109,7 @@ const AbstractSubmission = () => {
 
       <section className="section">
         <div className="container">
-          <div className="form-container">
-            <div className="form-info">
-              <h3>Abstract Submission Guidelines</h3>
-              
-              <div className="guidelines-section">
-                <h4>📋 Format Requirements</h4>
-                <ul>
-                  <li><strong>Page Limit:</strong> 4 pages maximum</li>
-                  <li><strong>Paper Size:</strong> A4 (210 × 297 mm)</li>
-                  <li><strong>Top & Bottom Margins:</strong> 2.5 cm</li>
-                  <li><strong>Left & Right Margins:</strong> 2 cm</li>
-                  <li><strong>Font:</strong> 12-point Times New Roman or Calibri</li>
-                  <li><strong>Line Spacing:</strong> Single or 1.5</li>
-                  <li><strong>File Format:</strong> PDF only (maximum 10 MB)</li>
-                </ul>
-              </div>
-
-              <div className="guidelines-section">
-                <h4>📝 Abstract Structure</h4>
-                <ul>
-                  <li><strong>Title:</strong> Clear, concise, and descriptive of your research</li>
-                  <li><strong>Authors:</strong> List all authors with affiliations</li>
-                  <li><strong>Keywords:</strong> 4-6 relevant keywords separated by commas</li>
-                  <li><strong>Introduction:</strong> Brief background and research motivation</li>
-                  <li><strong>Methods/Approach:</strong> Describe your methodology or approach</li>
-                  <li><strong>Results/Findings:</strong> Present key results or conclusions</li>
-                  <li><strong>Implications:</strong> Discuss significance and implications</li>
-                  <li><strong>References:</strong> Cite relevant literature (optional but recommended)</li>
-                </ul>
-              </div>
-
-              <div className="guidelines-section">
-                <h4>✅ Submission Requirements</h4>
-                <ul>
-                  <li><strong>Originality:</strong> Abstracts must present original research or significant contributions</li>
-                  <li><strong>Quality:</strong> Well-written and suitable for peer-review</li>
-                  <li><strong>Track Selection:</strong> Choose the most appropriate Part A or Part B track</li>
-                  <li><strong>Lead Author Contact:</strong> Full contact information required</li>
-                  <li><strong>Language:</strong> English only</li>
-                  <li><strong>No Plagiarism:</strong> All submissions must be original work</li>
-                </ul>
-              </div>
-              
-              <div className="guidelines-note" style={{ marginTop: '1.5rem' }}>
-                <h4>📅 Important Dates & Timeline</h4>
-                <p><strong>Call for Abstracts Released:</strong> October 10, 2025</p>
-                <p><strong>Abstract Submission Deadline:</strong> April 30, 2026</p>
-                <p><strong>Program Published:</strong> May 30, 2026</p>
-                <p><strong>Regular Registration Closes:</strong> June 30, 2026</p>
-                <p><strong>Symposium Dates:</strong> August 9-15, 2026</p>
-                <p><strong>Notification of Acceptance:</strong> Within 4-6 weeks of submission</p>
-              </div>
-            </div>
-
-            <form onSubmit={formik.handleSubmit} className="submission-form">
+          <form onSubmit={formik.handleSubmit} className="submission-form">
               {error && <div className="alert alert-danger">{error}</div>}
 
               <div className="form-group">
@@ -337,7 +289,63 @@ const AbstractSubmission = () => {
                 <a href="/" className="btn btn-primary">Cancel</a>
               </div>
             </form>
-          </div>
+
+            {/* Guidelines Section Below Form */}
+            <div className="guidelines-container">
+              <h3>Abstract Submission Guidelines</h3>
+              
+              <div className="guidelines-section">
+                <h4>📋 Format Requirements</h4>
+                <ul>
+                  <li><strong>Page Limit:</strong> 4 pages maximum</li>
+                  <li><strong>Paper Size:</strong> A4 (210 × 297 mm)</li>
+                  <li><strong>Top & Bottom Margins:</strong> 2.5 cm</li>
+                  <li><strong>Left & Right Margins:</strong> 2 cm</li>
+                  <li><strong>Font:</strong> 12-point Times New Roman or Calibri</li>
+                  <li><strong>Line Spacing:</strong> Single or 1.5</li>
+                  <li><strong>File Format:</strong> PDF only (maximum 10 MB)</li>
+                </ul>
+              </div>
+
+              <div className="guidelines-section">
+                <h4>📝 Abstract Structure</h4>
+                <ul>
+                  <li><strong>Title:</strong> Clear, concise, and descriptive of your research</li>
+                  <li><strong>Authors:</strong> List all authors with affiliations</li>
+                  <li><strong>Keywords:</strong> 4-6 relevant keywords separated by commas</li>
+                  <li><strong>Introduction:</strong> Brief background and research motivation</li>
+                  <li><strong>Methods/Approach:</strong> Describe your methodology or approach</li>
+                  <li><strong>Results/Findings:</strong> Present key results or conclusions</li>
+                  <li><strong>Implications:</strong> Discuss significance and implications</li>
+                  <li><strong>References:</strong> Cite relevant literature (optional but recommended)</li>
+                </ul>
+              </div>
+
+              <div className="guidelines-section">
+                <h4>✅ Submission Requirements</h4>
+                <ul>
+                  <li><strong>Originality:</strong> Abstracts must present original research or significant contributions</li>
+                  <li><strong>Quality:</strong> Well-written and suitable for peer-review</li>
+                  <li><strong>Track Selection:</strong> Choose the most appropriate Part A or Part B track</li>
+                  <li><strong>Lead Author Contact:</strong> Full contact information required</li>
+                  <li><strong>Language:</strong> English only</li>
+                  <li><strong>No Plagiarism:</strong> All submissions must be original work</li>
+                </ul>
+              </div>
+              
+              <div className="guidelines-note" style={{ marginTop: '1.5rem' }}>
+                <h4>📅 Important Dates & Timeline</h4>
+                <p><strong>Call for Abstracts Released:</strong> October 10, 2025</p>
+                <p><strong>Sponsored-Session Proposals:</strong> May 30, 2026</p>
+                <p><strong>4-Page Abstract Submission Deadline:</strong> June 20, 2026</p>
+                <p><strong>Full Symposium Program Release:</strong> June 25, 2026</p>
+                <p><strong>Early Registration Deadline (Suggested):</strong> June 30, 2026</p>
+                <p><strong>Regular Registration Closes:</strong> August 1, 2026</p>
+                <p><strong>Hotel Booking Deadline:</strong> August 5, 2026</p>
+                <p><strong>Symposium Dates:</strong> August 9-15, 2026</p>
+                <p><strong>Notification of Acceptance:</strong> Within 4-6 weeks of submission</p>
+              </div>
+            </div>
         </div>
       </section>
     </main>

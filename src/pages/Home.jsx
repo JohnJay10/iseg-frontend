@@ -78,7 +78,7 @@ const Home = () => {
             </p>
             
             <p className="event-details">
-              <span>9-15 August 2026 @The University of Nairobi, Kenya</span>
+              <span>9-15 August 2026 | Maanzoni 680 Hotel, Nairobi, Kenya</span>
             </p>
             
             <div className="hero-buttons">
@@ -177,7 +177,7 @@ const Home = () => {
       <section className="section light" id="announcements">
   <div className="container">    
     <div className="bulletin-header">
-      <h2>2026 ISEG-GGSD MEGA-SYMPOSIUM BULLETIN 3.10: CALL FOR ABSTRACTS AND SPONSORS</h2>
+      <h2>2026 ISEG-GGSD MEGA-SYMPOSIUM BULLETIN 4.1: FINAL SYMPOSIUM DETAILS & REGISTRATION</h2>
       
       <div className="bulletin-info">
         <h4>14th International Symposium on Environmental Geotechnology and Global Sustainable Development</h4>
@@ -185,8 +185,8 @@ const Home = () => {
         <h4>2026 Global Geo-Ecosystems and Sustainable Development Symposium</h4>
         
         <div className="location-dates">
-          <p><strong>University of Nairobi, Nairobi, Kenya</strong></p>
-          <p><strong>Sunday, August 9, 2026 to Saturday August 15, 2026</strong></p>
+          <p><strong>Maanzoni 680 Hotel, Kenyatta Avenue, Muindi Mbingu Street, Nairobi, Kenya</strong></p>
+          <p><strong>Sunday, August 9, 2026 to Saturday, August 15, 2026</strong></p>
         </div>
         
         <div className="organized-section">
@@ -476,28 +476,43 @@ const Home = () => {
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">April 30, 2026</div>
-        <div className="calendar-label">Deadline for Online Submission of 4-Page Abstracts using Specified Format</div>
+        <div className="calendar-date">May 30, 2026</div>
+        <div className="calendar-label">Deadline for Sponsored-Session Proposals and Shortcourse Plans Submission</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">April 30, 2026</div>
-        <div className="calendar-label">Deadline for Submission of Sponsored-Session Proposals</div>
+        <div className="calendar-date">May 31, 2026</div>
+        <div className="calendar-label">Expert Instructor Applications Deadline</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">April 30, 2026</div>
-        <div className="calendar-label">Deadline for Submission of Exhibition Plans and Registration</div>
+        <div className="calendar-date">June 20, 2026</div>
+        <div className="calendar-label">Deadline for 4-Page Abstract Submission</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">June 15, 2026</div>
-        <div className="calendar-label">Production of Mega Symposium Program and Call for Registration – Bulletin 4</div>
+        <div className="calendar-date">June 25, 2026</div>
+        <div className="calendar-label">Full Symposium Program Release - Bulletin 4.1</div>
+      </div>
+      
+      <div className="calendar-item">
+        <div className="calendar-date">June 30, 2026</div>
+        <div className="calendar-label">Early Registration Deadline (Suggested)</div>
+      </div>
+      
+      <div className="calendar-item">
+        <div className="calendar-date">July 4, 2026</div>
+        <div className="calendar-label">Shortcourse Registration Deadline</div>
       </div>
       
       <div className="calendar-item">
         <div className="calendar-date">August 1, 2026</div>
-        <div className="calendar-label">Deadline for Regular Registration • Deadline for Registration for Shortcourses. (https://www.iseg-ggsd.com.ng/)</div>
+        <div className="calendar-label">Regular Registration Deadline</div>
+      </div>
+      
+      <div className="calendar-item">
+        <div className="calendar-date">August 5, 2026</div>
+        <div className="calendar-label">Hotel Booking Deadline for Special Rates</div>
       </div>
       
       <div className="calendar-item active">
@@ -528,7 +543,7 @@ const Home = () => {
         <div className="container">
           <div className="section-header">
             <h2>Secure your ISEG Spot</h2>
-            <p>09-15 August 2026 @The University of Nairobi, Kenya</p>
+            <p>09-15 August 2026 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
           </div>
           
           <div className="countdown-cta-wrapper">
@@ -1154,10 +1169,46 @@ const Home = () => {
 
 
       {/* Venue */}
-      <section className="section">
+      <section className="venue-section">
         <div className="container">
-          <h2>Venue</h2>
-          <p className="lead">University of Nairobi, Kenya</p>
+          <div className="venue-content">
+            <div className="venue-text">
+              <h2>Venue</h2>
+              <h3 className="venue-title">Maanzoni 680 Hotel, Nairobi, Kenya</h3>
+              <p className="venue-description">
+                The 14th ISEG/GGSD-2026 Mega Symposium takes place at the prestigious Maanzoni 680 Hotel, 
+                located on Kenyatta Avenue in the vibrant capital city of Nairobi, Kenya.
+              </p>
+              <div className="venue-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-icon">📍</span>
+                  <div>
+                    <strong>Location</strong>
+                    <p>Maanzoni 680 Hotel, Kenyatta Avenue, Muindi Mbingu Street, Nairobi, Kenya</p>
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">📅</span>
+                  <div>
+                    <strong>Dates</strong>
+                    <p>August 9-15, 2026</p>
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">🏨</span>
+                  <div>
+                    <strong>Accommodation</strong>
+                    <p><Link to="/hotels">Browse hotel options</Link></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="venue-image">
+              <div className="venue-placeholder">
+                <p>Maanzoni 680 Hotel</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1167,176 +1218,176 @@ const Home = () => {
     <section className="contacts-section">
       <div className="container">
         <div className="contacts-header">
-          <h2 className="contacts-main-title">ISEG/GGSD-2026 MEGA SYMPOSIUM CONTACTS</h2>
-          <p className="contacts-subtitle">Get in touch with our global liaison offices and planning teams</p>
+          <h2>Get in Touch</h2>
+          <p className="contacts-subtitle">Contact our global coordination teams and regional offices</p>
         </div>
         
         <div className="contacts-grid">
           {/* Overall Planning Headquarters */}
-          <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🏢</div>
-              <h3>Overall Planning Headquarters</h3>
-              <p className="contact-address">No. 6, Gabon Street, EFAB Metropolis Estate, Karsana, Gwarimpa, Abuja, FCT, Nigeria</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Mrs. Helen Ajuzieogu</span>
-                  <span className="personnel-role">(Symposium Coordinator)</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:helen.gisdaad@gmail.com">helen.gisdaad@gmail.com</a></p>
-                  <p><span className="info-label">Tel:</span> <a href="tel:+2348063947292">+234 806 394 7292</a></p>
-                </div>
-              </div>
+          <div className="contact-card primary">
+            <div className="contact-badge">Headquarters</div>
+            <h3>Overall Planning Headquarters</h3>
+            <p className="contact-location">
+              <span className="location-icon">📍</span>
+              Abuja, Nigeria
+            </p>
+            <p className="contact-address">No. 6, Gabon Street, EFAB Metropolis Estate, Karsana, Gwarimpa, Abuja, FCT</p>
+            <div className="contact-person">
+              <p className="person-name">Mrs. Helen Ajuzieogu</p>
+              <p className="person-title">Symposium Coordinator</p>
             </div>
-          </div>
-
-          {/* Liaison Office in China */}
-          <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🇨🇳</div>
-              <h3>Liaison Office in China</h3>
-              <p className="contact-address">ISEG Secretariat, Nanjing University, China</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Prof. Chao Sheng Tang</span>
-                  <span className="personnel-role">(ISEG Secretary General)</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:iseg@nju.edu.cn">iseg@nju.edu.cn</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Liaison Office in USA */}
-          <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🇺🇸</div>
-              <h3>Liaison Office in USA</h3>
-              <p className="contact-address">GISDAAD/ICCD Joint Office, Concord, NC, USA</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Dr. Theresa Isibor</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:tnisibor@iccdconcord.org">tnisibor@iccdconcord.org</a></p>
-                </div>
-              </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 helen.gisdaad@gmail.com</p>
+              <p className="contact-detail">📞 +234 806 3947 292</p>
             </div>
           </div>
 
           {/* Liaison Office in Kenya */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🇰🇪</div>
-              <h3>Liaison Office in Kenya</h3>
-              <p className="contact-address">AAS Secretariat, Nairobi, Kenya</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Dr. Nkem Khumbah</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:n.khumbah@aasciences.africa">n.khumbah@aasciences.africa</a></p>
-                  <p><span className="info-label">Tel:</span> <a href="tel:+17342550158">+1 734-255-0158</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">Venue Host</div>
+            <h3>Liaison Office in Kenya</h3>
+            <p className="contact-location">
+              <span className="location-icon">🇰🇪</span>
+              Nairobi, Kenya
+            </p>
+            <p className="contact-address">AAS Secretariat, Nairobi</p>
+            <div className="contact-person">
+              <p className="person-name">Dr. Nkem Khumbah</p>
+              <p className="person-title">Regional Coordinator</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 n.khumbah@aasciences.africa</p>
+              <p className="contact-detail">📞 +1 734 255 0158</p>
             </div>
           </div>
 
-          {/* General and Session Sponsorship */}
+          {/* Liaison Office in China */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🤝</div>
-              <h3>General & Session Sponsorship</h3>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Dr. James Mushori</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:jameskenya23@yahoo.com">jameskenya23@yahoo.com</a></p>
-                  <p><span className="info-label">WhatsApp:</span> <a href="https://wa.me/254721397073">+254 721 397073</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">ISEG Secretariat</div>
+            <h3>Liaison Office in China</h3>
+            <p className="contact-location">
+              <span className="location-icon">🇨🇳</span>
+              Nanjing, China
+            </p>
+            <p className="contact-address">ISEG Secretariat, Nanjing University</p>
+            <div className="contact-person">
+              <p className="person-name">Prof. Chao Sheng Tang</p>
+              <p className="person-title">ISEG Secretary General</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 iseg@nju.edu.cn</p>
             </div>
           </div>
 
-          {/* Safari/Museum Tour Planning */}
+          {/* Liaison Office in USA */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🦒</div>
-              <h3>Safari/Museum Tour Planning</h3>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Mr. George Onsongo</span>
-                  <span className="personnel-role">(Nairobi, Kenya)</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:gonsongo@gmail.com">gonsongo@gmail.com</a></p>
-                  <p><span className="info-label">Tel:</span> <a href="tel:+254704919592">+254 7049 19592</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">North America</div>
+            <h3>Liaison Office in USA</h3>
+            <p className="contact-location">
+              <span className="location-icon">🇺🇸</span>
+              Concord, NC, USA
+            </p>
+            <p className="contact-address">GISDAAD/ICCD Joint Office</p>
+            <div className="contact-person">
+              <p className="person-name">Dr. Theresa Isibor</p>
+              <p className="person-title">Regional Representative</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 tnisibor@iccdconcord.org</p>
             </div>
           </div>
 
           {/* Liaison Office in South Africa 1 */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🇿🇦</div>
-              <h3>Liaison Office in South Africa 1</h3>
-              <p className="contact-address">Univ. of Johannesburg/Human Sciences Research Council, Pretoria, South Africa</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Prof. Thokozani Simelane</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:TSimelane@hsrc.ac.za">TSimelane@hsrc.ac.za</a></p>
-                  <p><span className="info-label">Tel:</span> <a href="tel:+27792690663">+27 79 269 0663</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">Africa South</div>
+            <h3>Liaison Office in South Africa 1</h3>
+            <p className="contact-location">
+              <span className="location-icon">🇿🇦</span>
+              Pretoria, South Africa
+            </p>
+            <p className="contact-address">Univ. of Johannesburg/HSRC</p>
+            <div className="contact-person">
+              <p className="person-name">Prof. Thokozani Simelane</p>
+              <p className="person-title">Regional Coordinator</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 TSimelane@hsrc.ac.za</p>
+              <p className="contact-detail">📞 +27 799 269 0663</p>
             </div>
           </div>
 
           {/* Liaison Office in South Africa 2 */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">🌍</div>
-              <h3>Liaison Office in South Africa 2</h3>
-              <p className="contact-address">Future Earth Institute, c/o University of Pretoria, Pretoria, South Africa</p>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Prof. Faten Attig-Bahar</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:faten.bahar@gmail.com">faten.bahar@gmail.com</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">Sustainability</div>
+            <h3>Future Earth Institute</h3>
+            <p className="contact-location">
+              <span className="location-icon">🌍</span>
+              Pretoria, South Africa
+            </p>
+            <p className="contact-address">University of Pretoria</p>
+            <div className="contact-person">
+              <p className="person-name">Prof. Faten Attig-Bahar</p>
+              <p className="person-title">Institute Director</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 faten.bahar@gmail.com</p>
+            </div>
+          </div>
+
+          {/* General and Session Sponsorship */}
+          <div className="contact-card">
+            <div className="contact-badge">Sponsorship</div>
+            <h3>General & Session Sponsorship</h3>
+            <p className="contact-location">
+              <span className="location-icon">🤝</span>
+              Kenya
+            </p>
+            <p className="contact-address">Sponsorship Coordination</p>
+            <div className="contact-person">
+              <p className="person-name">Dr. James Mushori</p>
+              <p className="person-title">Sponsorship Manager</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 jameskenya23@yahoo.com</p>
+              <p className="contact-detail">📱 +254 721 397 073 (WhatsApp)</p>
+            </div>
+          </div>
+
+          {/* Safari/Museum Tour Planning */}
+          <div className="contact-card">
+            <div className="contact-badge">Tours & Activities</div>
+            <h3>Safari & Museum Tour Planning</h3>
+            <p className="contact-location">
+              <span className="location-icon">🦁</span>
+              Nairobi, Kenya
+            </p>
+            <p className="contact-address">Tours and Activities Coordination</p>
+            <div className="contact-person">
+              <p className="person-name">Mr. George Onsongo</p>
+              <p className="person-title">Tour Coordinator</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 gonsongo@gmail.com</p>
+              <p className="contact-detail">📞 +254 704 919 592</p>
             </div>
           </div>
 
           {/* Short-courses Arrangements */}
           <div className="contact-card">
-            <div className="contact-card-inner">
-              <div className="contact-icon">📚</div>
-              <h3>Short-courses Arrangements</h3>
-              <div className="contact-details">
-                <div className="contact-personnel">
-                  <span className="personnel-label">Contact Personnel:</span>
-                  <span className="personnel-name">Mr. Misbahu Yunusa Yusuf</span>
-                </div>
-                <div className="contact-info">
-                  <p><span className="info-label">Email:</span> <a href="mailto:yunusamisbahu@gmail.com">yunusamisbahu@gmail.com</a></p>
-                  <p><span className="info-label">Phone:</span> <a href="tel:+2348130781117">+234 8130781117</a></p>
-                </div>
-              </div>
+            <div className="contact-badge">Academics</div>
+            <h3>Short Courses Arrangements</h3>
+            <p className="contact-location">
+              <span className="location-icon">📚</span>
+              Nigeria
+            </p>
+            <p className="contact-address">Short Courses Coordination</p>
+            <div className="contact-person">
+              <p className="person-name">Mr. Misbahu Yunusa Yusuf</p>
+              <p className="person-title">Courses Coordinator</p>
+            </div>
+            <div className="contact-info">
+              <p className="contact-detail">📧 yunusamisbahu@gmail.com</p>
+              <p className="contact-detail">📞 +234 813 078 1117</p>
             </div>
           </div>
         </div>

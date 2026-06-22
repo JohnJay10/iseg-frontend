@@ -29,7 +29,8 @@
   display: flex;
   gap: 30px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .contact-item {
@@ -38,16 +39,17 @@
   gap: 8px;
   color: #ccc;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .contact-item a {
-  color: #FFE4B5;
+  color: #ffe4b5;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .contact-item a:hover {
-  color: #E67E22;
+  color: #e67e22;
 }
 
 .contact-item:hover {
@@ -72,7 +74,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: #FFE4B5;
+  color: #ffe4b5;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -84,12 +86,12 @@
 }
 
 .social-link:hover {
-  color: #E67E22;
+  color: #e67e22;
   transform: translateY(-3px);
 }
 
 .social-link:hover::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 32px;
   height: 32px;
@@ -137,8 +139,8 @@
   }
 
   .contact-info {
-    flex-direction: column;
-    gap: 8px;
+    flex-wrap: nowrap;
+    gap: 15px;
     align-items: center;
   }
 
@@ -179,7 +181,8 @@
   }
 
   .contact-info {
-    gap: 6px;
+    flex-wrap: nowrap;
+    gap: 12px;
   }
 
   .contact-item {
@@ -214,9 +217,9 @@
   }
 
   .contact-info {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 4px;
+    gap: 8px;
   }
 
   .contact-item {
@@ -228,4 +231,3 @@
     font-size: 0.6rem;
   }
 }
-
