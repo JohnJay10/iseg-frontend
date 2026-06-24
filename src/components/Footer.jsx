@@ -23,6 +23,15 @@ const Footer = () => {
           </div>
           
           <div className="footer-section">
+            <h4>Policies</h4>
+            <ul>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/refund-policy">Refund Policy</a></li>
+              <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          
+          <div className="footer-section">
             <h4>Contact Info</h4>
             <p><strong>Email:</strong> iseg@gisdaad.org</p>
             <p><strong>USA:</strong> +1 734-255-0158</p>
@@ -44,7 +53,7 @@ const Footer = () => {
        
         
         <div className="footer-bottom">
-          <p>&copy; 2026 ISEG/GGSD Mega Symposium. All rights reserved.</p>
+          <p>&copy; 2026 INTEGRAL QUINTESSENCE ENTERPRISE. All rights reserved.</p>
           <p>Organized by Global Institute for Sustainable Development, Advanced Analyses and Design (GISDAAD)</p>
         </div>
       </div>
