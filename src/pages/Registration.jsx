@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import FlutterWavePayment from '../components/FlutterWavePayment'
+import DirectTransferPayment from '../components/DirectTransferPayment'
 import MultiSelectDropdown from './MultiSelectDropdown'
 import { forumsList, shortCoursesList, workshopsList, sponsorshipList } from './RegistrationSelectors'
 import { paymentService } from '../services/api'
@@ -277,9 +278,14 @@ const Registration = () => {
         setShowPaymentSelector(true)
         sessionStorage.removeItem('pendingStripeRegistration')
       }
-    } else {
+    } else if (method === 'flutterwave') {
       // For Flutterwave, show the payment form
       setShowPaymentSelector(false)
+      setShowPayment(true)
+    } else if (method === 'direct-transfer') {
+      // For Direct Transfer, show the bank details page
+      setShowPaymentSelector(false)
+      setPaymentMethod('direct-transfer')
       setShowPayment(true)
     }
   }
@@ -338,7 +344,7 @@ const Registration = () => {
                 className="payment-methods-grid"
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                   gap: '2rem',
                   marginBottom: '2rem'
                 }}>
@@ -547,6 +553,109 @@ const Registration = () => {
                     Pay Now with Flutterwave → ${totalAmount.toFixed(2)}
                   </button>
                 </div>
+
+                {/* Direct Transfer Card */}
+                <div
+                  className="payment-method-card direct-transfer-card"
+                  style={{
+                    backgroundColor: '#fff',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '12px',
+                    padding: '2.5rem 1.5rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#16a34a'
+                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(22, 163, 74, 0.15)'
+                    e.currentTarget.style.transform = 'translateY(-4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#e5e7eb'
+                    e.currentTarget.style.boxShadow = 'none'
+                    e.currentTarget.style.transform = 'translateY(0)'
+                  }}
+                >
+                  {/* Bank Transfer Icon */}
+                  <svg width="120" height="50" viewBox="0 0 60 25" style={{ marginBottom: '1.5rem' }}>
+                    <text x="30" y="18" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#16a34a" fontFamily="Arial">
+                      BANK TRANSFER
+                    </text>
+                  </svg>
+
+                  <h3 style={{ 
+                    margin: '0 0 0.8rem 0', 
+                    color: '#1f2937',
+                    fontSize: '1.3rem',
+                    fontWeight: '600'
+                  }}>
+                    Direct Transfer
+                  </h3>
+
+                  <p style={{ 
+                    fontSize: '0.95rem', 
+                    color: '#666', 
+                    margin: '0 0 1.5rem 0',
+                    lineHeight: '1.5'
+                  }}>
+                    Wire transfer to our accounts
+                  </p>
+
+                  {/* Features */}
+                  <div style={{ textAlign: 'left', fontSize: '0.9rem', color: '#555', marginBottom: '1.5rem', flex: 1 }}>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ USD & NGN Options</div>
+                    <div style={{ marginBottom: '0.6rem' }}>✓ Low Fees</div>
+                    <div>✓ International Support</div>
+                  </div>
+
+                  {/* Badge */}
+                  <div style={{
+                    paddingTop: '1.5rem',
+                    borderTop: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    color: '#16a34a',
+                    fontSize: '0.85rem',
+                    fontWeight: '500',
+                    marginBottom: '1.5rem'
+                  }}>
+                    🏦 Bank Details Provided
+                  </div>
+
+                  {/* Get Details Button */}
+                  <button
+                    onClick={() => handlePaymentMethodSelect('direct-transfer')}
+                    style={{
+                      backgroundColor: '#16a34a',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '0.9rem 1.5rem',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      width: '100%'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#15803d'
+                      e.currentTarget.style.transform = 'scale(1.02)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '#16a34a'
+                      e.currentTarget.style.transform = 'scale(1)'
+                    }}
+                  >
+                    View Bank Details → ${totalAmount.toFixed(2)}
+                  </button>
+                </div>
               </div>
 
               {/* Security Info */}
@@ -608,21 +717,33 @@ const Registration = () => {
           <div className="container">
             <h1>Complete Your Payment</h1>
             <p>
-              {paymentAccount === 'kenya' ? 'Kenyan Bank Account' : 'Nigerian Bank Account'}
+              {paymentMethod === 'direct-transfer' 
+                ? 'Bank Transfer Details' 
+                : paymentAccount === 'kenya' 
+                  ? 'Kenyan Bank Account' 
+                  : 'Nigerian Bank Account'}
             </p>
           </div>
         </section>
 
         <section className="section">
           <div className="container">
-            <FlutterWavePayment
-              amount={totalAmount}
-              registrationData={registrationData}
-              paymentAccount={paymentAccount}
-              onPaymentSuccess={handlePaymentSuccess}
-              onPaymentError={handlePaymentError}
-              onBack={handleBackToForm}
-            />
+            {paymentMethod === 'direct-transfer' ? (
+              <DirectTransferPayment
+                totalAmount={totalAmount}
+                registrationData={registrationData}
+                onBack={handleBackToForm}
+              />
+            ) : (
+              <FlutterWavePayment
+                amount={totalAmount}
+                registrationData={registrationData}
+                paymentAccount={paymentAccount}
+                onPaymentSuccess={handlePaymentSuccess}
+                onPaymentError={handlePaymentError}
+                onBack={handleBackToForm}
+              />
+            )}
           </div>
         </section>
       </main>
@@ -646,6 +767,38 @@ const Registration = () => {
           <div className="registration-wrapper">
             <div className="registration-form-section">
               <form onSubmit={formik.handleSubmit} className="registration-form">
+                {/* Payment Methods Information */}
+                <div style={{
+                  backgroundColor: '#f0f9ff',
+                  border: '2px solid #0284c7',
+                  borderRadius: '12px',
+                  padding: '1.5rem',
+                  marginBottom: '2rem'
+                }}>
+                  <h4 style={{ margin: '0 0 1rem 0', color: '#0c4a6e', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    💳 Payment Methods Available
+                  </h4>
+                  <div style={{ color: '#0c4a6e', fontSize: '0.95rem', lineHeight: '1.8' }}>
+                    <p style={{ margin: '0 0 0.8rem 0' }}>
+                      <strong>We offer 3 convenient payment options:</strong>
+                    </p>
+                    <ul style={{ margin: '0.5rem 0 0 1.5rem', paddingLeft: 0 }}>
+                      <li style={{ marginBottom: '0.6rem' }}>
+                        <strong>🌍 International Transactions:</strong> Use <strong>Stripe</strong> for secure credit/debit card payments (available worldwide)
+                      </li>
+                      <li style={{ marginBottom: '0.6rem' }}>
+                        <strong>🇳🇬 Local Transactions (Africa):</strong> Use <strong>Flutterwave</strong> for mobile money, bank transfers, and USSD payments
+                      </li>
+                      <li style={{ marginBottom: '0.6rem' }}>
+                        <strong>🏦 Direct Bank Transfer:</strong> Wire directly to our accounts in Kenya (USD) or Nigeria (Naira) with low fees
+                      </li>
+                    </ul>
+                    <p style={{ margin: '1rem 0 0 0', fontSize: '0.9rem', color: '#0c4a6e', opacity: 0.85 }}>
+                      All payment methods are secure and encrypted. You'll be able to select your preferred payment method after completing this registration form.
+                    </p>
+                  </div>
+                </div>
+
                 <h3>Participant Information</h3>
 
                 <div className="form-row">
