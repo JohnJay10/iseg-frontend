@@ -1,0 +1,308 @@
+.direct-transfer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.transfer-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.transfer-header h2 {
+  color: #1f2937;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.transfer-subtitle {
+  color: #666;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.amount-display {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  display: inline-flex;
+  gap: 1.5rem;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  margin-top: 1rem;
+}
+
+.amount-label {
+  font-size: 1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.amount-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Bank Accounts Grid */
+.bank-accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.bank-account-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.bank-account-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 1rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 1.2rem;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.currency-badge {
+  background: #f0f4ff;
+  color: #667eea;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+/* Account Details */
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-row label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-value {
+  flex: 1;
+  font-size: 1rem;
+  color: #1f2937;
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.copy-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #667eea;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: #f3f4f6;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.copy-btn:active {
+  background: #e5e7eb;
+  transform: scale(0.95);
+}
+
+/* Important Notice */
+.important-notice {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.notice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.notice-icon {
+  font-size: 1.5rem;
+}
+
+.notice-header h3 {
+  margin: 0;
+  color: #92400e;
+  font-size: 1.1rem;
+}
+
+.notice-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #78350f;
+}
+
+.notice-list li {
+  margin: 0.6rem 0;
+  line-height: 1.6;
+}
+
+.notice-list strong {
+  color: #92400e;
+}
+
+/* FAQ Section */
+.faq-section {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.faq-section h3 {
+  color: #1f2937;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.faq-question {
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.faq-answer {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Button Container */
+.button-container {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.back-btn {
+  display: inline-block;
+  background: white;
+  border: 2px solid #667eea;
+  color: #667eea;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.back-btn:hover {
+  background: #f3f4f6;
+  transform: translateX(-4px);
+}
+
+.help-text {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bank-accounts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amount-display {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .transfer-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .currency-badge {
+    margin-left: 0;
+  }
+
+  .detail-value-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .copy-btn {
+    width: 100%;
+  }
+}
