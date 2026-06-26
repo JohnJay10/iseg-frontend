@@ -45,7 +45,7 @@ const Hotels = () => {
       contactPerson: 'Nduta Mwangi',
       contactTitle: 'Manager, Sales & Marketing',
       email: 'ndutamwangi@theclarionhotel.co.ke',
-      phone: '+254 721 485024 | +254 104 485024',
+      phone: '+254797343895',
       website: '',
       rooms: [
         { type: 'Studio Rooms', price: '$50-65', description: 'Single or double occupancy with breakfast' },
