@@ -160,7 +160,7 @@ const Registration = () => {
       if (hasFestival) {
         // Festival is free for full conference/part registrants
         const isFestivalFree = ['full-registration', 'part-a', 'part-b', 'single-day', 'part-a-b'].includes(values.registrationType)
-        const festivalPrice = isFestivalFree ? 0 : 30
+        const festivalPrice = isFestivalFree ? 0 : 40
         selectedItems.push({ type: 'Festival', price: festivalPrice, code: 'FESTIVAL' })
         total += festivalPrice
       }
@@ -1136,7 +1136,7 @@ const Registration = () => {
                         checked={formik.values.independentFestival}
                         onChange={(e) => formik.setFieldValue('independentFestival', e.target.checked)}
                       />
-                      <span className="label-text">Festival - $30 (Free for Part A/B registrants)</span>
+                      <span className="label-text">Festival - $40 (Free for Part A/B registrants)</span>
                     </label>
                   </div>
                 </fieldset>
@@ -1340,7 +1340,7 @@ const Registration = () => {
                       {formik.values.independentSafari && <p>Safari/Museum/Nairobi Tour: $400</p>}
                       {formik.values.independentFestival && (
                         <p>
-                          Festival: {['full-registration', 'part-a', 'part-b', 'single-day', 'part-a-b'].includes(formik.values.registrationType) ? 'FREE' : '$30'}
+                          Festival: {['full-registration', 'part-a', 'part-b', 'single-day', 'part-a-b'].includes(formik.values.registrationType) ? 'FREE' : '$40'}
                         </p>
                       )}
                       {formik.values.selectedSponsorship.length > 0 && (
@@ -1395,7 +1395,7 @@ const Registration = () => {
                           // Festival is free for full conference/part registrants
                           if (formik.values.independentFestival) {
                             const isFestivalFree = ['full-registration', 'part-a', 'part-b', 'single-day', 'part-a-b'].includes(formik.values.registrationType)
-                            if (!isFestivalFree) total += 30
+                            if (!isFestivalFree) total += 40
                           }
 
                           // Add sponsorship if selected
@@ -1439,7 +1439,7 @@ const Registration = () => {
                       
                       if (formik.values.independentFestival) {
                         const isFestivalFree = ['full-registration', 'part-a', 'part-b', 'single-day', 'part-a-b'].includes(formik.values.registrationType)
-                        if (!isFestivalFree) total += 30
+                        if (!isFestivalFree) total += 40
                       }
 
                       if (formik.values.selectedSponsorship.length > 0) {
