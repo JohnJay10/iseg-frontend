@@ -9,10 +9,108 @@ const RegistrationSuccess = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const [emailSent, setEmailSent] = useState(false)
+  const [emailStatus, setEmailStatus] = useState('idle')
+  const [emailError, setEmailError] = useState('')
   const [verifying, setVerifying] = useState(true)
   const [verificationError, setVerificationError] = useState('')
+  const [registrationDetails, setRegistrationDetails] = useState(null)
+  const [fetchingRegistration, setFetchingRegistration] = useState(false)
+  const [fetchError, setFetchError] = useState('')
   const verifyingRef = useRef(false)
   const emailSentRef = useRef(false)
+
+  const sendConfirmationEmailViaBackend = async (emailData) => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+    const response = await axios.post(
+      `${API_BASE_URL}/emails/send-registration-confirmation`,
+      emailData,
+    )
+    return response.data?.emailSent === true
+  }
+
+  const sendConfirmationEmailById = async (registrationId) => {
+    try {
+      const emailSentSession = sessionStorage.getItem(`email_sent_${registrationId}`)
+      if (emailSentSession) {
+        console.log('Email already sent in this session for registration:', registrationId)
+        emailSentRef.current = true
+        setEmailSent(true)
+        setEmailStatus('sent')
+        return
+      }
+
+      setEmailStatus('sending')
+      setEmailError('')
+
+      console.log('Fetching registration details for email:', registrationId)
+      const response = await registrationService.getRegistrationById(registrationId)
+      const registrationData = response.data
+
+      console.log('=== REGISTRATION FETCHED FROM DATABASE ===')
+      console.log('Full registration data:', JSON.stringify(registrationData, null, 2))
+      console.log('Total amount from database:', registrationData.totalAmount, '(type:', typeof registrationData.totalAmount + ')')
+
+      const emailData = {
+        email: registrationData.email,
+        firstName: registrationData.firstName,
+        lastName: registrationData.lastName,
+        phone: registrationData.phone,
+        registrationType: registrationData.registrationType,
+        totalAmount: registrationData.totalAmount,
+        shortCourse: registrationData.shortCourse,
+        safariTour: registrationData.safariTour,
+        selectedForums: registrationData.selectedForums || [],
+        selectedShortCourses: registrationData.selectedShortCourses || [],
+        selectedWorkshops: registrationData.selectedWorkshops || [],
+        selectedSponsorship: registrationData.selectedSponsorship || [],
+        independentSafari: registrationData.independentSafari || false,
+        independentFestival: registrationData.independentFestival || false,
+        ticketId: `REG-${registrationId}`,
+      }
+
+      console.log('Sending confirmation email to:', emailData.email)
+      let emailSentSuccessfully = false
+
+      try {
+        console.log('Attempting backend email send first')
+        emailSentSuccessfully = await sendConfirmationEmailViaBackend(emailData)
+        if (emailSentSuccessfully) {
+          console.log('Email sent via backend successfully')
+        } else {
+          console.warn('Backend email service returned emailSent false')
+        }
+      } catch (backendErr) {
+        console.error('Backend email send failed:', backendErr.message || backendErr)
+      }
+
+      if (!emailSentSuccessfully) {
+        try {
+          console.log('Trying EmailJS browser send as fallback')
+          emailSentSuccessfully = await sendRegistrationConfirmationEmail(emailData)
+          if (!emailSentSuccessfully) {
+            throw new Error('EmailJS send returned false')
+          }
+          console.log('Email sent via EmailJS successfully')
+        } catch (emailErr) {
+          console.error('EmailJS failed:', emailErr)
+        }
+      }
+
+      if (emailSentSuccessfully) {
+        emailSentRef.current = true
+        sessionStorage.setItem(`email_sent_${registrationId}`, 'true')
+        setEmailSent(true)
+        setEmailStatus('sent')
+      } else {
+        throw new Error('Failed to send confirmation email')
+      }
+    } catch (err) {
+      console.error('Error sending confirmation email:', err)
+      console.error('Error details:', err.message, err.response?.data)
+      setEmailStatus('failed')
+      setEmailError(err.message || 'Unable to send confirmation email at this time.')
+    }
+  }
 
   useEffect(() => {
     // Extract params at the start of effect to ensure they're consistent throughout
@@ -197,91 +295,28 @@ const RegistrationSuccess = () => {
     // Mark as not verifying anymore (page reload completed)
     setVerifying(false)
 
-    // Check if confirmation email was already sent for this registration
-    if (emailSentRef.current) {
-      console.log('Email already sent for registration:', registrationId)
-      setEmailSent(true)
-      return
-    }
+    const fetchRegistrationDetails = async () => {
+      if (!registrationId) return
+      setFetchingRegistration(true)
+      setFetchError('')
 
-    // Fetch registration data and send confirmation email
-    const sendConfirmationEmail = async () => {
       try {
-        // Check if email was already sent in this session
-        const emailSentSession = sessionStorage.getItem(`email_sent_${registrationId}`)
-        if (emailSentSession) {
-          console.log('Email already sent in this session for registration:', registrationId)
-          emailSentRef.current = true
-          setEmailSent(true)
-          return
-        }
-        
-        // Mark as being sent immediately to prevent duplicate sends
-        emailSentRef.current = true
-        setEmailSent(true)
-        sessionStorage.setItem(`email_sent_${registrationId}`, 'true')
-        
-        console.log('Fetching registration details for email:', registrationId)
+        console.log('Fetching registration details for page:', registrationId)
         const response = await registrationService.getRegistrationById(registrationId)
-        const registrationData = response.data
-        
-        console.log('=== REGISTRATION FETCHED FROM DATABASE ===')
-        console.log('Full registration data:', JSON.stringify(registrationData, null, 2))
-        console.log('Total amount from database:', registrationData.totalAmount, '(type:', typeof registrationData.totalAmount + ')')
-
-        // Prepare email data
-        const emailData = {
-          email: registrationData.email,
-          firstName: registrationData.firstName,
-          lastName: registrationData.lastName,
-          phone: registrationData.phone,
-          registrationType: registrationData.registrationType,
-          totalAmount: registrationData.totalAmount,
-          shortCourse: registrationData.shortCourse,
-          safariTour: registrationData.safariTour,
-          selectedForums: registrationData.selectedForums || [],
-          selectedShortCourses: registrationData.selectedShortCourses || [],
-          selectedWorkshops: registrationData.selectedWorkshops || [],
-          selectedSponsorship: registrationData.selectedSponsorship || [],
-          independentSafari: registrationData.independentSafari || false,
-          independentFestival: registrationData.independentFestival || false,
-          ticketId: `REG-${registrationId}`,
-        }
-
-        console.log('Sending confirmation email to:', emailData.email)
-        // Send email via EmailJS
-        try {
-          await sendRegistrationConfirmationEmail(emailData)
-          console.log('Email sent via EmailJS successfully')
-        } catch (emailErr) {
-          console.error('EmailJS failed, trying backend email endpoint:', emailErr)
-          // Fallback: Try backend email service
-          try {
-            const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-            const backendResponse = await axios.post(
-              `${API_BASE_URL}/emails/send-registration-confirmation`,
-              emailData
-            )
-            if (backendResponse.data.emailSent) {
-              console.log('Email sent via backend successfully')
-            } else {
-              console.warn('Backend email service returned emailSent: false')
-            }
-          } catch (backendErr) {
-            console.error('Backend email fallback also failed:', backendErr.message)
-          }
-        }
-      } catch (err) {
-        console.error('Error sending confirmation email:', err)
-        console.error('Error details:', err.message, err.response?.data)
-        // Don't redirect, email sending failure shouldn't prevent showing success page
+        setRegistrationDetails(response.data)
+        console.log('Registration details loaded for success page')
+      } catch (fetchErr) {
+        console.error('Failed to fetch registration details:', fetchErr)
+        setFetchError('Unable to load registration details. Please refresh or contact support.')
+      } finally {
+        setFetchingRegistration(false)
       }
     }
 
-    // Only send email if we have a registration ID and haven't sent yet
-    if (registrationId && !emailSentRef.current) {
-      console.log('Triggering email send for registration:', registrationId)
-      sendConfirmationEmail()
+    // Always fetch registration details for display
+    if (registrationId) {
+      fetchRegistrationDetails()
+      sendConfirmationEmailById(registrationId)
     }
   }, [searchParams.toString()])
 
@@ -331,9 +366,84 @@ const RegistrationSuccess = () => {
     )
   }
 
-  // Show success only if we have registrationId and completed status
-  if (!registrationId || status !== 'completed') {
+  // Show success if we have a registration ID and payment is complete
+  if (!registrationId || (status && status !== 'completed')) {
     return null
+  }
+
+  const renderSelectedItems = () => {
+    if (!registrationDetails?.selectedItems?.length) {
+      return <p>No additional items selected.</p>
+    }
+    return (
+      <ul style={{ textAlign: 'left', margin: '1rem auto', maxWidth: '500px' }}>
+        {registrationDetails.selectedItems.map((item, idx) => (
+          <li key={idx}>{item.type}{item.code ? ` (${item.code})` : ''}: ${item.price.toFixed(2)}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  const getProgramLabel = () => {
+    const type = registrationDetails?.registrationType || registrationDetails?.registrationCategory
+    if (!type) return 'the selected program'
+
+    const mapping = {
+      'full-registration': 'Full Registration',
+      full: 'Full Registration',
+      'part-a': 'Part A',
+      'part-b': 'Part B',
+      'part-a-b': 'Part A and B',
+      'single-day': 'Single Day Registration',
+      'oss-sponsor': 'OSS Sponsor',
+      'oss-participant': 'OSS Participant',
+      forums: 'Forum(s)',
+      shortcourse: 'Short Course(s)',
+      workshop: 'Workshop(s)',
+      safari: 'Safari Tour',
+      festival: 'Festival',
+      independent: 'Independent Program',
+      combined: 'Conference Package',
+    }
+
+    return mapping[type] || type.replace(/-/g, ' ')
+  }
+
+  const renderRegistrationSummary = () => {
+    if (fetchingRegistration) {
+      return <p>Loading your registration details...</p>
+    }
+
+    if (fetchError) {
+      return <p style={{ color: '#d32f2f' }}>{fetchError}</p>
+    }
+
+    if (!registrationDetails) {
+      return <p>Your registration has been completed successfully. Details are being retrieved.</p>
+    }
+
+    const registrationTypeLabel = getProgramLabel()
+
+    return (
+      <div className="registration-summary" style={{ textAlign: 'left', maxWidth: '650px', margin: '1rem auto' }}>
+        <div style={{ marginBottom: '1rem' }}>
+          <strong>Name:</strong> {registrationDetails.firstName} {registrationDetails.lastName}
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <strong>Email:</strong> {registrationDetails.email}
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <strong>Program:</strong> {registrationTypeLabel}
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <strong>Total Paid:</strong> ${registrationDetails.totalAmount?.toFixed(2) ?? '0.00'}
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <strong>Selected Items:</strong>
+          {renderSelectedItems()}
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -348,12 +458,15 @@ const RegistrationSuccess = () => {
         <div className="container">
           <div className="success-message">
             <div className="success-icon">✓</div>
-            <h2>Thank You for Registering!</h2>
-            <p>Your registration for ISEG/GGSD-2026 Mega Symposium has been confirmed.</p>
+            <h2>Payment successful!</h2>
+            <p>You have successfully registered for {getProgramLabel()}.</p>
             <p className="registration-details">
               <strong>Registration ID: {registrationId}</strong><br/>
               Your payment has been processed successfully. A confirmation email has been sent to your registered email address with your registration details and further information about the symposium.
             </p>
+
+            {renderRegistrationSummary()}
+
             <p>Please check your email for:</p>
             <ul style={{ textAlign: 'left', maxWidth: '500px', margin: '1rem auto' }}>
               <li>Registration confirmation number</li>
@@ -362,6 +475,68 @@ const RegistrationSuccess = () => {
               <li>Important dates and deadlines</li>
             </ul>
             
+            <div style={{ marginTop: '1.5rem', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
+              {emailStatus === 'sent' && registrationDetails?.email && (
+                <div style={{
+                  backgroundColor: '#e6ffed',
+                  color: '#1a7f37',
+                  border: '1px solid #a7f3d0',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                  marginBottom: '1rem',
+                }}>
+                  Confirmation email sent to <strong>{registrationDetails.email}</strong>.
+                </div>
+              )}
+
+              {emailStatus === 'sending' && (
+                <div style={{
+                  backgroundColor: '#eff6ff',
+                  color: '#1d4ed8',
+                  border: '1px solid #bfdbfe',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                  marginBottom: '1rem',
+                }}>
+                  Sending confirmation email...
+                </div>
+              )}
+
+              {emailStatus === 'failed' && (
+                <div style={{
+                  backgroundColor: '#fff1f2',
+                  color: '#9f1239',
+                  border: '1px solid #fecdd3',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                  marginBottom: '1rem',
+                }}>
+                  <strong>Email delivery failed.</strong>
+                  <p style={{ margin: '0.5rem 0 0 0' }}>{emailError || 'Please try again later.'}</p>
+                  <button
+                    onClick={() => {
+                      setEmailStatus('sending')
+                      setEmailError('')
+                      emailSentRef.current = false
+                      if (registrationId) {
+                        sendConfirmationEmailById(registrationId)
+                      }
+                    }}
+                    style={{
+                      marginTop: '0.75rem',
+                      backgroundColor: '#9f1239',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '0.6rem 1rem',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Retry Email
+                  </button>
+                </div>
+              )}
+            </div>
             <div className="success-actions">
               <a href="/" className="btn btn-primary">Back to Home</a>
               <a href="/submit-abstract" className="btn btn-primary">Submit Abstract</a>

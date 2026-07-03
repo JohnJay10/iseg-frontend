@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Workshops.css'
 
 const Workshops = () => {
@@ -174,15 +175,13 @@ const Workshops = () => {
 
                   {/* CTA Button */}
                   <div className="workshop-cta-new">
-                    <a 
-                      href="https://www.iseg-ggsd.com.ng" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <Link
+                      to="/register"
                       className="btn"
                       style={{ backgroundColor: workshop.color }}
                     >
                       Register for {workshop.code}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
