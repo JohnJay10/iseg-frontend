@@ -780,14 +780,14 @@ const Registration = () => {
                   </h4>
                   <div style={{ color: '#0c4a6e', fontSize: '0.95rem', lineHeight: '1.8' }}>
                     <p style={{ margin: '0 0 0.8rem 0' }}>
-                      <strong>We offer 3 convenient payment options:</strong>
+                      <strong>We offer 3 payment methods:</strong>
                     </p>
                     <ul style={{ margin: '0.5rem 0 0 1.5rem', paddingLeft: 0 }}>
                       <li style={{ marginBottom: '0.6rem' }}>
-                        <strong>🌍 International Transactions:</strong> Use <strong>Stripe</strong> for secure credit/debit card payments (available worldwide)
+                        <strong>💳 Stripe:</strong> Secure credit/debit card payments for international and local transactions
                       </li>
                       <li style={{ marginBottom: '0.6rem' }}>
-                        <strong>🇳🇬 Local Transactions (Africa):</strong> Use <strong>Flutterwave</strong> for mobile money, bank transfers, and USSD payments
+                        <strong>💸 Flutterwave:</strong> Mobile money, bank transfers, and USSD payments for convenient regional and international use
                       </li>
                       <li style={{ marginBottom: '0.6rem' }}>
                         <strong>🏦 Direct Bank Transfer:</strong> Wire directly to our accounts in Kenya (USD) or Nigeria (Naira) with low fees
