@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useLocation } from 'react-router-dom'
 import FlutterWavePayment from '../components/FlutterWavePayment'
 import DirectTransferPayment from '../components/DirectTransferPayment'
 import MultiSelectDropdown from './MultiSelectDropdown'
@@ -8,7 +9,29 @@ import { forumsList, shortCoursesList, workshopsList, sponsorshipList } from './
 import { paymentService } from '../services/api'
 import './Registration.css'
 
+const titleOptions = ['Mr', 'Mrs', 'Ms', 'Miss', 'Dr', 'Prof', 'Engr', 'Sir', 'Madam', 'Rev', 'Hon', 'Other']
+const genderOptions = ['Male', 'Female', 'Non-binary', 'Prefer not to say']
+const disciplineOptions = [
+  'Academia & Education',
+  'Civil Service & Government',
+  'Corporate & Business Management',
+  'Engineering & Technology',
+  'Entrepreneurship & Startups',
+  'Finance & Trading',
+  'Humanities & Arts',
+  'Investment & Venture Capital',
+  'Legal & Regulatory Affairs',
+  'Medical & Health Sciences',
+  'Non-Profit & NGO',
+  'Philanthropy & Social Impact',
+  'Physical & Life Sciences',
+  'Social Sciences',
+  'Student & Early Career',
+  'Faculty Member',
+]
+
 const Registration = () => {
+  const location = useLocation()
   const [error, setError] = useState('')
   const [showPayment, setShowPayment] = useState(false)
   const [showSponsorshipTerms, setShowSponsorshipTerms] = useState(false)
@@ -34,6 +57,9 @@ const Registration = () => {
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First name is required'),
     lastName: Yup.string().required('Last name is required'),
+    title: Yup.string().required('Title is required'),
+    gender: Yup.string().required('Gender is required'),
+    discipline: Yup.string().required('Discipline is required'),
     email: Yup.string().email('Invalid email').required('Email is required'),
     phone: Yup.string().required('Phone number is required'),
     affiliation: Yup.string().required('Affiliation is required'),
@@ -41,10 +67,18 @@ const Registration = () => {
     agreeTerms: Yup.boolean().oneOf([true], 'You must agree to the terms'),
   })
 
+  const preselectedWorkshops = (() => {
+    const params = new URLSearchParams(location.search)
+    return params.getAll('workshop').filter(Boolean)
+  })()
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
+      title: '',
+      gender: '',
+      discipline: '',
       email: '',
       phone: '',
       affiliation: '',
@@ -52,7 +86,7 @@ const Registration = () => {
       registrationType: '',
       selectedForums: [],
       selectedShortCourses: [],
-      selectedWorkshops: [],
+      selectedWorkshops: preselectedWorkshops,
       selectedSponsorship: [],
       independentSafari: false,
       independentFestival: false,
@@ -194,6 +228,9 @@ const Registration = () => {
       setRegistrationData({
         firstName: values.firstName,
         lastName: values.lastName,
+        title: values.title,
+        gender: values.gender,
+        discipline: values.discipline,
         email: values.email,
         phone: values.phone,
         affiliation: values.affiliation,
@@ -833,6 +870,75 @@ const Registration = () => {
 
                 <div className="form-row">
                   <div className="form-group">
+                    <label htmlFor="title">Title *</label>
+                    <select
+                      id="title"
+                      name="title"
+                      {...formik.getFieldProps('title')}
+                    >
+                      <option value="">Select title</option>
+                      {titleOptions.map((option) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    {formik.touched.title && formik.errors.title && (
+                      <span className="error">{formik.errors.title}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="gender">Gender *</label>
+                    <select
+                      id="gender"
+                      name="gender"
+                      {...formik.getFieldProps('gender')}
+                    >
+                      <option value="">Select gender</option>
+                      {genderOptions.map((option) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    {formik.touched.gender && formik.errors.gender && (
+                      <span className="error">{formik.errors.gender}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="discipline">Discipline *</label>
+                    <select
+                      id="discipline"
+                      name="discipline"
+                      {...formik.getFieldProps('discipline')}
+                    >
+                      <option value="">Select discipline</option>
+                      {disciplineOptions.map((option) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    {formik.touched.discipline && formik.errors.discipline && (
+                      <span className="error">{formik.errors.discipline}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="affiliation">Affiliation / Institution *</label>
+                    <input
+                      type="text"
+                      id="affiliation"
+                      name="affiliation"
+                      {...formik.getFieldProps('affiliation')}
+                      placeholder="University / Organization"
+                    />
+                    {formik.touched.affiliation && formik.errors.affiliation && (
+                      <span className="error">{formik.errors.affiliation}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
                     <label htmlFor="email">Email Address *</label>
                     <input
                       type="email"
@@ -862,20 +968,6 @@ const Registration = () => {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="affiliation">Institution/Organization *</label>
-                    <input
-                      type="text"
-                      id="affiliation"
-                      name="affiliation"
-                      {...formik.getFieldProps('affiliation')}
-                      placeholder="University / Organization"
-                    />
-                    {formik.touched.affiliation && formik.errors.affiliation && (
-                      <span className="error">{formik.errors.affiliation}</span>
-                    )}
-                  </div>
-
                   <div className="form-group">
                     <label htmlFor="country">Country *</label>
                     <input

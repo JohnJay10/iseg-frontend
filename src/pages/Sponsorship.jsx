@@ -1,6 +1,28 @@
+import { useState } from 'react'
 import './Sponsorship.css'
 
 const Sponsorship = () => {
+  const [showBankDetailsModal, setShowBankDetailsModal] = useState(false)
+
+  const bankAccounts = [
+    {
+      id: 'kenya',
+      name: 'Rinseton Advisory and Events',
+      location: 'Koinange Street, Nairobi, Kenya',
+      accountNumber: '10012200000404',
+      bankName: 'Consolidated Bank of Kenya',
+      currency: 'USD',
+    },
+    {
+      id: 'nigeria',
+      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      location: 'Nigeria',
+      accountNumber: '560 171 9521',
+      bankName: 'FIDELITY BANK, NIGERIA',
+      currency: 'Nigerian Naira',
+    },
+  ]
+
   const sponsorshipLevels = [
     {
       level: 'PLATINUM',
@@ -108,6 +130,54 @@ const Sponsorship = () => {
               Sponsoring this event provides your organization with unparalleled visibility and networking opportunities 
               within this global community.
             </p>
+          </div>
+
+          <div className="payment-methods">
+            <h3>How to Make Payment</h3>
+            <p>Please follow the same secure payment methods we use for registrations. Sponsors may pay by <strong>Stripe</strong>, <strong>Flutterwave</strong>, or <strong>Direct Bank Transfer</strong>. For invoicing or bespoke arrangements contact the sponsorship team.</p>
+
+            <div className="methods-grid">
+              <div className="method-card">
+                <h4>Stripe (Card Payments)</h4>
+                <p>
+                  Use Stripe for secure credit / debit card payments. Stripe supports international card payments and provides instant confirmation.
+                </p>
+                <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                  <a href="/register" className="btn btn-sm">Pay via Register →</a>
+                </p>
+              </div>
+
+              <div className="method-card">
+                <h4>Flutterwave (Cards, Mobile Money, USSD)</h4>
+                <p>
+                  Flutterwave supports cards, mobile money and USSD across multiple regions. Choose Flutterwave for local and regional payment convenience.
+                </p>
+                <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                  <a href="/register" className="btn btn-sm">Pay via Register →</a>
+                </p>
+              </div>
+
+              <div className="method-card">
+                <h4>Direct Bank Transfer</h4>
+                <p>
+                  Wire funds to our official bank accounts (USD / NGN). After transfer, email your proof of payment to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a> including organization name and selected sponsorship level.
+                </p>
+                <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                  <button type="button" className="btn btn-sm" onClick={() => setShowBankDetailsModal(true)}>
+                    Request Bank Details
+                  </button>
+                </p>
+              </div>
+            </div>
+
+            <div className="payment-next-steps">
+              <h4>After Payment</h4>
+              <ul>
+                <li>Send your payment proof or transaction reference to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.</li>
+                <li>We will confirm receipt and issue an official receipt and sponsorship agreement.</li>
+                <li>For invoicing, bespoke packages or large transfers, request an invoice by emailing <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.</li>
+              </ul>
+            </div>
           </div>
 
           <div className="sponsorship-levels">
@@ -231,6 +301,53 @@ const Sponsorship = () => {
           </div>
         </div>
       </section>
+
+      {showBankDetailsModal && (
+        <div className="bank-details-modal-overlay" onClick={() => setShowBankDetailsModal(false)}>
+          <div className="bank-details-modal" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+            <div className="bank-details-modal-header">
+              <div>
+                <h3>Conference Bank Account Details</h3>
+                <p>Use the account that matches your preferred currency.</p>
+              </div>
+              <button type="button" className="bank-details-close" onClick={() => setShowBankDetailsModal(false)}>
+                ×
+              </button>
+            </div>
+
+            <div className="bank-details-list">
+              {bankAccounts.map((account) => (
+                <div key={account.id} className="bank-details-card">
+                  <div className="bank-details-card-header">
+                    <h4>{account.name}</h4>
+                    <span className="bank-details-currency">{account.currency}</span>
+                  </div>
+                  <div className="bank-details-row">
+                    <span className="bank-details-label">Bank Name</span>
+                    <span className="bank-details-value">{account.bankName}</span>
+                  </div>
+                  <div className="bank-details-row">
+                    <span className="bank-details-label">Account Number</span>
+                    <span className="bank-details-value">{account.accountNumber}</span>
+                  </div>
+                  <div className="bank-details-row">
+                    <span className="bank-details-label">Account Name</span>
+                    <span className="bank-details-value">{account.name}</span>
+                  </div>
+                  <div className="bank-details-row">
+                    <span className="bank-details-label">Location</span>
+                    <span className="bank-details-value">{account.location}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bank-details-note">
+              Please include your organization name and sponsorship level in the payment reference, then email the proof of payment to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

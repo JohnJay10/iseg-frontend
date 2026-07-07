@@ -1,0 +1,123 @@
+/* Chairman's Invitation Letter styles */
+.chairman-letter-section {
+  background: #f9fafb;
+  padding: 40px 0;
+  border-top: 1px solid #e6e6e6;
+}
+.chairman-letter-section .letter-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.letter-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #2b7be4, #7b61ff);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.letter-subtitle {
+  color: #555;
+  margin-top: 6px;
+}
+.letter-content-wrapper {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.letter-card {
+  flex: 1 1 680px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(20, 30, 40, 0.06);
+}
+.letter-card p {
+  color: #333;
+  line-height: 1.6;
+}
+.letter-highlights {
+  margin: 12px 0 18px 18px;
+  color: #333;
+}
+.letter-actions {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.letter-actions .btn-large {
+  padding: 12px 18px;
+  width: 180px;
+}
+.important-note {
+  background: #fff6e6;
+  padding: 10px;
+  border-left: 4px solid #ffb020;
+  border-radius: 4px;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 24px;
+}
+.modal-content.letter-modal {
+  width: min(980px, 98%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.25);
+  padding: 20px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.modal-close {
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+.letter-full-text p {
+  margin-bottom: 12px;
+  color: #222;
+}
+.signature-section {
+  margin-top: 18px;
+}
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .letter-content-wrapper {
+    flex-direction: column;
+  }
+  .letter-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .letter-actions .btn-large {
+    width: 48%;
+  }
+}
