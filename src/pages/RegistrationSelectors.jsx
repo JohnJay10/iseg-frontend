@@ -17,6 +17,8 @@ export const forumsList = {
     { code: 'FA.13', title: 'FORUM ON COASTAL MARINE SYSTEMS' },
     { code: 'FA.14', title: 'FORUM ON ICT AND ARTIFICIAL INTELLIGENCE (AI) FOR SUSTAINABLE DEVELOPMENT' },
     { code: 'FA.15', title: 'FORUM ON CLIMATE CHANGE ON THE ENVIRONMENT AND LIVELIHOOD IMPACTS' },
+    { code: 'FA.16', title: 'FORUM ON GEOTHERMAL SYSTEMS, GAS TRANSPORT AND CARBON CAPTURE AND STORAGE' },
+    { code: 'FA.17', title: 'FORUM ON BIOGEOTECHNOLOGY AND ECOLOGICAL RESTORATION' },
   ],
   policy: [
     { code: 'FB.1', title: 'FORUM ON INTERNATIONAL SCIENCE DIPLOMACY, AND SCIENCE FOR PEACE' },
@@ -43,6 +45,8 @@ export const forumsList = {
     { code: 'OSS.6', title: 'AFRICAN NETWORK OF WOMEN ENTREPRENEURS\' INITIATIVE (ANWEI) SPECIAL SESSION' },
     { code: 'OSS.7', title: 'THE INTERNATIONAL FORUM FOR PEACE AND DIPLOMACY (IFPD) SPECIAL SESSION' },
     { code: 'OSS.8', title: 'JOBS FOR AFRICA NOW (JFAN) OUTREACH SESSION' },
+    { code: 'OSS.9', title: 'FUTURE EARTH AFRICA HUB SPECIAL SESSION' },
+    { code: 'OSS.10', title: 'INTERNATIONAL CENTER FOR COMMUNITY DEVELOPMENT (ICCD) SPECIAL SESSION' },
   ]
 }
 
@@ -78,15 +82,51 @@ export const shortCoursesList = {
 export const workshopsList = [
   { 
     code: 'TW.1', 
-    title: 'Oil and Gas Industry Training Workshop',
-    date: 'Saturday, August 15, 2026',
-    fee: '$3,000'
+    title: 'OIL AND GAS INDUSTRY TRAINING WORKSHOP',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $3,000'
   },
   { 
     code: 'TW.2', 
-    title: 'Global South Mid-Career Training Workshop',
-    date: 'Sunday, August 16, 2026',
-    fee: '$2,000'
+    title: 'GLOBAL SOUTH MID-CAREER TRAINING WORKSHOP',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $2,000'
+  },
+  { 
+    code: 'TW.3', 
+    title: 'TRAINING WORKSHOP ON EXECUTIVE LEADERSHIP, PUBLIC HEALTH AND WATER SECURITY',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $2,500'
+  },
+  { 
+    code: 'TW.4', 
+    title: 'TRAINING WORKSHOP ON ARTIFICIAL INTELLIGENCE, CYBERSECURITY AND INTERNET OF THINGS',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $3,000'
+  },
+  { 
+    code: 'TW.5', 
+    title: 'GISDAAD TRAINING WORKSHOP ON BUSINESS DEVELOPMENT AND OPERATIONS',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $3,000'
+  },
+  { 
+    code: 'TW.6', 
+    title: 'TRAINING WORKSHOP ON EDUCATION AND RESEARCH ADMINISTRATION',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $3,000'
+  },
+  { 
+    code: 'TW.7', 
+    title: 'WORKSHOP ON CLIMATE CHANGE, SUSTAINABLE ENERGY SYSTEMS AND CARBON CREDITS',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $3,000'
+  },
+  { 
+    code: 'TW.8', 
+    title: 'WORKSHOP ON LAW AND GOVERNANCE PROCESSES',
+    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    fee: 'USD $2,500'
   }
 ]
 

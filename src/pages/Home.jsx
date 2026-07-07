@@ -13,6 +13,8 @@ import futureAfricaLogo from '../images/future africa.jpg'
 import futureEarthLogo from '../images/future earth.png'
 import sponsorsImage from '../images/sponsors.jpeg';
 import './Home.css'
+import './ChairmanLetter.css'
+import './SponsorMarquee.css'
 
 const CountdownRenderer = ({ days, hours, minutes, seconds }) => (
   <div className="countdown">
@@ -38,6 +40,7 @@ const CountdownRenderer = ({ days, hours, minutes, seconds }) => (
 const Home = () => {
   const eventDate = new Date('2026-08-09').getTime()
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [showLetterModal, setShowLetterModal] = useState(false)
 
   const bannerImages = [banner1, banner2, banner3]
 
@@ -171,7 +174,121 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Chairman's Invitation Letter Section */}
+      <section className="section chairman-letter-section">
+        <div className="container">
+          <div className="letter-header">
+            <div className="letter-badge">📬 CHAIRMAN'S INVITATION</div>
+            <h2>Message From Our Symposium Chair</h2>
+            <p className="letter-subtitle">An Invitation to Participate in the ISEG/GGSD 2026 Mega-Symposium</p>
+          </div>
+          
+          <div className="letter-content-wrapper">
+            <div className="letter-card">
+              <div className="letter-opening">
+                <p className="greeting">Dear Sir/Madam,</p>
+              </div>
+              
+              <div className="letter-body">
+                <p>
+                  On behalf of the International Organizing Committee, consortium of supporting organizations and leaders of forums and special sessions of our Mega-Symposium, I take this opportunity to <strong>invite you to participate in the upcoming one-week-long event on sustainable development</strong> across several critical scientific, technological and socioeconomic sectors.
+                </p>
+                
+                <p>
+                  This expanded two-part ISEG/GGSD-2026 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993.
+                </p>
+                
+                <p>
+                  Within the Mega-Symposium are <strong>mini-events and special tracks</strong> that will add to both Part A and Part B, including:
+                </p>
+                
+                <ul className="letter-highlights">
+                  <li>South African Energy Transition Forum (SAETF)</li>
+                  <li>Global Youth Sustainable Development Forum (GYSDF)</li>
+                  <li>International Science Diplomacy Forum (ISDF)</li>
+                  <li>Mid-career Engagement and Training Workshop for African Professionals</li>
+                  <li>African Institutes/BRICS Exposition and Research Forum</li>
+                  <li>Middle East Water Quality Science and Management Forum (MEWQSMF)</li>
+                  <li>Innovative Oil and Gas Systems Forum (IOGSF)</li>
+                  <li>AAS Frontier Science Forum (AFSF)</li>
+                  <li>BrownBard International Cultural and Literary Festival (BICLF) - featuring music, poetry readings, African fashion show and cultural dances</li>
+                </ul>
+                
+                <p>
+                  Kenya is known for great wildlife, beautiful sceneries and museums. Participants have the opportunity to register for an <strong>exciting Safari to Kenyan parks and museums</strong>, with a Nairobi City tour also available.
+                </p>
+                
+                <p className="important-note">
+                  <strong>🔔 Important:</strong> Nairobi, Kenya is the United Nations capital for Africa and allows entry visas upon arrival. Participants will find it easy to visit Kenya and take part in this historic symposium.
+                </p>
+                
+                <p>
+                  We encourage early registration before <strong>June 30, 2026</strong> to secure your spot. Registration will still be possible through early August 2026.
+                </p>
+                
+                <p className="contact-info">
+                  <strong>For more information:</strong> Visit <a href="https://www.iseg-ggsd.com.ng" target="_blank" rel="noopener noreferrer">https://www.iseg-ggsd.com.ng</a>
+                </p>
+              </div>
+              
+              <div className="letter-closing">
+                <p>Once again, I thank you in anticipation of your participation. Greetings!</p>
+                <div className="signature">
+                  <p className="sign-off">Yours sincerely,</p>
+                  <p className="signature-name"><strong>Prof. Hilary I. Inyang</strong></p>
+                  <p className="signature-title">2026 ISEG-GGSD Mega-Symposium Chair and Chief Host</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="letter-actions">
+              <Link to="/register" className="btn btn-primary btn-large">REGISTER NOW</Link>
+              <button 
+                className="btn btn-secondary btn-large"
+                onClick={() => setShowLetterModal(true)}
+              >
+                VIEW FULL LETTER
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Full Letter Modal */}
+      {showLetterModal && (
+        <div className="modal-overlay" onClick={() => setShowLetterModal(false)}>
+          <div className="modal-content letter-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Symposium Chairman's Invitation Letter</h2>
+              <button className="modal-close" onClick={() => setShowLetterModal(false)}>✕</button>
+            </div>
+            <div className="modal-body letter-full-text">
+              <p className="greeting">Dear Sir/Madam,</p>
+              
+              <p>On behalf of the International Organizing Committee, consortium of supporting organizations and leaders of forums and special sessions of our Mega-Symposium, I take this opportunity to invite you to participate in the upcoming one-week-long event on sustainable development across several critical scientific, technological and socioeconomic sectors. This expanded two-part ISEG/GGSD-2026 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development. Within the Mega-Symposium are mini-events and special tracks that will add to part A and part B. Examples are the South African Energy Transition Forum (SAETF), Global Youth Sustainable Development Forum (GYSDF), International Science Diplomacy Forum (ISDF), Mid-career Engagement and Training Workshop for African Professionals; African Institutes/BRICS Exposition and Research Forum organized by the Human Science Research Council of South Africa; Middle East Water Quality Science and Management Forum (MEWQSMF); Innovative Oil and Gas Systems Forum (IOGSF); AAS Frontier Science Forum (AFSF); and the BrownBard International Cultural and Literary Festival (BICLF) that will feature music, poetry readings, African fashion show and cultural dances from various countries.</p>
+              
+              <p>Kenya is known for great wildlife, beautiful sceneries and museums. It is a highly reputable country as regards tourism. Therefore, the Mega-Symposium participants have the opportunity to register for a very exciting Safari to some Kenyan parks as well as museums. A Nairobi City tour will also be organized. More information is provided on the Mega-Symposium website: https://www.iseg-ggsd.com.ng. Interested participants can go ahead and register on the website and book any of the hotels highlighted in this Bulletin at various room-night rates. The main Mega-Symposium hotel is Maanzoni 680 Hotel while the rest are located close by within walking distance. Participants are advised to pre-register for this Mega-Symposium before June 30, 2026 to beat the expected rush.</p>
+              
+              <p>Being that Nairobi, Kenya is the United Nations capital for Africa and allows entry visas upon arrival in Nairobi, participants will find it easy to visit Kenya and take part in this Mega-Symposium which is briefly described in this Bulletin and website https://www.iseg-ggsd.com.ng pending the development of the full program of the Mega-Symposium by July 10, 2026. The planning schedule of this Mega-Symposium is provided on the website. Although we suggest that participants register early as made possible on the website https://www.iseg-ggsd.com.ng, we would like to indicate that registration will still be possible all the way to early August, 2026.</p>
+              
+              <p>Payment instructions for Symposium registration, session sponsorship, Safari tour participation and BICLF participation are provided on the website. Participants from organizations that would like to propose and sponsor special sessions are advised to do so by contacting Mrs. Helen Ajuzieogu - helen.gisdaad@gmail.com to discuss, while organizations that would like to sponsor this event should contact Dr. James Mushori via Email: jameskenya23@yahoo.com, and WhatsApp: +254 721 397073. Regarding presentations of regular and poster papers, interested authors should note the abstracts submission deadline of July 7, 2026.</p>
+              
+              <p>Once again, I thank you in anticipation of your participation. Greetings!</p>
+              
+              <div className="signature-section">
+                <p>Yours sincerely,</p>
+                <p><strong>Prof. Hilary I. Inyang</strong></p>
+                <p>2026 ISEG-GGSD Mega-Symposium Chair and Chief Host</p>
+                <p style={{marginTop: '2rem', fontSize: '0.9rem', color: '#666'}}>CC: Mrs. Helen Ajuzieogu, Symposium Coordinator<br/>Prof. Chao-Sheng Tang, Part A International Scientific Committee Chair<br/>Prof. Thokozani Simelane, Part B International Scientific Committee Chair</p>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <Link to="/register" className="btn btn-primary">REGISTER NOW</Link>
+              <button className="btn btn-secondary" onClick={() => setShowLetterModal(false)}>CLOSE</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Announcement */}
       <section className="section light" id="announcements">
@@ -1113,30 +1230,29 @@ const Home = () => {
     <h2>Event Partners & Sponsors</h2>
     <p className="lead">Our Sponsors are our backbone and they stand to enjoy lots of global benefits.</p>
     
-    {/* Sponsor Images Grid */}
-    <div className="sponsors-grid">
-      <div className="sponsor-card">
-        <img src={gisdadLogo} alt="GISDAD" className="sponsor-image" />
-      </div>
-      <div className="sponsor-card">
-        <img src={usaLogo} alt="USA" className="sponsor-image" />
-      </div>
-      <div className="sponsor-card">
-        <img src={kenyaLogo} alt="Kenya" className="sponsor-image" />
-      </div>
-      <div className="sponsor-card">
-        <img src={futureAfricaLogo} alt="Future Africa" className="sponsor-image" />
-      </div>
-      <div className="sponsor-card">
-        <img src={futureEarthLogo} alt="Future Earth" className="sponsor-image" />
-      </div>
-      <div className="sponsor-card">
-        <img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" className="sponsor-image" />
+    {/* Sponsor marquee */}
+    <div className="sponsor-marquee-wrap">
+      <div className="sponsor-marquee">
+        <div className="marquee-track">
+          <div className="marquee-item"><img src={gisdadLogo} alt="GISDAD" /></div>
+          <div className="marquee-item"><img src={usaLogo} alt="USA" /></div>
+          <div className="marquee-item"><img src={kenyaLogo} alt="Kenya" /></div>
+          <div className="marquee-item"><img src={futureAfricaLogo} alt="Future Africa" /></div>
+          <div className="marquee-item"><img src={futureEarthLogo} alt="Future Earth" /></div>
+          <div className="marquee-item"><img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" /></div>
+          {/* duplicate for seamless loop */}
+          <div className="marquee-item"><img src={gisdadLogo} alt="GISDAD" /></div>
+          <div className="marquee-item"><img src={usaLogo} alt="USA" /></div>
+          <div className="marquee-item"><img src={kenyaLogo} alt="Kenya" /></div>
+          <div className="marquee-item"><img src={futureAfricaLogo} alt="Future Africa" /></div>
+          <div className="marquee-item"><img src={futureEarthLogo} alt="Future Earth" /></div>
+          <div className="marquee-item"><img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" /></div>
+        </div>
       </div>
     </div>
     
     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-      <Link to="#" className="btn btn-primary">BECOME A SPONSOR</Link>
+      <Link to="/sponsorship" className="btn btn-primary">BECOME A SPONSOR</Link>
     </div>
   </div>
 </section>

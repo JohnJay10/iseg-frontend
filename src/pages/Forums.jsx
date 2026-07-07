@@ -152,6 +152,24 @@ const Forums = () => {
       organizers: [
         { name: 'Prof. John Osonwa', email: 'johnosonwa@gmail.com', phone: '+234 815 519 0656' }
       ]
+    },
+    {
+      code: 'FA.16',
+      title: 'FORUM ON GEOTHERMAL SYSTEMS, GAS TRANSPORT AND CARBON CAPTURE AND STORAGE',
+      fullDescription: 'This forum will examine the role of geothermal energy systems, subsurface gas transport processes, and carbon capture and storage technologies in advancing low-carbon development and environmental resilience. The discussion will cover technical methods, field applications, policy frameworks, and opportunities for implementation across diverse geologic settings.',
+      organizers: [
+        { name: 'Prof. Chao-Sheng Tang', email: 'tangchaosheng@nju.edu.cn', phone: '+86-25-83597888' },
+        { name: 'Prof. Hilary I. Inyang', email: 'h.inyang26@gmail.com', phone: '+234 814 569 6364' }
+      ]
+    },
+    {
+      code: 'FA.17',
+      title: 'FORUM ON BIOGEOTECHNOLOGY AND ECOLOGICAL RESTORATION',
+      fullDescription: 'This forum will focus on the use of biotechnological tools and ecological restoration strategies to rehabilitate affected landscapes, improve ecosystem services, and support long-term sustainability in both urban and rural environments.',
+      organizers: [
+        { name: 'Prof. Shen-En Chen', email: 'schen12@charlotte.edu', phone: '+1 704 305-6866' },
+        { name: 'Dr. Fidelis Abija', email: 'fidelabija@yahoo.co.uk', phone: '+234 803 896 2622' }
+      ]
     }
   ]
 
@@ -368,6 +386,26 @@ const Forums = () => {
         { name: 'Amb. IDAH Onyilokwu Kingsley David', email: 'Jobs4africanow@gmail.com', phone: '+234 704 283 4725' },
         { name: 'Queen Amina', email: 'queenaminatv@gmail.com', phone: '+234 806 629 2006' }
       ]
+    },
+    {
+      code: 'OSS.9',
+      title: 'FUTURE EARTH AFRICA HUB SPECIAL SESSION',
+      organization: 'Future Earth Africa Hub',
+      fullDescription: 'This special session will showcase the strategic initiatives, research partnerships, and sustainability programs being advanced by the Future Earth Africa Hub in support of African and global development priorities. The session will highlight collaboration opportunities for researchers, institutions, policymakers, and development partners.',
+      organizers: [
+        { name: 'Prof. Faten Bahar', email: 'faten.bahar@gmail.com', phone: '+27 79 269 0663' },
+        { name: 'Dr. Daniel Nyanganyura', email: 'daniel.nyanganyura@futureearth.org', phone: '+27 12 420 0000' }
+      ]
+    },
+    {
+      code: 'OSS.10',
+      title: 'INTERNATIONAL CENTER FOR COMMUNITY DEVELOPMENT (ICCD) SPECIAL SESSION',
+      organization: 'International Center for Community Development (ICCD)',
+      fullDescription: 'This session will present the community development programs, partnerships, and outreach initiatives of the International Center for Community Development, with emphasis on sustainability, education, youth engagement, and institutional collaboration in Africa and beyond.',
+      organizers: [
+        { name: 'Dr. Theresa Isibor', email: 'tnisibor@iccdconcord.org', phone: '+1 704 305-6866' },
+        { name: 'Dr. Helen Ajuzieogu', email: 'helen.gisdaad@gmail.com', phone: '+234 806 394 7292' }
+      ]
     }
   ]
 
@@ -388,6 +426,23 @@ const Forums = () => {
               The 14th ISEG/GGSD-2026 Mega Symposium features comprehensive forums structured in two parts, 
               covering environmental geotechnology, policy, and sustainable development. Experts from around 
               the world will present research, lead discussions, and share innovations.
+            </p>
+            <p>
+              Several notable organizations and experts are collaborating with the International Organizing Committee
+              of ISEG/GGSD 2026 Mega-Symposium to organize SPECIAL FORUMS to discuss important sustainable
+              development issues. These Special Forums are organized mostly independently by their designated
+              co-chairs/co-organizers with guidance by the leadership of the Mega-Symposium. Each Forum comprises:
+              opening remarks by the co-chairs/co-organizers (10 minutes); followed by a keynote lecture/speech
+              (20 minutes) by a speaker that must be selected independently by the session organizers; a panel
+              discussion by five speakers on the stage (60 minutes); followed by a moderated and interactive/question
+              & answer part (20 minutes) with the final 10 minutes of closure remarks by the co-chairs/co-organizers.
+              The proceedings of the forums will be recorded for later editing and broadcasts on television and social
+              media networks. In the tables provided below, the SPECIAL FORUMS are briefly described with information
+              on the designated co-chairs/co-organizers. Interested participants in any of the Forums described below
+              are urged to register for the Mega-Symposium at the website: https://www.iseg-ggsd.com.ng to attend
+              the Forum. Participants who want to serve as discussion panelists or keynote speakers at any of the
+              described Forums should directly contact the listed co-chairs/co-organizers through their email addresses
+              and telephone numbers listed for each Forum.
             </p>
           </div>
 
@@ -416,7 +471,7 @@ const Forums = () => {
             <div className="forums-content">
               <h3>Part A: Technical Forums (Environmental Geotechnology)</h3>
               <p className="part-description">
-                August 10-11, 2026: 15 technical forums focusing on innovations in environmental geotechnology, 
+                August 10-11, 2026: 17 technical forums focusing on innovations in environmental geotechnology, 
                 engineering solutions, and advanced technologies for sustainable development.
               </p>
               <div className="forums-grid">

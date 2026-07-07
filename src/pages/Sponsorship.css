@@ -1,5 +1,121 @@
 /* Sponsorship Page Styles */
 
+.bank-details-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1100;
+}
+
+.bank-details-modal {
+  width: min(760px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem;
+}
+
+.bank-details-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bank-details-modal-header h3 {
+  margin: 0 0 0.25rem 0;
+  color: #111827;
+}
+
+.bank-details-modal-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.bank-details-close {
+  border: none;
+  background: #f3f4f6;
+  color: #374151;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.bank-details-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.bank-details-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.bank-details-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.bank-details-card-header h4 {
+  margin: 0;
+  color: #111827;
+}
+
+.bank-details-currency {
+  background: #f59e0b;
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.bank-details-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.bank-details-label {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.bank-details-value {
+  color: #111827;
+  text-align: right;
+}
+
+.bank-details-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  background: #fff7ed;
+  border-left: 4px solid #e67e22;
+  border-radius: 6px;
+  color: #7c2d12;
+}
+
+.bank-details-note a {
+  color: #b45309;
+  font-weight: 700;
+}
+
 .sponsorship-intro {
   background: linear-gradient(135deg, #e67e22 0%, #d97706 100%);
   color: white;
@@ -229,6 +345,43 @@
 /* Sponsorship Contact */
 .sponsorship-contact {
   margin-bottom: 3rem;
+}
+
+/* Payment Methods */
+.payment-methods {
+  margin: 2.5rem 0;
+}
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.method-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+.method-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: #e67e22;
+}
+.payment-next-steps {
+  margin-top: 1rem;
+  background: #fff7ee;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #e67e22;
+}
+.payment-next-steps ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.payment-next-steps li {
+  margin-bottom: 0.5rem;
+  color: #444;
 }
 
 .sponsorship-contact > p {
