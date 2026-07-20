@@ -6,22 +6,56 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
 
   const bankAccounts = [
     {
-      id: 'kenya',
-      name: 'Rinseton Advisory and Events',
+      id: 'kenya-kes',
+      name: 'Rinseton Advisory',
       location: 'Koinange Street, Nairobi, Kenya',
-      accountNumber: '10012200000404',
-      bankName: 'Consolidated Bank of Kenya',
-      currency: 'USD',
-      routingNumber: 'N/A',
+      accountNumber: '10011214000617',
+      bankName: 'Consolidated Bank',
+      currency: 'Kenyan Shilling (KES)',
+      swiftCode: 'CONKKENAXXX',
+      bankCode: '023',
+      branchCode: '004',
     },
     {
-      id: 'nigeria',
+      id: 'kenya-usd',
+      name: 'Rinseton Advisory',
+      location: 'Koinange Street, Nairobi, Kenya',
+      accountNumber: '10012200000404',
+      bankName: 'Consolidated Bank',
+      currency: 'United States Dollars (USD)',
+      swiftCode: 'CONKKENAXXX',
+      bankCode: '023',
+      branchCode: '004',
+    },
+    {
+      id: 'nigeria-ngn',
       name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
       location: 'Nigeria',
-      accountNumber: '560 171 9521',
-      bankName: 'FIDELITY BANK, NIGERIA',
-      currency: 'Nigerian Naira',
-      routingNumber: 'N/A',
+      accountNumber: '5601719521',
+      bankName: 'FIDELITY BANK PLC',
+      currency: 'Nigerian Naira (₦)',
+      swiftCode: 'FIDTNGLA',
+      tin: '222010124-0001',
+    },
+    {
+      id: 'nigeria-usd',
+      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      location: 'Nigeria',
+      accountNumber: '5240093293',
+      bankName: 'FIDELITY BANK PLC',
+      currency: 'United States Dollars (USD)',
+      swiftCode: 'FIDTNGLA',
+      tin: '222010124-0001',
+    },
+    {
+      id: 'nigeria-gbp',
+      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      location: 'Nigeria',
+      accountNumber: '5240093303',
+      bankName: 'FIDELITY BANK PLC',
+      currency: 'Great British Pounds (GBP)',
+      swiftCode: 'FIDTNGLA',
+      tin: '222010124-0001',
     },
   ]
 
@@ -112,6 +146,68 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
                   </button>
                 </div>
               </div>
+
+              {account.bankCode && (
+                <div className="detail-row">
+                  <label>Bank Code</label>
+                  <div className="detail-value-wrapper">
+                    <div className="detail-value">{account.bankCode}</div>
+                    <button
+                      className="copy-btn"
+                      onClick={() => handleCopy(account.bankCode, `bankcode-${account.id}`)}
+                      title="Copy bank code"
+                    >
+                      {copiedField === `bankcode-${account.id}` ? '✓ Copied' : 'Copy'}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {account.branchCode && (
+                <div className="detail-row">
+                  <label>Branch Code</label>
+                  <div className="detail-value-wrapper">
+                    <div className="detail-value">{account.branchCode}</div>
+                    <button
+                      className="copy-btn"
+                      onClick={() => handleCopy(account.branchCode, `branch-${account.id}`)}
+                      title="Copy branch code"
+                    >
+                      {copiedField === `branch-${account.id}` ? '✓ Copied' : 'Copy'}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="detail-row">
+                <label>SWIFT Code</label>
+                <div className="detail-value-wrapper">
+                  <div className="detail-value">{account.swiftCode}</div>
+                  <button
+                    className="copy-btn"
+                    onClick={() => handleCopy(account.swiftCode, `swift-${account.id}`)}
+                    title="Copy SWIFT code"
+                  >
+                    {copiedField === `swift-${account.id}` ? '✓ Copied' : 'Copy'}
+                  </button>
+                </div>
+              </div>
+
+              {account.tin && (
+                <div className="detail-row">
+                  <label>TIN</label>
+                  <div className="detail-value-wrapper">
+                    <div className="detail-value">{account.tin}</div>
+                    <button
+                      className="copy-btn"
+                      onClick={() => handleCopy(account.tin, `tin-${account.id}`)}
+                      title="Copy TIN"
+                    >
+                      {copiedField === `tin-${account.id}` ? '✓ Copied' : 'Copy'}
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -128,7 +224,13 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
             <strong>Include Your Email:</strong> Please add your email address ({registrationData.email}) in the payment reference or description field
           </li>
           <li>
-            <strong>Choose Correct Account:</strong> Use the Kenya account for USD payments, Nigeria account for Naira payments
+            <strong>Choose Correct Account:</strong> Use the Fidelity Bank account matching your currency: NGN, USD, or GBP, or use the Consolidated Bank Kenya account for KES or USD payments
+          </li>
+          <li>
+            <strong>Bank Code / Branch Code:</strong> For Kenya transfers, use <strong>Bank Code 023</strong> and <strong>Branch Code 004</strong> (Koinange Street)
+          </li>
+          <li>
+            <strong>SWIFT Code:</strong> Use <strong>CONKKENAXXX</strong> for Kenya and <strong>FIDTNGLA</strong> for Nigeria
           </li>
           <li>
             <strong>Keep Proof:</strong> Save the transfer receipt or confirmation number for your records
@@ -150,7 +252,7 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
             <strong>Which account should I use?</strong>
           </div>
           <div className="faq-answer">
-            Use the Kenya account (USD) for international transactions. Use the Nigeria account (Naira) for Nigerian participants.
+            Use the Kenya account for KES or USD payments and the Nigeria account for NGN, USD, or GBP payments.
           </div>
         </div>
         <div className="faq-item">

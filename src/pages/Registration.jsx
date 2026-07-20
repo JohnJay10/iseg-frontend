@@ -827,7 +827,7 @@ const Registration = () => {
                         <strong>💸 Flutterwave:</strong> Mobile money, bank transfers, and USSD payments for convenient regional and international use
                       </li>
                       <li style={{ marginBottom: '0.6rem' }}>
-                        <strong>🏦 Direct Bank Transfer:</strong> Wire directly to our accounts in Kenya (USD) or Nigeria (Naira) with low fees
+                        <strong>🏦 Direct Bank Transfer:</strong> Wire directly to our bank accounts in Kenya (KES/USD) or Nigeria (NGN/USD/GBP)
                       </li>
                     </ul>
                     <p style={{ margin: '1rem 0 0 0', fontSize: '0.9rem', color: '#0c4a6e', opacity: 0.85 }}>
