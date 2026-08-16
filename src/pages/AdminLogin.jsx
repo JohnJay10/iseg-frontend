@@ -55,7 +55,7 @@ const AdminLogin = () => {
       <section className="page-header">
         <div className="container">
           <h1>Admin Login</h1>
-          <p>ISEG/GGSD-2026 Mega Symposium - Admin Portal</p>
+          <p>IMEG-GSD 2027 Mega Symposium - Admin Portal</p>
         </div>
       </section>
 

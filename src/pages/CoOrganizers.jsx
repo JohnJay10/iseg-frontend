@@ -7,7 +7,7 @@ const CoOrganizers = () => {
       role: 'Founding Organizer & Chair',
       email: 'h.inyang26@gmail.com',
       phone: '+234 814 569 6364',
-      organization: 'International Society of Environmental Geotechnology (ISEG)',
+      organization: 'International Society of Environmental Geotechnology (ISEG) - Council',
       affiliation: 'University of Lagos, Nigeria'
     },
     {
@@ -161,7 +161,7 @@ const CoOrganizers = () => {
       <section className="page-header">
         <div className="container">
           <h1>Co-Organizers & Forum Chairs</h1>
-          <p>Meet the Organizing Committee for ISEG/GGSD-2026</p>
+          <p>Meet the Organizing Committee for IMEG-GSD 2027</p>
         </div>
       </section>
 
@@ -170,7 +170,7 @@ const CoOrganizers = () => {
           <div className="organizers-intro">
             <h2>Our Leadership Team</h2>
             <p>
-              The 14th ISEG/GGSD-2026 Mega Symposium is organized by a distinguished international team of 
+              The 14th IMEG-GSD 2027 Mega Symposium is organized by a distinguished international team of 
               academics, professionals, and leaders committed to advancing environmental geotechnology and 
               sustainable development. This directory provides contact information for key organizers and 
               forum chairs for inquiries, partnerships, and collaboration opportunities.

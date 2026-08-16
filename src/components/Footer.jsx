@@ -6,9 +6,9 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>About ISEG/GGSD 2026</h3>
+            <h3>About IMEG-GSD 2027</h3>
             <p>14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-            <p>August 9-15, 2026 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
+            <p>February 14-23, 2027 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
           </div>
           
           <div className="footer-section">
@@ -33,7 +33,7 @@ const Footer = () => {
           
           <div className="footer-section">
             <h4>Contact Info</h4>
-            <p><strong>Email:</strong> iseg@gisdaad.org</p>
+            <p><strong>Email:</strong> imeg@gisdaad.org</p>
             <p><strong>USA:</strong> +1 734-255-0158</p>
             <p><strong>Nigeria:</strong> +234 806 394 7292</p>
             <p><strong>Kenya:</strong> +254 7049 19592</p>
@@ -53,7 +53,7 @@ const Footer = () => {
        
         
         <div className="footer-bottom">
-          <p>&copy; 2026 INTEGRAL QUINTESSENCE ENTERPRISE. All rights reserved.</p>
+          <p>&copy; 2027 INTEGRAL QUINTESSENCE ENTERPRISE. All rights reserved.</p>
           <p>Organized by Global Institute for Sustainable Development, Advanced Analyses and Design (GISDAAD)</p>
         </div>
       </div>

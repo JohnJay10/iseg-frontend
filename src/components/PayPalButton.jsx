@@ -103,7 +103,7 @@ const PayPalButton = ({ amount, onError, registrationData }) => {
       console.log('Creating PayPal order...')
       const orderResponse = await paymentService.createPaymentOrder(
         amount,
-        `ISEG/GGSD 2026 Registration - $${amount}`,
+        `IMEG-GSD 2027 Registration - $${amount}`,
         registrationData
       )
 

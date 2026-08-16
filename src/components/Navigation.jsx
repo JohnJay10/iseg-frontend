@@ -18,9 +18,9 @@ const Navigation = () => {
     <nav className="navbar">
       <div className="container">
         <Link to="/" className="logo-wrapper" onClick={closeMenu}>
-          <img src={logoImg} alt="ISEG/GGSD 2026 Logo" className="navbar-logo" />
+          <img src={logoImg} alt="IMEG-GSD 2027 Logo" className="navbar-logo" />
           <div className="logo-text-wrapper">
-            <h2 className="logo-title">14TH ISEG/GGSD MEGA SYMPOSIUM 2026</h2>
+            <h2 className="logo-title">IMEG-GSD MEGA SYMPOSIUM 2027</h2>
           </div>
         </Link>
         

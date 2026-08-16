@@ -278,44 +278,8 @@ const Registration = () => {
 
   const handlePaymentMethodSelect = async (method) => {
     setPaymentMethod(method)
-    
-    if (method === 'stripe') {
-      // For Stripe, initiate hosted checkout immediately
-      try {
-        console.log('Initiating Stripe Checkout Session...')
-        setError('')
-        
-        // Save registration data to sessionStorage for use after redirect
-        sessionStorage.setItem('pendingStripeRegistration', JSON.stringify({
-          registrationData,
-          amount: totalAmount
-        }))
-        console.log('Saved registration data to sessionStorage')
-        
-        const response = await paymentService.createCheckoutSession(
-          totalAmount,
-          registrationData,
-          'registration'
-        )
-        
-        console.log('Checkout session created:', response.data)
-        
-        if (response.data.success && response.data.checkoutUrl) {
-          // Redirect to Stripe Checkout page
-          console.log('Redirecting to Stripe Checkout...')
-          window.location.href = response.data.checkoutUrl
-        } else {
-          setError('Failed to create checkout session. Please try again.')
-          setShowPaymentSelector(true)
-          sessionStorage.removeItem('pendingStripeRegistration')
-        }
-      } catch (error) {
-        console.error('Error creating checkout session:', error)
-        setError('Error initiating payment. Please try again.')
-        setShowPaymentSelector(true)
-        sessionStorage.removeItem('pendingStripeRegistration')
-      }
-    } else if (method === 'flutterwave') {
+
+    if (method === 'flutterwave') {
       // For Flutterwave, show the payment form
       setShowPaymentSelector(false)
       setShowPayment(true)
@@ -385,109 +349,6 @@ const Registration = () => {
                   gap: '2rem',
                   marginBottom: '2rem'
                 }}>
-                {/* Stripe Card */}
-                <div
-                  className="payment-method-card stripe-card"
-                  style={{
-                    backgroundColor: '#fff',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '12px',
-                    padding: '2.5rem 1.5rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    textAlign: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#6772e5'
-                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(103, 114, 229, 0.15)'
-                    e.currentTarget.style.transform = 'translateY(-4px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#e5e7eb'
-                    e.currentTarget.style.boxShadow = 'none'
-                    e.currentTarget.style.transform = 'translateY(0)'
-                  }}
-                >
-                  {/* Stripe Logo */}
-                  <svg width="120" height="50" viewBox="0 0 60 25" style={{ marginBottom: '1.5rem' }}>
-                    <text x="30" y="18" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#6772e5" fontFamily="Arial">
-                      STRIPE
-                    </text>
-                  </svg>
-
-                  <h3 style={{ 
-                    margin: '0 0 0.8rem 0', 
-                    color: '#1f2937',
-                    fontSize: '1.3rem',
-                    fontWeight: '600'
-                  }}>
-                    Stripe
-                  </h3>
-
-                  <p style={{ 
-                    fontSize: '0.95rem', 
-                    color: '#666', 
-                    margin: '0 0 1.5rem 0',
-                    lineHeight: '1.5'
-                  }}>
-                    Fast & secure card payments
-                  </p>
-
-                  {/* Features */}
-                  <div style={{ textAlign: 'left', fontSize: '0.9rem', color: '#555', marginBottom: '1.5rem', flex: 1 }}>
-                    <div style={{ marginBottom: '0.6rem' }}>✓ Credit/Debit Cards</div>
-                    <div style={{ marginBottom: '0.6rem' }}>✓ Instant Confirmation</div>
-                    <div>✓ 3D Secure Support</div>
-                  </div>
-
-                  {/* Badge */}
-                  <div style={{
-                    paddingTop: '1.5rem',
-                    borderTop: '1px solid #f0f0f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    color: '#6772e5',
-                    fontSize: '0.85rem',
-                    fontWeight: '500',
-                    marginBottom: '1.5rem'
-                  }}>
-                    🔒 PCI Compliant
-                  </div>
-
-                  {/* Pay Now Button */}
-                  <button
-                    onClick={() => handlePaymentMethodSelect('stripe')}
-                    style={{
-                      backgroundColor: '#6772e5',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '0.9rem 1.5rem',
-                      fontSize: '1rem',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      width: '100%'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#5469d4'
-                      e.currentTarget.style.transform = 'scale(1.02)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#6772e5'
-                      e.currentTarget.style.transform = 'scale(1)'
-                    }}
-                  >
-                    Pay Now with Stripe → ${totalAmount.toFixed(2)}
-                  </button>
-                </div>
-
                 {/* Flutterwave Card */}
                 <div
                   className="payment-method-card flutterwave-card"
@@ -791,7 +652,7 @@ const Registration = () => {
     <main>
       <section className="page-header">
         <div className="container">
-          <h1>Register for ISEG/GGSD-2026</h1>
+          <h1>Register for IMEG-GSD 2027</h1>
           <p>Select your registration type and complete your registration</p>
         </div>
       </section>
@@ -821,7 +682,6 @@ const Registration = () => {
                     </p>
                     <ul style={{ margin: '0.5rem 0 0 1.5rem', paddingLeft: 0 }}>
                       <li style={{ marginBottom: '0.6rem' }}>
-                        <strong>💳 Stripe:</strong> Secure credit/debit card payments for international and local transactions
                       </li>
                       <li style={{ marginBottom: '0.6rem' }}>
                         <strong>💸 Flutterwave:</strong> Mobile money, bank transfers, and USSD payments for convenient regional and international use
@@ -1632,7 +1492,7 @@ const Registration = () => {
 
               <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f0f8ff', borderRadius: '8px', borderLeft: '4px solid #e67e22' }}>
                 <p style={{ margin: 0, color: '#555' }}>
-                  <strong>Terms:</strong> All sponsorship benefits are valid for the ISEG/GGSD 2026 symposium (August 9-15, 2026). Additional partnership opportunities are available. Contact <a href="mailto:sponsors@iseg.ac.ke" style={{ color: '#e67e22', textDecoration: 'none' }}>sponsors@iseg.ac.ke</a> for custom packages.
+                  <strong>Terms:</strong> All sponsorship benefits are valid for the IMEG-GSD 2027 symposium (February 14-23, 2027). Additional partnership opportunities are available. Contact <a href="mailto:sponsors@imeg.ac.ke" style={{ color: '#e67e22', textDecoration: 'none' }}>sponsors@imeg.ac.ke</a> for custom packages.
                 </p>
               </div>
             </div>

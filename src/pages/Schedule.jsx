@@ -1,9 +1,9 @@
 import './Schedule.css'
 
 const Schedule = () => {
-  // Generate calendar grid for August 2026
-  const startDay = 5 // August 1, 2026 starts on Saturday (5)
-  const daysInMonth = 31
+  // Generate calendar grid for February 2027
+  const startDay = 0 // February 1, 2027 starts on Monday (0)
+  const daysInMonth = 28
   const calendarDays = []
 
   // Add empty days for previous month
@@ -15,54 +15,52 @@ const Schedule = () => {
     calendarDays.push(i)
   }
 
-  // Events mapped to dates (Updated with correct schedule)
+  // Events mapped to dates (Updated with correct schedule for February 2027)
   const events = {
-    9: [
+    14: [
       { title: 'Arrival of Participants', type: 'event' }
     ],
-    10: [
-      { title: 'On-Site Registration for Part A', type: 'event' },
-      { title: 'Opening Ceremony for Part A', type: 'special' },
-      { title: 'Keynote Presentations', type: 'event' },
-      { title: 'Parallel Session Presentations', type: 'event' },
-      { title: 'ISEG Council Meeting (evening)', type: 'special' },
-      { title: 'ISEG Elections (evening)', type: 'special' }
-    ],
-    11: [
-      { title: 'Paper Presentations in Parallel Sessions', type: 'event' },
-      { title: 'Poster Papers', type: 'event' },
-      { title: 'ISEG Awards and Prizes', type: 'special' },
-      { title: 'Part A Closing Dinner', type: 'special' }
-    ],
-    12: [
-      { title: 'Mid-career Engagement Workshop (8:30 AM - 4:00 PM)', type: 'course' },
-      { title: 'Safari Tour - Nairobi National Park (6 AM - 12 Noon)', type: 'course' },
-      { title: 'Organized Lunch in Nairobi (12 Noon)', type: 'event' },
-      { title: 'Tour of Nairobi National Museum (3-5 PM)', type: 'course' }
-    ],
-    13: [
-      { title: 'On-Site Registration for Part B', type: 'event' },
-      { title: 'Opening Ceremony for Part B', type: 'special' },
-      { title: 'Relaunching of GADR', type: 'special' },
-      { title: 'Keynote Presentations', type: 'event' },
-      { title: 'Parallel Session Presentations', type: 'event' },
-      { title: 'Mid-career Workshop (8:30 AM - 4:00 PM)', type: 'course' },
-      { title: 'Exhibitions', type: 'event' }
-    ],
-    14: [
-      { title: 'Parallel and Poster Session Presentations', type: 'event' },
-      { title: 'Discussion Panels and Forums', type: 'event' },
-      { title: 'Special Sponsored Sessions', type: 'event' },
-      { title: 'Exhibitions Continued', type: 'event' },
-      { title: 'Mid-career Workshop (8:30 AM - 4:00 PM)', type: 'course' },
-      { title: 'Global Youth Sustainable Development Forum', type: 'special' }
-    ],
     15: [
-      { title: 'BrownBard International Cultural and Literary Festival', type: 'special' },
-      { title: 'Short Courses - TW.1: Oil & Gas Industry Workshop (8:30 AM - 4:30 PM)', type: 'course' }
+      { title: 'Opening Ceremony', type: 'special' },
+      { title: 'Keynote Presentations', type: 'event' },
+      { title: 'Regular Session Presentations', type: 'event' },
+      { title: 'Leadership Recognition', type: 'special' }
     ],
     16: [
-      { title: 'Short Courses - TW.2: Global South Mid-Career Workshop (8:30 AM - 4:30 PM)', type: 'course' }
+      { title: 'Forums and Special Sessions', type: 'event' },
+      { title: 'Regular Session Presentations', type: 'event' },
+      { title: 'Discussion Panels', type: 'event' }
+    ],
+    17: [
+      { title: 'Safari Tour - Nairobi National Park', type: 'course' },
+      { title: 'Museum and City Tour', type: 'course' }
+    ],
+    18: [
+      { title: 'Forums and Special Sessions', type: 'event' },
+      { title: 'Regular Session Presentations', type: 'event' },
+      { title: 'Discussion Panels and Forums', type: 'event' }
+    ],
+    19: [
+      { title: 'Regular Session Presentations', type: 'event' },
+      { title: 'Special Sessions', type: 'special' },
+      { title: 'Closing Ceremony and Dinner', type: 'special' }
+    ],
+    20: [
+      { title: 'Training Workshops (TW.1-TW.6)', type: 'course' },
+      { title: 'Short Courses', type: 'course' },
+      { title: 'BrownBard International Cultural Festival', type: 'special' }
+    ],
+    21: [
+      { title: 'Training Workshops', type: 'course' },
+      { title: 'Short Courses', type: 'course' }
+    ],
+    22: [
+      { title: 'Training Workshops (TW.7-TW.13)', type: 'course' },
+      { title: 'Short Courses', type: 'course' }
+    ],
+    23: [
+      { title: 'Training Workshops', type: 'course' },
+      { title: 'Course Completion Certificates', type: 'special' }
     ]
   }
 
@@ -73,7 +71,7 @@ const Schedule = () => {
       <section className="page-header">
         <div className="container">
           <h1>Symposium Schedule</h1>
-          <p>14th ISEG/GGSD-2026 Mega Symposium</p>
+          <p>IMEG-GSD 2027 Mega Symposium</p>
         </div>
       </section>
 
@@ -81,7 +79,7 @@ const Schedule = () => {
         <div className="schedule-container">
           <div className="calendar-wrapper">
             <div className="calendar-header">
-              <h2>August 2026</h2>
+              <h2>February 2027</h2>
             </div>
 
             <div className="calendar">
@@ -153,7 +151,7 @@ const Schedule = () => {
             <h3>PART A</h3>
             
             <div style={{ marginBottom: '1.5rem' }}>
-              <h4>Day 1, Sunday, August 9, 2026</h4>
+              <h4>Day 1, Saturday, February 14, 2027</h4>
               <ul style={{ marginLeft: '1rem' }}>
                 <li>Arrival of participants</li>
               </ul>
@@ -166,8 +164,8 @@ const Schedule = () => {
                 <li>Opening Ceremony for Part A</li>
                 <li>Keynote Presentations</li>
                 <li>Parallel Session Presentations</li>
-                <li>ISEG Council Meeting (evening)</li>
-                <li>ISEG Elections (evening)</li>
+                <li>Council Meeting (evening)</li>
+                <li>Council Elections (evening)</li>
               </ul>
             </div>
             
@@ -176,7 +174,7 @@ const Schedule = () => {
               <ul style={{ marginLeft: '1rem' }}>
                 <li>Paper Presentations In Parallel Sessions</li>
                 <li>Poster Papers</li>
-                <li>ISEG Awards And Prizes</li>
+                <li>Awards And Prizes</li>
                 <li>Part A Closing Dinner</li>
               </ul>
             </div>
@@ -221,7 +219,7 @@ const Schedule = () => {
             </div>
             
             <div style={{ marginBottom: '1.5rem' }}>
-              <h4>Day 7, Saturday, August 15, 2026</h4>
+              <h4>Day 7, Friday, February 19, 2027</h4>
               <ul style={{ marginLeft: '1rem' }}>
                 <li>Safari Tour - Nairobi National Park (6 AM - 12 Noon)</li>
                 <li>Organized Lunch in Nairobi (12 Noon)</li>
@@ -232,7 +230,7 @@ const Schedule = () => {
             </div>
             
             <div style={{ marginBottom: '1.5rem' }}>
-              <h4>Day 8, Sunday, August 16, 2026</h4>
+              <h4>Day 8, Saturday, February 20, 2027</h4>
               <ul style={{ marginLeft: '1rem' }}>
                 <li>Training Workshop TW.2: Global South Mid-Career Training (8:30 AM - 4:30 PM)</li>
                 <li>Short Courses (All Day)</li>
@@ -284,7 +282,7 @@ const Schedule = () => {
             </div>
             <div className="timeline-item highlight">
               <span className="date">Aug 9-16, 2026</span>
-              <p>ISEG/GGSD-2026 Mega Symposium (8 Days) - Maanzoni 680 Hotel, Nairobi, Kenya</p>
+              <p>IMEG-GSD 2027 Mega Symposium (8 Days) - Maanzoni 680 Hotel, Nairobi, Kenya</p>
             </div>
           </div>
         </div>
@@ -330,7 +328,7 @@ const Schedule = () => {
                 </tr>
                 <tr style={{ borderBottom: '1px solid #ddd' }}>
                   <td style={{ padding: '1rem', fontWeight: 'bold' }}>Aug 1, 2026</td>
-                  <td style={{ padding: '1rem' }}>Deadline for Regular Registration • Deadline for Registration for Shortcourses. (https://www.iseg-ggsd.com.ng/)</td>
+                  <td style={{ padding: '1rem' }}>Deadline for Regular Registration • Deadline for Registration for Shortcourses. (https://www.imeg-gsd.com.ng/)</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#fff3e0' }}>
                   <td style={{ padding: '1rem', fontWeight: 'bold' }}>Aug 9, 2026</td>
@@ -338,11 +336,11 @@ const Schedule = () => {
                 </tr>
                 <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#fff3e0' }}>
                   <td style={{ padding: '1rem', fontWeight: 'bold' }}>Aug 10, 2026</td>
-                  <td style={{ padding: '1rem' }}><strong>Day 2 (Part A):</strong> On-Site Registration Part A, Opening Ceremony, Keynote Presentations, Parallel Sessions, ISEG Council Meeting, ISEG Elections</td>
+                  <td style={{ padding: '1rem' }}><strong>Day 2:</strong> On-Site Registration, Opening Ceremony, Keynote Presentations, Parallel Sessions, Council Meeting, Council Elections</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#fff3e0' }}>
                   <td style={{ padding: '1rem', fontWeight: 'bold' }}>Aug 11, 2026</td>
-                  <td style={{ padding: '1rem' }}><strong>Day 3 (Part A):</strong> Paper Presentations, Poster Papers, ISEG Awards and Prizes, Part A Closing Dinner</td>
+                  <td style={{ padding: '1rem' }}><strong>Day 3:</strong> Paper Presentations, Poster Papers, Awards and Prizes, Closing Dinner</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#e8f5e9' }}>
                   <td style={{ padding: '1rem', fontWeight: 'bold' }}>Aug 12, 2026</td>
@@ -369,7 +367,7 @@ const Schedule = () => {
           </div>
           
           <p style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <strong>Website:</strong> <a href="https://www.iseg-ggsd.com.ng/" target="_blank" rel="noopener noreferrer">https://www.iseg-ggsd.com.ng/</a>
+            <strong>Website:</strong> <a href="https://www.imeg-gsd.com.ng/" target="_blank" rel="noopener noreferrer">https://www.imeg-gsd.com.ng/</a>
           </p>
         </div>
       </section>

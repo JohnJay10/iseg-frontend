@@ -19,7 +19,7 @@ export const sendAbstractConfirmationEmail = async (
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #E67E22 0%, #D96E10 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="margin: 0;">ISEG/GGSD 2026 Mega Symposium</h1>
+          <h1 style="margin: 0;">IMEG-GSD 2027 Mega Symposium</h1>
         </div>
         
         <div style="background: white; padding: 40px; border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px;">
@@ -66,18 +66,18 @@ export const sendAbstractConfirmationEmail = async (
           </div>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6; margin-top: 30px;">
-            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>iseg@gisdaad.org</strong>.
+            If you have any questions or need further assistance, please don't hesitate to contact us at <strong>imeg@gisdaad.org</strong>.
           </p>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6;">
             Best regards,<br/>
-            <strong>ISEG/GGSD 2026 Symposium Team</strong>
+            <strong>IMEG-GSD 2027 Symposium Team</strong>
           </p>
         </div>
         
         <div style="background: #f9f9f9; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999;">
-          <p style="margin: 0;">14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | August 9-15, 2026</p>
+          <p style="margin: 0;">IMEG-GSD 2027 International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
+          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | February 14-23, 2027</p>
         </div>
       </div>
     `;
@@ -85,7 +85,7 @@ export const sendAbstractConfirmationEmail = async (
     const templateParams = {
       to_email: email,
       subject:
-        "Abstract Submission Confirmation - ISEG/GGSD 2026 Mega Symposium",
+        "Abstract Submission Confirmation - IMEG-GSD 2027 Mega Symposium",
       html_message: emailContent,
       submission_id: submissionId,
       paper_title: title,
@@ -156,14 +156,14 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
           <h1 style="margin: 0;">✓ Registration Confirmed!</h1>
-          <p style="margin: 10px 0 0 0; font-size: 16px;">ISEG/GGSD 2026 Mega Symposium</p>
+          <p style="margin: 10px 0 0 0; font-size: 16px;">IMEG-GSD 2027 Mega Symposium</p>
         </div>
         
         <div style="background: white; padding: 40px; border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px;">
           <h2 style="color: #333; margin-top: 0;">Welcome, ${firstName}!</h2>
           
           <p style="color: #666; font-size: 16px; line-height: 1.6;">
-            Thank you for registering for the ISEG/GGSD 2026 Mega Symposium. Your registration has been successfully processed and confirmed.
+            Thank you for registering for the IMEG-GSD 2027 Mega Symposium. Your registration has been successfully processed and confirmed.
           </p>
           
           <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #2ECC71;">
@@ -252,10 +252,10 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
           
           <h3 style="color: #333;">Important Information:</h3>
           <ul style="color: #666; font-size: 15px; line-height: 1.8;">
-            <li>📅 <strong>Dates:</strong> August 9-15, 2026</li>
+            <li>📅 <strong>Dates:</strong> February 14-23, 2027</li>
             <li>📍 <strong>Location:</strong> Maanzoni 680 Hotel, Nairobi, Kenya</li>
             <li>🎫 <strong>Ticket:</strong> ${ticketId}</li>
-            <li>✉️ <strong>Questions?</strong> Contact us at iseg@gisdaad.org</li>
+            <li>✉️ <strong>Questions?</strong> Contact us at imeg@gisdaad.org</li>
           </ul>
           
           <p style="color: #666; font-size: 15px; line-height: 1.6; margin-top: 30px;">
@@ -264,20 +264,20 @@ export const sendRegistrationConfirmationEmail = async (registrationData) => {
           
           <p style="color: #666; font-size: 15px; line-height: 1.6;">
             Best regards,<br/>
-            <strong>ISEG/GGSD 2026 Symposium Team</strong>
+            <strong>IMEG-GSD 2027 Symposium Team</strong>
           </p>
         </div>
         
         <div style="background: #f9f9f9; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999;">
-          <p style="margin: 0;">14th International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
-          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | August 9-15, 2026</p>
+          <p style="margin: 0;">IMEG-GSD 2027 International Symposium on Environmental Geotechnology and Global Sustainable Development</p>
+          <p style="margin: 5px 0 0 0;">Maanzoni 680 Hotel, Nairobi, Kenya | February 14-23, 2027</p>
         </div>
       </div>
     `;
 
     const templateParams = {
       to_email: email,
-      subject: "Registration Confirmed - Your Event Ticket | ISEG/GGSD 2026",
+      subject: "Registration Confirmed - Your Event Ticket | IMEG-GSD 2027",
       html_message: emailContent,
       first_name: firstName,
       last_name: lastName,

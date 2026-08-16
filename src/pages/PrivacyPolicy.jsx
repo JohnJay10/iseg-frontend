@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
     <div className="policy-container">
       <div className="policy-content">
         <h1>Privacy Policy</h1>
-        <p className="last-updated">Last Updated: June 2026</p>
+        <p className="last-updated">Last Updated: January 2027</p>
 
         <section className="policy-section">
           <h2>1. Introduction</h2>
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
           </p>
           <p>
             <strong>INTEGRAL QUINTESSENCE ENTERPRISE</strong><br />
-            Email: iseg@gisdaad.org<br />
+            Email: imeg@gisdaad.org<br />
             Phone: +1 734-255-0158
           </p>
         </section>
