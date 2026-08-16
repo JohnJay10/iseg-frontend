@@ -80,7 +80,7 @@ const AbstractSubmission = () => {
             <div className="success-message">
               <div className="success-icon">✓</div>
               <h2>Thank You!</h2>
-              <p>Your abstract has been submitted successfully to the ISEG/GGSD-2026 Mega Symposium.</p>
+              <p>Your abstract has been submitted successfully to the IMEG-GSD 2027 Mega Symposium.</p>
               <p className="submission-details">
                 <strong>Submission ID:</strong> {submissionId}
               </p>
@@ -103,7 +103,7 @@ const AbstractSubmission = () => {
       <section className="page-header">
         <div className="container">
           <h1>Submit Your Abstract</h1>
-          <p>Submit a 4-page abstract for the ISEG/GGSD-2026 Mega Symposium</p>
+          <p>Submit a 4-page abstract for the IMEG-GSD 2027 Mega Symposium</p>
         </div>
       </section>
 
@@ -336,13 +336,13 @@ const AbstractSubmission = () => {
               <div className="guidelines-note" style={{ marginTop: '1.5rem' }}>
                 <h4>📅 Important Dates & Timeline</h4>
                 <p><strong>Call for Abstracts Released:</strong> October 10, 2025</p>
-                <p><strong>Sponsored-Session Proposals:</strong> May 30, 2026</p>
-                <p><strong>4-Page Abstract Submission Deadline:</strong> June 20, 2026</p>
-                <p><strong>Full Symposium Program Release:</strong> June 25, 2026</p>
-                <p><strong>Early Registration Deadline (Suggested):</strong> June 30, 2026</p>
-                <p><strong>Regular Registration Closes:</strong> August 1, 2026</p>
-                <p><strong>Hotel Booking Deadline:</strong> August 5, 2026</p>
-                <p><strong>Symposium Dates:</strong> August 9-15, 2026</p>
+                <p><strong>Sponsored-Session Proposals:</strong> November 30, 2026</p>
+                <p><strong>4-Page Abstract Submission Deadline:</strong> December 20, 2026</p>
+                <p><strong>Full Symposium Program Release:</strong> December 25, 2026</p>
+                <p><strong>Early Registration Deadline (Suggested):</strong> January 15, 2027</p>
+                <p><strong>Regular Registration Closes:</strong> February 1, 2027</p>
+                <p><strong>Hotel Booking Deadline:</strong> February 5, 2027</p>
+                <p><strong>Symposium Dates:</strong> February 14-23, 2027</p>
                 <p><strong>Notification of Acceptance:</strong> Within 4-6 weeks of submission</p>
               </div>
             </div>

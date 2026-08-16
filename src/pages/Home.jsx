@@ -38,7 +38,7 @@ const CountdownRenderer = ({ days, hours, minutes, seconds }) => (
 )
 
 const Home = () => {
-  const eventDate = new Date('2026-08-09').getTime()
+  const eventDate = new Date('2027-02-14').getTime()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [showLetterModal, setShowLetterModal] = useState(false)
 
@@ -73,15 +73,15 @@ const Home = () => {
         
         <div className="container hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">14TH ISEG/GGSD-2026 <span className="title-highlight">MEGA SYMPOSIUM</span></h1>
+            <h1 className="hero-title">IMEG-GSD 2027 <span className="title-highlight">MEGA SYMPOSIUM</span></h1>
             <p className="hero-subtitle">
-              14th International Symposium on Environmental Geotechnology and Global Sustainable Development
+              International Mega Symposium on Environmental Geotechnology and Global Sustainable Development
               <br />
-              in Conjunction with 2026 Global Ecosystems and Sustainable Development Symposium
+              in Conjunction with Global Ecosystems and Sustainable Development Symposium
             </p>
             
             <p className="event-details">
-              <span>9-15 August 2026 | Maanzoni 680 Hotel, Nairobi, Kenya</span>
+              <span>14-23 February 2027 | Maanzoni 680 Hotel, Nairobi, Kenya</span>
             </p>
             
             <div className="hero-buttons">
@@ -135,15 +135,15 @@ const Home = () => {
             {/* Left Column - Image */}
             <div className="welcome-image">
               <div className="image-placeholder">
-                <img src={welcomeImage} alt="ISEG/GGSD-2026 Symposium" />
+                <img src={welcomeImage} alt="IMEG-GSD 2027 Symposium" />
               </div>
             </div>
             
             {/* Right Column - Content */}
             <div className="welcome-content">
-              <h2>Welcome To The 14th ISEG/GGSD-2026 Symposium!</h2>
+              <h2>Welcome To The IMEG-GSD 2027 Symposium!</h2>
               <p className="lead">
-                This expanded two-part ISEG/GGSD-2026 Mega Symposium is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development.
+                This expanded IMEG-GSD 2027 Mega Symposium is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development.
               </p>
               
               <div className="welcome-highlights">
@@ -180,7 +180,7 @@ const Home = () => {
           <div className="letter-header">
             <div className="letter-badge">📬 CHAIRMAN'S INVITATION</div>
             <h2>Message From Our Symposium Chair</h2>
-            <p className="letter-subtitle">An Invitation to Participate in the ISEG/GGSD 2026 Mega-Symposium</p>
+            <p className="letter-subtitle">An Invitation to Participate in the IMEG-GSD 2027 Mega-Symposium</p>
           </div>
           
           <div className="letter-content-wrapper">
@@ -195,7 +195,7 @@ const Home = () => {
                 </p>
                 
                 <p>
-                  This expanded two-part ISEG/GGSD-2026 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993.
+                  This expanded IMEG-GSD 2027 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993.
                 </p>
                 
                 <p>
@@ -223,11 +223,11 @@ const Home = () => {
                 </p>
                 
                 <p>
-                  We encourage early registration before <strong>June 30, 2026</strong> to secure your spot. Registration will still be possible through early August 2026.
+                  We encourage early registration before <strong>February 5, 2027</strong> to secure your spot. Registration will still be possible through early February 2027.
                 </p>
                 
                 <p className="contact-info">
-                  <strong>For more information:</strong> Visit <a href="https://www.iseg-ggsd.com.ng" target="_blank" rel="noopener noreferrer">https://www.iseg-ggsd.com.ng</a>
+                  <strong>For more information:</strong> Visit <a href="https://www.imeg-gsd.com.ng" target="_blank" rel="noopener noreferrer">https://www.imeg-gsd.com.ng</a>
                 </p>
               </div>
               
@@ -236,7 +236,7 @@ const Home = () => {
                 <div className="signature">
                   <p className="sign-off">Yours sincerely,</p>
                   <p className="signature-name"><strong>Prof. Hilary I. Inyang</strong></p>
-                  <p className="signature-title">2026 ISEG-GGSD Mega-Symposium Chair and Chief Host</p>
+                  <p className="signature-title">2027 IMEG-GSD Mega-Symposium Chair and Chief Host</p>
                 </div>
               </div>
             </div>
@@ -265,20 +265,20 @@ const Home = () => {
             <div className="modal-body letter-full-text">
               <p className="greeting">Dear Sir/Madam,</p>
               
-              <p>On behalf of the International Organizing Committee, consortium of supporting organizations and leaders of forums and special sessions of our Mega-Symposium, I take this opportunity to invite you to participate in the upcoming one-week-long event on sustainable development across several critical scientific, technological and socioeconomic sectors. This expanded two-part ISEG/GGSD-2026 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development. Within the Mega-Symposium are mini-events and special tracks that will add to part A and part B. Examples are the South African Energy Transition Forum (SAETF), Global Youth Sustainable Development Forum (GYSDF), International Science Diplomacy Forum (ISDF), Mid-career Engagement and Training Workshop for African Professionals; African Institutes/BRICS Exposition and Research Forum organized by the Human Science Research Council of South Africa; Middle East Water Quality Science and Management Forum (MEWQSMF); Innovative Oil and Gas Systems Forum (IOGSF); AAS Frontier Science Forum (AFSF); and the BrownBard International Cultural and Literary Festival (BICLF) that will feature music, poetry readings, African fashion show and cultural dances from various countries.</p>
+              <p>On behalf of the International Organizing Committee, consortium of supporting organizations and leaders of forums and special sessions of our Mega-Symposium, I take this opportunity to invite you to participate in the upcoming one-week-long event on sustainable development across several critical scientific, technological and socioeconomic sectors. This expanded IMEG-GSD 2027 Mega-Symposium which will also include special forum tracks by several organizations, keynote speeches, shortcourses, special sessions on critical issues, and regular sessions, is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development. Within the Mega-Symposium are mini-events and special tracks that will add to part A and part B. Examples are the South African Energy Transition Forum (SAETF), Global Youth Sustainable Development Forum (GYSDF), International Science Diplomacy Forum (ISDF), Mid-career Engagement and Training Workshop for African Professionals; African Institutes/BRICS Exposition and Research Forum organized by the Human Science Research Council of South Africa; Middle East Water Quality Science and Management Forum (MEWQSMF); Innovative Oil and Gas Systems Forum (IOGSF); AAS Frontier Science Forum (AFSF); and the BrownBard International Cultural and Literary Festival (BICLF) that will feature music, poetry readings, African fashion show and cultural dances from various countries.</p>
               
-              <p>Kenya is known for great wildlife, beautiful sceneries and museums. It is a highly reputable country as regards tourism. Therefore, the Mega-Symposium participants have the opportunity to register for a very exciting Safari to some Kenyan parks as well as museums. A Nairobi City tour will also be organized. More information is provided on the Mega-Symposium website: https://www.iseg-ggsd.com.ng. Interested participants can go ahead and register on the website and book any of the hotels highlighted in this Bulletin at various room-night rates. The main Mega-Symposium hotel is Maanzoni 680 Hotel while the rest are located close by within walking distance. Participants are advised to pre-register for this Mega-Symposium before June 30, 2026 to beat the expected rush.</p>
+              <p>Kenya is known for great wildlife, beautiful sceneries and museums. It is a highly reputable country as regards tourism. Therefore, the Mega-Symposium participants have the opportunity to register for a very exciting Safari to some Kenyan parks as well as museums. A Nairobi City tour will also be organized. More information is provided on the Mega-Symposium website: https://www.imeg-gsd.com.ng. Interested participants can go ahead and register on the website and book any of the hotels highlighted in this Bulletin at various room-night rates. The main Mega-Symposium hotel is Maanzoni 680 Hotel while the rest are located close by within walking distance. Participants are advised to pre-register for this Mega-Symposium before February 5, 2027 to beat the expected rush.</p>
               
-              <p>Being that Nairobi, Kenya is the United Nations capital for Africa and allows entry visas upon arrival in Nairobi, participants will find it easy to visit Kenya and take part in this Mega-Symposium which is briefly described in this Bulletin and website https://www.iseg-ggsd.com.ng pending the development of the full program of the Mega-Symposium by July 10, 2026. The planning schedule of this Mega-Symposium is provided on the website. Although we suggest that participants register early as made possible on the website https://www.iseg-ggsd.com.ng, we would like to indicate that registration will still be possible all the way to early August, 2026.</p>
+              <p>Being that Nairobi, Kenya is the United Nations capital for Africa and allows entry visas upon arrival in Nairobi, participants will find it easy to visit Kenya and take part in this Mega-Symposium which is briefly described in this Bulletin and website https://www.imeg-gsd.com.ng pending the development of the full program of the Mega-Symposium by July 10, 2027. The planning schedule of this Mega-Symposium is provided on the website. Although we suggest that participants register early as made possible on the website https://www.imeg-gsd.com.ng, we would like to indicate that registration will still be possible all the way to early Febust, 2026.</p>
               
-              <p>Payment instructions for Symposium registration, session sponsorship, Safari tour participation and BICLF participation are provided on the website. Participants from organizations that would like to propose and sponsor special sessions are advised to do so by contacting Mrs. Helen Ajuzieogu - helen.gisdaad@gmail.com to discuss, while organizations that would like to sponsor this event should contact Dr. James Mushori via Email: jameskenya23@yahoo.com, and WhatsApp: +254 721 397073. Regarding presentations of regular and poster papers, interested authors should note the abstracts submission deadline of July 7, 2026.</p>
+              <p>Payment instructions for Symposium registration, session sponsorship, Safari tour participation and BICLF participation are provided on the website. Participants from organizations that would like to propose and sponsor special sessions are advised to do so by contacting Mrs. Helen Ajuzieogu - helen.gisdaad@gmail.com to discuss, while organizations that would like to sponsor this event should contact Dr. James Mushori via Email: jameskenya23@yahoo.com, and WhatsApp: +254 721 397073. Regarding presentations of regular and poster papers, interested authors should note the abstracts submission deadline of January 15, 2027.</p>
               
               <p>Once again, I thank you in anticipation of your participation. Greetings!</p>
               
               <div className="signature-section">
                 <p>Yours sincerely,</p>
                 <p><strong>Prof. Hilary I. Inyang</strong></p>
-                <p>2026 ISEG-GGSD Mega-Symposium Chair and Chief Host</p>
+                <p>2027 IMEG-GSD Mega-Symposium Chair and Chief Host</p>
                 <p style={{marginTop: '2rem', fontSize: '0.9rem', color: '#666'}}>CC: Mrs. Helen Ajuzieogu, Symposium Coordinator<br/>Prof. Chao-Sheng Tang, Part A International Scientific Committee Chair<br/>Prof. Thokozani Simelane, Part B International Scientific Committee Chair</p>
               </div>
             </div>
@@ -294,16 +294,16 @@ const Home = () => {
       <section className="section light" id="announcements">
   <div className="container">    
     <div className="bulletin-header">
-      <h2>2026 ISEG-GGSD MEGA-SYMPOSIUM BULLETIN 4.1: FINAL SYMPOSIUM DETAILS & REGISTRATION</h2>
+      <h2>IMEG-GSD 2027 MEGA-SYMPOSIUM BULLETIN 5.0: FINAL SYMPOSIUM DETAILS & REGISTRATION</h2>
       
       <div className="bulletin-info">
         <h4>14th International Symposium on Environmental Geotechnology and Global Sustainable Development</h4>
         <p>in conjunction with</p>
-        <h4>2026 Global Geo-Ecosystems and Sustainable Development Symposium</h4>
+        <h4>2027 IMEG-GSD Mega Symposium</h4>
         
         <div className="location-dates">
           <p><strong>Maanzoni 680 Hotel, Kenyatta Avenue, Muindi Mbingu Street, Nairobi, Kenya</strong></p>
-          <p><strong>Sunday, August 9, 2026 to Saturday, August 15, 2026</strong></p>
+          <p><strong>Friday, February 14, 2027 to Sunday, February 23, 2027</strong></p>
         </div>
         
         <div className="organized-section">
@@ -326,7 +326,7 @@ const Home = () => {
     
     <div className="announcement-section objectives-section">
       <h3>OBJECTIVES AND FOCUS OF THE TWO-PART MEGA SYMPOSIUM</h3>
-      <p>This expanded two-part ISEG/GGSD-2026 Mega-Symposium is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development as follows:</p>
+      <p>This expanded IMEG-GSD 2027 Mega-Symposium is an outgrowth of 13 regular ISEG conferences/symposia which started in 1993, and many other forums with the continuing objective of applying technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development as follows:</p>
     </div>
 
     <div className="two-part-layout parts-table">
@@ -335,7 +335,7 @@ const Home = () => {
           <h4>Part A</h4>
         </div>
         <div className="part-content">
-          <h4>ISEG/GGSD-2026 Mega-Symposium Part A:</h4>
+          <h4>IMEG-GSD 2027 Mega-Symposium Program:</h4>
           <h5>14th International Symposium on Environmental Geotechnology and Global Sustainable Development</h5>
           <p>Part A will focus on fundamental aspects of Environmental Geotechnology to be treated by experts from various parts of world, such as researchers, practicing analysts, educators and engineers to present research papers and exhibitions that will cover theoretical modeling, innovative experimentation techniques, new equipment designs, field studies and demonstration projects. Among the major issues and sub-disciplines that will be treated in several sessions are:</p>
           <div className="topics-container">
@@ -381,8 +381,8 @@ const Home = () => {
           <h4>Part B</h4>
         </div>
         <div className="part-content">
-          <h4>ISEG/GGSD-2026 Mega-Symposium Part B:</h4>
-          <h5>2026 Global Geo-Ecosystems and Sustainable Development Symposium</h5>
+          <h4>IMEG-GSD 2027 Mega-Symposium Forums:</h4>
+          <h5>2027 IMEG-GSD Mega Symposium</h5>
           <p>Part B is the most recent compliment of the traditional ISEG conferences that have been held since 1993. The continuing objective of Part B of this Mega-Symposium is application of technical and social science knowledge from a diversity of disciplines to address critical issues in sustainable development. This will cover cross-disciplinary analyses of geoenvironmental issues across many socioeconomic sectors such as:</p>
           <div className="topics-container">
             <div className="topics-column">
@@ -440,33 +440,33 @@ const Home = () => {
             <div className="schedule-card">
               <div className="schedule-date">
                 <span className="day">Day 1</span>
-                <span className="date-text">Sunday, August 9, 2026</span>
+                <span className="date-text">Saturday, February 14, 2027</span>
               </div>
               <div className="schedule-content">
                 <h4>Arrival of Participants</h4>
-                <p>Begin your journey to the 14th ISEG/GGSD-2026 Mega Symposium with the arrival of participants from around the world.</p>
+                <p>Begin your journey to the IMEG-GSD 2027 Mega Symposium with the arrival of participants from around the world.</p>
               </div>
             </div>
 
             <div className="schedule-card">
               <div className="schedule-date">
                 <span className="day">Day 2</span>
-                <span className="date-text">Monday, August 10, 2026</span>
+                <span className="date-text">Sunday, February 15, 2027</span>
               </div>
               <div className="schedule-content">
-                <h4>ISEG Kickoff</h4>
-                <p>On-Site Registration for Part A, Opening Ceremony, Keynote Presentations, Parallel Session Presentations, ISEG Council Meeting & Elections</p>
+                <h4>Council Opening</h4>
+                <p>On-Site Registration, Opening Ceremony, Keynote Presentations, Parallel Session Presentations, Council Meeting & Elections</p>
               </div>
             </div>
 
             <div className="schedule-card">
               <div className="schedule-date">
                 <span className="day">Day 3</span>
-                <span className="date-text">Tuesday, August 11, 2026</span>
+                <span className="date-text">Monday, February 16, 2027</span>
               </div>
               <div className="schedule-content">
                 <h4>Papers, Award & Dinner</h4>
-                <p>Paper Presentations in Parallel Sessions, Poster Papers, ISEG Awards and Prizes, Part A Closing Dinner</p>
+                <p>Paper Presentations in Parallel Sessions, Poster Papers, Awards and Prizes, Closing Dinner</p>
               </div>
             </div>
           </div>
@@ -481,7 +481,7 @@ const Home = () => {
       <section className="section fees-section">
         <div className="container">
           <div className="section-header">
-            <h2>REGISTRATION FEES FOR ISEG/GGSD-2026 MEGA SYMPOSIUM</h2>
+            <h2>REGISTRATION FEES FOR IMEG-GSD 2027 MEGA SYMPOSIUM</h2>
             <p>Choose the package that works best for you</p>
           </div>
           
@@ -500,7 +500,7 @@ const Home = () => {
               <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop" alt="Part B Registration" className="fee-image" />
               <div>
                 <h3>Part B Registration</h3>
-                <p className="fee-description">2026 Global Geo-Ecosystems and Sustainable Development Symposium</p>
+                <p className="fee-description">2027 IMEG-GSD Mega Symposium</p>
                 <div className="fee-price">$350</div>
                 <p className="fee-note">Per person</p>
               </div>
@@ -593,63 +593,63 @@ const Home = () => {
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">May 30, 2026</div>
+        <div className="calendar-date">November 30, 2026</div>
         <div className="calendar-label">Deadline for Sponsored-Session Proposals and Shortcourse Plans Submission</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">May 31, 2026</div>
+        <div className="calendar-date">December 1, 2026</div>
         <div className="calendar-label">Expert Instructor Applications Deadline</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">June 20, 2026</div>
+        <div className="calendar-date">December 20, 2026</div>
         <div className="calendar-label">Deadline for 4-Page Abstract Submission</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">June 25, 2026</div>
-        <div className="calendar-label">Full Symposium Program Release - Bulletin 4.1</div>
+        <div className="calendar-date">December 25, 2026</div>
+        <div className="calendar-label">Full Symposium Program Release - Bulletin 5.0</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">June 30, 2026</div>
+        <div className="calendar-date">January 15, 2027</div>
         <div className="calendar-label">Early Registration Deadline (Suggested)</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">July 4, 2026</div>
+        <div className="calendar-date">January 20, 2027</div>
         <div className="calendar-label">Shortcourse Registration Deadline</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">August 1, 2026</div>
+        <div className="calendar-date">February 1, 2027</div>
         <div className="calendar-label">Regular Registration Deadline</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">August 5, 2026</div>
+        <div className="calendar-date">February 5, 2027</div>
         <div className="calendar-label">Hotel Booking Deadline for Special Rates</div>
       </div>
       
       <div className="calendar-item active">
-        <div className="calendar-date">August 9, 2026</div>
-        <div className="calendar-label">Beginning of the Mega-Symposium Part A</div>
+        <div className="calendar-date">February 14, 2027</div>
+        <div className="calendar-label">Beginning of the Mega-Symposium</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">August 15, 2026</div>
-        <div className="calendar-label">Closing Ceremony by 12 Noon of the Mega Symposium</div>
+        <div className="calendar-date">February 19, 2027</div>
+        <div className="calendar-label">Closing Ceremony - Evening Dinner</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">August 15, 2026</div>
-        <div className="calendar-label">BrownBard International Cultural and Literary Festival (BICLF) 2:00 PM – 11:00 PM</div>
+        <div className="calendar-date">February 20, 2027</div>
+        <div className="calendar-label">Cultural and Literary Festival 2:00 PM – 11:00 PM</div>
       </div>
       
       <div className="calendar-item">
-        <div className="calendar-date">August 16, 2026</div>
-        <div className="calendar-label">Mega-Symposium Shortcourses</div>
+        <div className="calendar-date">February 20-21, 2027</div>
+        <div className="calendar-label">Mega-Symposium Workshops</div>
       </div>
     </div>
   </div>
@@ -659,8 +659,8 @@ const Home = () => {
       <section className="section secure-spot-section">
         <div className="container">
           <div className="section-header">
-            <h2>Secure your ISEG Spot</h2>
-            <p>09-15 August 2026 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
+            <h2>Secure your IMEG Spot</h2>
+            <p>14-23 February 2027 @ Maanzoni 680 Hotel, Nairobi, Kenya</p>
           </div>
           
           <div className="countdown-cta-wrapper">
@@ -736,7 +736,7 @@ const Home = () => {
       <div className="chief-host-content">
         <div className="chief-host-name">Prof. Hilary I. Inyang</div>
         <div className="chief-host-credentials">
-          ISEG Honorary President and Founding Chair and Distinguished Professor, Global Institute for Sustainable 
+          IMEG Honorary President and Founding Chair and Distinguished Professor, Global Institute for Sustainable 
           Development, Advanced Analyses and Design (GISDAAD), Concord, NC, USA and Abuja, Nigeria.
         </div>
       </div>
@@ -748,22 +748,22 @@ const Home = () => {
       <div className="leadership-grid grid-3">
         <div className="leader-card">
           <h4>Prof. Shi Bin</h4>
-          <p className="leader-role">ISEG President</p>
+          <p className="leader-role">IMEG President</p>
           <p className="leader-affiliation">Dean of Suzhou High-Tech Research Institute, Nanjing Univ., Suzhou, Jiangsu, China</p>
         </div>
         <div className="leader-card">
           <h4>Prof. Effiom E. Antia</h4>
-          <p className="leader-role">ISEG Vice-President for Africa</p>
+          <p className="leader-role">IMEG Vice-President for Africa</p>
           <p className="leader-affiliation">Professor of Oceanography, Univ. of Calabar, Calabar, Nigeria</p>
         </div>
         <div className="leader-card">
           <h4>Prof. Devendra Narain Singh</h4>
-          <p className="leader-role">ISEG Vice-President for Asia</p>
+          <p className="leader-role">IMEG Vice-President for Asia</p>
           <p className="leader-affiliation">D. L. Shah Chair Professor of Innovation, Indian Institute of Technology, Bombay (IIT-B), Mumbai, India</p>
         </div>
         <div className="leader-card">
           <h4>Dr. Sue Struthers</h4>
-          <p className="leader-role">ISEG Council Member (Europe)</p>
+          <p className="leader-role">IMEG Council Member (Europe)</p>
           <p className="leader-affiliation">Mining Environmental Consultant</p>
         </div>
         <div className="leader-card">
@@ -782,7 +782,7 @@ const Home = () => {
         <div className="committee-chair">
           <h4>Chair:</h4>
           <div className="chair-card">
-            <p><strong>Prof. Chao-Sheng Tang</strong> - Secretary-General, ISEG and Professor at Nanjing University, and President of Youth Committee of Engineering Geology in China</p>
+            <p><strong>Prof. Chao-Sheng Tang</strong> - Secretary-General, IMEG and Professor at Nanjing University, and President of Youth Committee of Engineering Geology in China</p>
           </div>
         </div>
         
@@ -1088,10 +1088,10 @@ const Home = () => {
           </div>
           
           <div className="leadership-item">
-            <span className="leadership-title">Co-Chair and ISEG Secretariat Contact:</span>
+            <span className="leadership-title">Co-Chair and IMEG Secretariat Contact:</span>
             <div className="leadership-details">
               <strong>Prof. Chao-Sheng Tang</strong>
-              <span className="affiliation">ISEG</span>
+              <span className="affiliation">IMEG</span>
             </div>
           </div>
         </div>
@@ -1239,14 +1239,14 @@ const Home = () => {
           <div className="marquee-item"><img src={kenyaLogo} alt="Kenya" /></div>
           <div className="marquee-item"><img src={futureAfricaLogo} alt="Future Africa" /></div>
           <div className="marquee-item"><img src={futureEarthLogo} alt="Future Earth" /></div>
-          <div className="marquee-item"><img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" /></div>
+          <div className="marquee-item"><img src={sponsorsImage} alt="IMEG-GSD 2027 Sponsors" /></div>
           {/* duplicate for seamless loop */}
           <div className="marquee-item"><img src={gisdadLogo} alt="GISDAD" /></div>
           <div className="marquee-item"><img src={usaLogo} alt="USA" /></div>
           <div className="marquee-item"><img src={kenyaLogo} alt="Kenya" /></div>
           <div className="marquee-item"><img src={futureAfricaLogo} alt="Future Africa" /></div>
           <div className="marquee-item"><img src={futureEarthLogo} alt="Future Earth" /></div>
-          <div className="marquee-item"><img src={sponsorsImage} alt="ISEG/GGSD-2026 Sponsors" /></div>
+          <div className="marquee-item"><img src={sponsorsImage} alt="IMEG-GSD 2027 Sponsors" /></div>
         </div>
       </div>
     </div>
@@ -1260,8 +1260,8 @@ const Home = () => {
       {/* Reviews */}
       <section className="section light">
         <div className="container">
-          <h2>ISEG/GGSD-2026 Reviews</h2>
-          <p className="lead">Reviews from ISEG/GGSD-2026 Past attendees.</p>
+          <h2>IMEG-GSD 2027 Reviews</h2>
+          <p className="lead">Reviews from IMEG-GSD 2027 Past attendees.</p>
           
           <div className="testimonials grid grid-2">
             <div className="testimonial-card">
@@ -1270,14 +1270,14 @@ const Home = () => {
               <p className="role">ISEG Attendee</p>
             </div>
             <div className="testimonial-card">
-              <p className="quote">"At first, I was skeptical but, ISEG exceeded my expectations and I must attend ISEG this year."</p>
+              <p className="quote">"At first, I was skeptical but, IMEG exceeded my expectations and I must attend IMEG this year."</p>
               <p className="author"><strong>Sally Watson</strong></p>
               <p className="role">ISEG Attendee</p>
             </div>
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link to="/register" className="btn btn-primary">Register for ISEG 2026</Link>
+            <Link to="/register" className="btn btn-primary">Register for IMEG 2027</Link>
           </div>
         </div>
       </section>
@@ -1292,7 +1292,7 @@ const Home = () => {
               <h2>Venue</h2>
               <h3 className="venue-title">Maanzoni 680 Hotel, Nairobi, Kenya</h3>
               <p className="venue-description">
-                The 14th ISEG/GGSD-2026 Mega Symposium takes place at the prestigious Maanzoni 680 Hotel, 
+                The IMEG-GSD 2027 Mega Symposium takes place at the prestigious Maanzoni 680 Hotel, 
                 located on Kenyatta Avenue in the vibrant capital city of Nairobi, Kenya.
               </p>
               <div className="venue-highlights">
@@ -1307,7 +1307,7 @@ const Home = () => {
                   <span className="highlight-icon">📅</span>
                   <div>
                     <strong>Dates</strong>
-                    <p>August 9-15, 2026</p>
+                    <p>February 14-23, 2027</p>
                   </div>
                 </div>
                 <div className="highlight-item">
@@ -1391,7 +1391,7 @@ const Home = () => {
               <p className="person-title">ISEG Secretary General</p>
             </div>
             <div className="contact-info">
-              <p className="contact-detail">📧 iseg@nju.edu.cn</p>
+              <p className="contact-detail">📧 imeg@nju.edu.cn</p>
             </div>
           </div>
 

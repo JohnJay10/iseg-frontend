@@ -5,7 +5,7 @@ const RefundPolicy = () => {
     <div className="policy-container">
       <div className="policy-content">
         <h1>Refund Policy</h1>
-        <p className="last-updated">Last Updated: June 2026</p>
+        <p className="last-updated">Last Updated: January 2027</p>
 
         <section className="policy-section">
           <h2>1. Overview</h2>
@@ -18,7 +18,7 @@ const RefundPolicy = () => {
           <h2>2. Registration Refunds</h2>
           <h3>Full Refund</h3>
           <p>
-            A full refund (minus any administrative fees) will be issued if cancellation is requested more than 30 days before the event date (August 9, 2026).
+            A full refund (minus any administrative fees) will be issued if cancellation is requested more than 30 days before the event date (February 14, 2027).
           </p>
           <h3>Partial Refund</h3>
           <p>
@@ -43,7 +43,7 @@ const RefundPolicy = () => {
             To request a refund, please contact our team with your registration details and reason for cancellation:
           </p>
           <ul>
-            <li>Email: iseg@gisdaad.org</li>
+            <li>Email: imeg@gisdaad.org</li>
             <li>Phone: +1 734-255-0158</li>
           </ul>
           <p>
@@ -72,7 +72,7 @@ const RefundPolicy = () => {
           </p>
           <p>
             <strong>INTEGRAL QUINTESSENCE ENTERPRISE</strong><br />
-            Email: iseg@gisdaad.org<br />
+            Email: imeg@gisdaad.org<br />
             Phone: +1 734-255-0158
           </p>
         </section>

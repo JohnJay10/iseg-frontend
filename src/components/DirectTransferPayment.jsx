@@ -29,7 +29,7 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
     },
     {
       id: 'nigeria-ngn',
-      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      name: 'IMEG-GSD-IQ ENT FUNDRAISING ACCOUNT',
       location: 'Nigeria',
       accountNumber: '5601719521',
       bankName: 'FIDELITY BANK PLC',
@@ -39,7 +39,7 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
     },
     {
       id: 'nigeria-usd',
-      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      name: 'IMEG-GSD-IQ ENT FUNDRAISING ACCOUNT',
       location: 'Nigeria',
       accountNumber: '5240093293',
       bankName: 'FIDELITY BANK PLC',
@@ -49,7 +49,7 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
     },
     {
       id: 'nigeria-gbp',
-      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      name: 'IMEG-GSD-IQ ENT FUNDRAISING ACCOUNT',
       location: 'Nigeria',
       accountNumber: '5240093303',
       bankName: 'FIDELITY BANK PLC',
@@ -279,7 +279,7 @@ const DirectTransferPayment = ({ totalAmount, registrationData, onBack }) => {
           ← Back to Payment Methods
         </button>
         <p className="help-text">
-          If you need help, please contact us at support@iseg-conference.org
+          If you need help, please contact us at support@imeg-conference.org
         </p>
       </div>
     </div>

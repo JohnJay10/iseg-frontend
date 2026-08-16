@@ -9,8 +9,8 @@ const Workshops = () => {
       id: 'tw1',
       code: 'TW.1',
       title: 'OIL AND GAS INDUSTRY TRAINING WORKSHOP',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $3,000',
       color: '#e67e22',
       coordinators: [
@@ -33,8 +33,8 @@ const Workshops = () => {
       id: 'tw2',
       code: 'TW.2',
       title: 'GLOBAL SOUTH MID-CAREER TRAINING WORKSHOP',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $2,000',
       color: '#2ecc71',
       coordinators: [
@@ -57,8 +57,8 @@ const Workshops = () => {
       id: 'tw3',
       code: 'TW.3',
       title: 'TRAINING WORKSHOP ON EXECUTIVE LEADERSHIP, PUBLIC HEALTH AND WATER SECURITY',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $2,500',
       color: '#3498db',
       coordinators: [
@@ -80,8 +80,8 @@ const Workshops = () => {
       id: 'tw4',
       code: 'TW.4',
       title: 'TRAINING WORKSHOP ON ARTIFICIAL INTELLIGENCE, CYBERSECURITY AND INTERNET OF THINGS',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $3,000',
       color: '#9b59b6',
       coordinators: [
@@ -106,8 +106,8 @@ const Workshops = () => {
       id: 'tw5',
       code: 'TW.5',
       title: 'GISDAAD TRAINING WORKSHOP ON BUSINESS DEVELOPMENT AND OPERATIONS',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $3,000',
       color: '#e74c3c',
       coordinators: [
@@ -134,8 +134,8 @@ const Workshops = () => {
       id: 'tw6',
       code: 'TW.6',
       title: 'TRAINING WORKSHOP ON EDUCATION AND RESEARCH ADMINISTRATION',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
-      time: '8:30 AM - 5:30 PM',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
+      time: '8:00 AM - 5:00 PM',
       fee: 'USD $3,000',
       color: '#16a085',
       coordinators: [
@@ -162,7 +162,7 @@ const Workshops = () => {
       id: 'tw7',
       code: 'TW.7',
       title: 'WORKSHOP ON CLIMATE CHANGE, SUSTAINABLE ENERGY SYSTEMS AND CARBON CREDITS',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
       time: '8:30 AM - 5:30 PM',
       fee: 'USD $3,000',
       color: '#27ae60',
@@ -187,7 +187,7 @@ const Workshops = () => {
       id: 'tw8',
       code: 'TW.8',
       title: 'WORKSHOP ON LAW AND GOVERNANCE PROCESSES',
-      date: 'Saturday, August 15 - Sunday, August 16, 2026',
+      date: 'Saturday, February 20 - Sunday, February 21, 2027',
       time: '8:30 AM - 5:30 PM',
       fee: 'USD $2,500',
       color: '#c0392b',
@@ -214,7 +214,7 @@ const Workshops = () => {
       <section className="page-header">
         <div className="container">
           <h1>Training Workshops</h1>
-          <p>Advanced Professional Development at ISEG/GGSD-2026</p>
+          <p>Advanced Professional Development at IMEG-GSD 2027</p>
         </div>
       </section>
 
@@ -223,9 +223,9 @@ const Workshops = () => {
           {/* Intro Section */}
           <div className="workshops-intro-section">
             <div className="intro-content">
-              <h2>TRAINING WORKSHOPS OF THE ISEG/GGSD 2026 MEGA-SYMPOSIUM</h2>
+              <h2>TRAINING WORKSHOPS OF THE IMEG-GSD 2027 MEGA-SYMPOSIUM</h2>
               <p>
-                The International Organizing Committee of ISEG/GGSD 2026 Mega Symposium has made arrangements with international organizations for eight separate training workshops to be held in parallel from 8:00 AM on Saturday, August 15th to 5:00 PM on Sunday, August 16th, 2026 during the Mega-Symposium.
+                The International Organizing Committee of IMEG-GSD 2027 Mega Symposium has made arrangements with international organizations for training workshops to be held in parallel from 8:00 AM on Saturday, February 20th to 5:00 PM on Tuesday, February 23rd, 2027 during the Mega-Symposium.
               </p>
               <p>
                 Each of the training workshops comprises courses that pertain to the workshop program issue. To ensure a balanced theoretical and practical course contents, each planning organization has collaborated with GISDAAD to optimize the coverage. Workshop completion certificates will be provided to all trainees at the end of each completed training workshop.
@@ -234,14 +234,14 @@ const Workshops = () => {
                 Complete information on instructor biosketches as well as course contents will be provided in the Mega-Symposium program document which will be released June 25, 2026. Individuals and organizations who are interested in enrolment in the training workshop and need general information about the training workshop program as well as other elements of the conference should contact the coordinator, Mr. Misbahu Yunusa Yusuf, Email: <strong>yunusamisbahu@gmail.com</strong>, Telephone: <strong>+234 813 078 1117</strong>.
               </p>
               <p>
-                For more detailed and specific information on any of the training workshops listed below, the inquirer is requested to contact the listed coordinators whose name and contact information are provided below. Training workshop enrolment fees are indicated. Registration as well as payment can be made at <strong>https://www.iseg-ggsd.com.ng/workshops</strong>.
+                For more detailed and specific information on any of the training workshops listed below, the inquirer is requested to contact the listed coordinators whose name and contact information are provided below. Training workshop enrolment fees are indicated. Registration as well as payment can be made at <strong>https://www.imeg-gsd.com.ng/workshops</strong>.
               </p>
               <div className="key-info">
                 <div className="info-item">
                   <span className="info-icon">📅</span>
                   <div>
                     <strong>Schedule</strong>
-                    <p>Saturday, August 15 - Sunday, August 16, 2026</p>
+                    <p>Saturday, February 20 - Sunday, February 21, 2027</p>
                     <p>8:00 AM - 5:00 PM</p>
                   </div>
                 </div>

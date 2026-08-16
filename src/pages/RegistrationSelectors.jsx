@@ -37,7 +37,7 @@ export const forumsList = {
     { code: 'FB.14', title: 'FORUM ON BUSINESS AND DEVELOPMENT FINANCE' },
   ],
   special: [
-    { code: 'OSS.1', title: 'ISEG EXPOSITIONAL SPECIAL SESSION' },
+    { code: 'OSS.1', title: 'IMEG EXPOSITIONAL SPECIAL SESSION' },
     { code: 'OSS.2', title: 'AFRICA INSTITUTE OF SOUTH AFRICA AND BRICS EXPOSITION SPECIAL SESSION' },
     { code: 'OSS.3', title: 'DISASTERS AND REVIVAL OF THE GLOBAL ALLIANCE OF DISASTER REDUCTION (GADR) SPECIAL SESSION' },
     { code: 'OSS.4', title: 'AFRICAN ACADEMY OF SCIENCE (AAS) SPECIAL SESSION' },
@@ -83,49 +83,49 @@ export const workshopsList = [
   { 
     code: 'TW.1', 
     title: 'OIL AND GAS INDUSTRY TRAINING WORKSHOP',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $3,000'
   },
   { 
     code: 'TW.2', 
     title: 'GLOBAL SOUTH MID-CAREER TRAINING WORKSHOP',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $2,000'
   },
   { 
     code: 'TW.3', 
     title: 'TRAINING WORKSHOP ON EXECUTIVE LEADERSHIP, PUBLIC HEALTH AND WATER SECURITY',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $2,500'
   },
   { 
     code: 'TW.4', 
     title: 'TRAINING WORKSHOP ON ARTIFICIAL INTELLIGENCE, CYBERSECURITY AND INTERNET OF THINGS',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $3,000'
   },
   { 
     code: 'TW.5', 
     title: 'GISDAAD TRAINING WORKSHOP ON BUSINESS DEVELOPMENT AND OPERATIONS',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $3,000'
   },
   { 
     code: 'TW.6', 
     title: 'TRAINING WORKSHOP ON EDUCATION AND RESEARCH ADMINISTRATION',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $3,000'
   },
   { 
     code: 'TW.7', 
     title: 'WORKSHOP ON CLIMATE CHANGE, SUSTAINABLE ENERGY SYSTEMS AND CARBON CREDITS',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $3,000'
   },
   { 
     code: 'TW.8', 
     title: 'WORKSHOP ON LAW AND GOVERNANCE PROCESSES',
-    date: 'Saturday, August 15 - Sunday, August 16, 2026',
+    date: 'Saturday, February 20 - Sunday, February 21, 2027',
     fee: 'USD $2,500'
   }
 ]

@@ -15,7 +15,7 @@ const Sponsorship = () => {
     },
     {
       id: 'nigeria',
-      name: 'ISEG-GGSD-IQ ENT FUNDRAISING ACCOUNT',
+      name: 'IMEG-GSD-IQ ENT FUNDRAISING ACCOUNT',
       location: 'Nigeria',
       accountNumber: '560 171 9521',
       bankName: 'FIDELITY BANK, NIGERIA',
@@ -116,7 +116,7 @@ const Sponsorship = () => {
       <section className="page-header">
         <div className="container">
           <h1>Sponsorship Opportunities</h1>
-          <p>Partner with the 14th ISEG/GGSD-2026 Mega Symposium</p>
+          <p>Partner with the IMEG-GSD 2027 Mega Symposium</p>
         </div>
       </section>
 
@@ -125,7 +125,7 @@ const Sponsorship = () => {
           <div className="sponsorship-intro">
             <h2>Join Us as a Sponsor</h2>
             <p>
-              The 14th ISEG/GGSD-2026 Mega Symposium brings together over 30,000 organizations 
+              The IMEG-GSD 2027 Mega Symposium brings together over 30,000 organizations 
               and professionals from 70 countries dedicated to environmental geotechnology and sustainable development. 
               Sponsoring this event provides your organization with unparalleled visibility and networking opportunities 
               within this global community.
@@ -134,19 +134,9 @@ const Sponsorship = () => {
 
           <div className="payment-methods">
             <h3>How to Make Payment</h3>
-            <p>Please follow the same secure payment methods we use for registrations. Sponsors may pay by <strong>Stripe</strong>, <strong>Flutterwave</strong>, or <strong>Direct Bank Transfer</strong>. For invoicing or bespoke arrangements contact the sponsorship team.</p>
+            <p>Please follow the same secure payment methods we use for registrations. Sponsors may pay by <strong>Flutterwave</strong> or <strong>Direct Bank Transfer</strong>. For invoicing or bespoke arrangements contact the sponsorship team.</p>
 
             <div className="methods-grid">
-              <div className="method-card">
-                <h4>Stripe (Card Payments)</h4>
-                <p>
-                  Use Stripe for secure credit / debit card payments. Stripe supports international card payments and provides instant confirmation.
-                </p>
-                <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-                  <a href="/register" className="btn btn-sm">Pay via Register →</a>
-                </p>
-              </div>
-
               <div className="method-card">
                 <h4>Flutterwave (Cards, Mobile Money, USSD)</h4>
                 <p>
@@ -160,7 +150,7 @@ const Sponsorship = () => {
               <div className="method-card">
                 <h4>Direct Bank Transfer</h4>
                 <p>
-                  Wire funds to our official bank accounts (USD / NGN). After transfer, email your proof of payment to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a> including organization name and selected sponsorship level.
+                  Wire funds to our official bank accounts (USD / NGN). After transfer, email your proof of payment to <a href="mailto:sponsors@imeg.ac.ke">sponsors@imeg.ac.ke</a> including organization name and selected sponsorship level.
                 </p>
                 <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
                   <button type="button" className="btn btn-sm" onClick={() => setShowBankDetailsModal(true)}>
@@ -173,9 +163,9 @@ const Sponsorship = () => {
             <div className="payment-next-steps">
               <h4>After Payment</h4>
               <ul>
-                <li>Send your payment proof or transaction reference to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.</li>
+                <li>Send your payment proof or transaction reference to <a href="mailto:sponsors@imeg.ac.ke">sponsors@imeg.ac.ke</a>.</li>
                 <li>We will confirm receipt and issue an official receipt and sponsorship agreement.</li>
-                <li>For invoicing, bespoke packages or large transfers, request an invoice by emailing <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.</li>
+                <li>For invoicing, bespoke packages or large transfers, request an invoice by emailing <a href="mailto:sponsors@imeg.ac.ke">sponsors@imeg.ac.ke</a>.</li>
               </ul>
             </div>
           </div>
@@ -207,7 +197,7 @@ const Sponsorship = () => {
 
                   <div className="level-action">
                     <a 
-                      href="https://www.iseg-ggsd.com.ng" 
+                      href="https://www.imeg-gsd.com.ng" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="btn btn-secondary btn-sm"
@@ -237,7 +227,7 @@ const Sponsorship = () => {
           </div>
 
           <div className="sponsorship-benefits">
-            <h2>Why Sponsor ISEG/GGSD-2026?</h2>
+            <h2>Why Sponsor IMEG-GSD 2027?</h2>
             <div className="benefits-list">
               <div className="benefit-item">
                 <h4>🌍 Global Reach</h4>
@@ -275,8 +265,8 @@ const Sponsorship = () => {
               <div className="contact-card">
                 <h4>🌐 Online Registration</h4>
                 <p>
-                  Visit: <a href="https://www.iseg-ggsd.com.ng" target="_blank" rel="noopener noreferrer">
-                    www.iseg-ggsd.com.ng
+                  Visit: <a href="https://www.imeg-gsd.com.ng" target="_blank" rel="noopener noreferrer">
+                    www.imeg-gsd.com.ng
                   </a>
                 </p>
                 <p>Select your sponsorship level and complete payment</p>
@@ -295,7 +285,7 @@ const Sponsorship = () => {
 
           <div className="tax-info">
             <p>
-              <strong>Note:</strong> The organizing institutions and ISEG are recognized non-profit organizations. 
+              <strong>Note:</strong> The organizing institutions and the Council are recognized non-profit organizations. 
               Sponsorship contributions may be tax-deductible depending on your jurisdiction. Please consult your tax advisor.
             </p>
           </div>
@@ -343,7 +333,7 @@ const Sponsorship = () => {
             </div>
 
             <div className="bank-details-note">
-              Please include your organization name and sponsorship level in the payment reference, then email the proof of payment to <a href="mailto:sponsors@iseg.ac.ke">sponsors@iseg.ac.ke</a>.
+              Please include your organization name and sponsorship level in the payment reference, then email the proof of payment to <a href="mailto:sponsors@imeg.ac.ke">sponsors@imeg.ac.ke</a>.
             </div>
           </div>
         </div>

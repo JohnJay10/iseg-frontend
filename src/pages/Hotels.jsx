@@ -17,7 +17,7 @@ const Hotels = () => {
         { type: 'Executive Rooms', price: '$110', description: 'Two persons with breakfast' },
         { type: 'Superior Rooms', price: '$80', description: 'One person with breakfast' }
       ],
-      bookinInfo: 'Book before August 5, 2026 for special rates',
+      bookinInfo: 'Book before February 5, 2027 for special rates',
       featured: true
     },
     {
@@ -35,7 +35,7 @@ const Hotels = () => {
         { type: 'Standard Rooms', price: '$60-80', description: 'Single or double occupancy with breakfast' },
         { type: 'Executive Rooms', price: '$70-80', description: 'Single or double occupancy with breakfast' }
       ],
-      bookingInfo: 'Book before August 5, 2026 for special rates'
+      bookingInfo: 'Book before February 5, 2027 for special rates'
     },
     {
       id: 3,
@@ -52,7 +52,7 @@ const Hotels = () => {
         { type: 'Balcony Rooms', price: '$60-70', description: 'Single or double occupancy with breakfast' },
         { type: 'Panorama Rooms', price: '$70-80', description: 'Single or double occupancy with breakfast' }
       ],
-      bookingInfo: 'Book before August 5, 2026 for special rates'
+      bookingInfo: 'Book before February 5, 2027 for special rates'
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ const Hotels = () => {
         { type: 'Double Room', price: '$25', description: 'Two persons (double bed) with breakfast' },
         { type: 'Twin Room', price: '$32', description: 'Two persons (twin beds) with breakfast' }
       ],
-      bookingInfo: 'Book before August 5, 2026 for special rates'
+      bookingInfo: 'Book before February 5, 2027 for special rates'
     }
   ]
 
@@ -78,7 +78,7 @@ const Hotels = () => {
       <section className="page-header">
         <div className="container">
           <h1>Accommodations & Hotels</h1>
-          <p>Book your stay for ISEG/GGSD-2026 Symposium</p>
+          <p>Book your stay for IMEG-GSD 2027 Symposium</p>
         </div>
       </section>
 
@@ -88,7 +88,7 @@ const Hotels = () => {
             <h2>Hotel Booking Information</h2>
             <p>  
               Intending participants are urged to select their hotels of interest and book their rooms at special 
-              negotiated rates before <strong>August 5, 2026</strong>. All hotels are conveniently located within walking 
+              negotiated rates before <strong>February 5, 2027</strong>. All hotels are conveniently located within walking 
               distance or short drive of the main conference venue (Maanzoni 680 Hotel).
             </p>
           </div>
@@ -153,7 +153,7 @@ const Hotels = () => {
               <li>✓ Book early to secure special symposium rates</li>
               <li>✓ All hotels are within Nairobi CBD or near the main venue</li>
               <li>✓ Contact hotels directly for group bookings or special requests</li>
-              <li>✓ Deadline for booking: August 5, 2026</li>
+              <li>✓ Deadline for booking: February 5, 2027</li>
             </ul>
           </div>
         </div>
